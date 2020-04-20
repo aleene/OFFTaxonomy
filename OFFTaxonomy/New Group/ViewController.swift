@@ -70,10 +70,10 @@ class ViewController: UIViewController {
         panGestureRecognizer.maximumNumberOfTouches = 2
         panGestureRecognizer.delegate = self
         arborView.addGestureRecognizer(panGestureRecognizer)
-        
+
         let pinchGesture = UIPinchGestureRecognizer.init(target: self, action: #selector(ViewController.pinch(_:)))
         pinchGesture.delegate = self
-        view.addGestureRecognizer(pinchGesture)
+        arborView.addGestureRecognizer(pinchGesture)
 
         let longPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(showTouchMenu(for:)))
         arborView.addGestureRecognizer(longPressGestureRecognizer)
@@ -103,7 +103,6 @@ class ViewController: UIViewController {
         self.arborView.isDebugDrawing = !self.arborView.isDebugDrawing
     }
     
-//TODO: is this working. Code does not seem right
     @objc func panHandler(for panGestureRecognizer: UIPanGestureRecognizer) {
         // move the closest node from the touch position
         let node: ATNode?
@@ -112,27 +111,33 @@ class ViewController: UIViewController {
         let translation = panGestureRecognizer.location(in: view)
         switch panGestureRecognizer.state {
         case .began:
-
             node = _system.nearestNode(to: translation, within: 30.0)
             node?.isFixed = true
-        case .changed:
-            //node.position = [system_ fromViewPoint:translation];
-            //node?.position = _system.fromView(point: translation)
-                break;
-        //default:
-        default:
-            //node?.isFixed = false
-            //node.fixed = NO;
-                
-            // [node setTempMass:100.0];
-                
-           break;
+        default: break
         }
         
         // start the simulation
         _system.start(unpause: true)
 
     }
+    
+    /// shift the piece's center by the pan amount
+    /// reset the gesture recognizer's translation to {0, 0} after applying so the next callback is a delta from the current position
+    @objc func pan(_ gestureRecognizer: UIPanGestureRecognizer) {
+
+        guard let view = gestureRecognizer.view else { return }
+
+        switch gestureRecognizer.state {
+        case .began, .changed:
+            let translation = gestureRecognizer.translation(in: view)
+            view.center = view.center + translation
+            gestureRecognizer.setTranslation(.zero, in: view)
+        default: break
+        }
+        
+        _system.start(unpause: true)
+    }
+
     /// scale the piece by the current scale
     /// reset the gesture recognizer's scale to 0 after applying so the next callback is a delta from the current scale
     @objc func pinch(_ gestureRecognizer: UIPinchGestureRecognizer) {
@@ -184,7 +189,6 @@ class ViewController: UIViewController {
         _system.delegate = self
         // DEBUG
         self.arborView.system = _system
-        //self.canvas.debugDrawing = NO;  // Do long press gesture to toggle.
         self.arborView.isDebugDrawing = true
         self.addGestureRecognizers(to: self.arborView)
    
@@ -194,6 +198,7 @@ class ViewController: UIViewController {
         _system.start(unpause: true)
 
     }
+    
 
 }
 
