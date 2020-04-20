@@ -9,11 +9,37 @@
 /* Begin PBXBuildFile section */
 		51D1A289244CBED800AC697A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A288244CBED800AC697A /* AppDelegate.swift */; };
 		51D1A28B244CBED800AC697A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A28A244CBED800AC697A /* SceneDelegate.swift */; };
-		51D1A28D244CBED800AC697A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A28C244CBED800AC697A /* ViewController.swift */; };
 		51D1A290244CBED800AC697A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51D1A28E244CBED800AC697A /* Main.storyboard */; };
 		51D1A292244CBEE300AC697A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51D1A291244CBEE300AC697A /* Assets.xcassets */; };
 		51D1A295244CBEE300AC697A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51D1A293244CBEE300AC697A /* LaunchScreen.storyboard */; };
 		51D1A2A0244CBEE400AC697A /* OFFTaxonomyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A29F244CBEE400AC697A /* OFFTaxonomyTests.swift */; };
+		51D1A2C5244CBF5600AC697A /* ATKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2AC244CBF5500AC697A /* ATKernel.swift */; };
+		51D1A2C6244CBF5600AC697A /* ATEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2AE244CBF5500AC697A /* ATEdge.swift */; };
+		51D1A2C7244CBF5600AC697A /* ATNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2AF244CBF5500AC697A /* ATNode.swift */; };
+		51D1A2C8244CBF5600AC697A /* UniqueCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B0244CBF5500AC697A /* UniqueCount.swift */; };
+		51D1A2C9244CBF5600AC697A /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B2244CBF5500AC697A /* CGPointExtension.swift */; };
+		51D1A2CA244CBF5600AC697A /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B3244CBF5500AC697A /* CGRectExtension.swift */; };
+		51D1A2CB244CBF5600AC697A /* CGSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B4244CBF5500AC697A /* CGSizeExtension.swift */; };
+		51D1A2CC244CBF5600AC697A /* CoreGraphicsOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B5244CBF5500AC697A /* CoreGraphicsOperators.swift */; };
+		51D1A2CD244CBF5600AC697A /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B6244CBF5500AC697A /* Line.swift */; };
+		51D1A2CE244CBF5600AC697A /* ATBarnesHutBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B8244CBF5500AC697A /* ATBarnesHutBranch.swift */; };
+		51D1A2CF244CBF5600AC697A /* ATBarnesHutNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B9244CBF5500AC697A /* ATBarnesHutNode.swift */; };
+		51D1A2D0244CBF5600AC697A /* ATBarnesHutTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2BA244CBF5500AC697A /* ATBarnesHutTree.swift */; };
+		51D1A2D1244CBF5600AC697A /* ATEnergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2BC244CBF5500AC697A /* ATEnergy.swift */; };
+		51D1A2D2244CBF5600AC697A /* ATParticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2BD244CBF5500AC697A /* ATParticle.swift */; };
+		51D1A2D3244CBF5600AC697A /* ATPhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2BE244CBF5500AC697A /* ATPhysics.swift */; };
+		51D1A2D4244CBF5600AC697A /* ATSpring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2BF244CBF5500AC697A /* ATSpring.swift */; };
+		51D1A2D5244CBF5600AC697A /* ATSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2C1244CBF5500AC697A /* ATSystem.swift */; };
+		51D1A2D6244CBF5600AC697A /* ATSystemParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2C2244CBF5500AC697A /* ATSystemParams.swift */; };
+		51D1A2D7244CBF5600AC697A /* ATSystemRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2C3244CBF5500AC697A /* ATSystemRenderer.swift */; };
+		51D1A2D8244CBF5600AC697A /* ATSystemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2C4244CBF5500AC697A /* ATSystemState.swift */; };
+		51D1A2DB244CBF9C00AC697A /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2DA244CBF9C00AC697A /* ViewController.swift */; };
+		51D1A2DE244CBFDD00AC697A /* ArborView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2DD244CBFDD00AC697A /* ArborView.swift */; };
+		51D1A2E5244CC01D00AC697A /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2E1244CC01D00AC697A /* Border.swift */; };
+		51D1A2E6244CC01D00AC697A /* CountryEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2E2244CC01D00AC697A /* CountryEdge.swift */; };
+		51D1A2E7244CC01D00AC697A /* CountryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2E3244CC01D00AC697A /* CountryNode.swift */; };
+		51D1A2E8244CC01D00AC697A /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2E4244CC01D00AC697A /* Map.swift */; };
+		51D1A2EB244CC03700AC697A /* process.json in Resources */ = {isa = PBXBuildFile; fileRef = 51D1A2EA244CC03600AC697A /* process.json */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,7 +56,6 @@
 		51D1A285244CBED800AC697A /* OFFTaxonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OFFTaxonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51D1A288244CBED800AC697A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		51D1A28A244CBED800AC697A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		51D1A28C244CBED800AC697A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		51D1A28F244CBED800AC697A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		51D1A291244CBEE300AC697A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		51D1A294244CBEE300AC697A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -38,6 +63,33 @@
 		51D1A29B244CBEE400AC697A /* OFFTaxonomyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OFFTaxonomyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		51D1A29F244CBEE400AC697A /* OFFTaxonomyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFFTaxonomyTests.swift; sourceTree = "<group>"; };
 		51D1A2A1244CBEE400AC697A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		51D1A2AC244CBF5500AC697A /* ATKernel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATKernel.swift; sourceTree = "<group>"; };
+		51D1A2AE244CBF5500AC697A /* ATEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATEdge.swift; sourceTree = "<group>"; };
+		51D1A2AF244CBF5500AC697A /* ATNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATNode.swift; sourceTree = "<group>"; };
+		51D1A2B0244CBF5500AC697A /* UniqueCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniqueCount.swift; sourceTree = "<group>"; };
+		51D1A2B2244CBF5500AC697A /* CGPointExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
+		51D1A2B3244CBF5500AC697A /* CGRectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
+		51D1A2B4244CBF5500AC697A /* CGSizeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGSizeExtension.swift; sourceTree = "<group>"; };
+		51D1A2B5244CBF5500AC697A /* CoreGraphicsOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreGraphicsOperators.swift; sourceTree = "<group>"; };
+		51D1A2B6244CBF5500AC697A /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
+		51D1A2B8244CBF5500AC697A /* ATBarnesHutBranch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATBarnesHutBranch.swift; sourceTree = "<group>"; };
+		51D1A2B9244CBF5500AC697A /* ATBarnesHutNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATBarnesHutNode.swift; sourceTree = "<group>"; };
+		51D1A2BA244CBF5500AC697A /* ATBarnesHutTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATBarnesHutTree.swift; sourceTree = "<group>"; };
+		51D1A2BC244CBF5500AC697A /* ATEnergy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATEnergy.swift; sourceTree = "<group>"; };
+		51D1A2BD244CBF5500AC697A /* ATParticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATParticle.swift; sourceTree = "<group>"; };
+		51D1A2BE244CBF5500AC697A /* ATPhysics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATPhysics.swift; sourceTree = "<group>"; };
+		51D1A2BF244CBF5500AC697A /* ATSpring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATSpring.swift; sourceTree = "<group>"; };
+		51D1A2C1244CBF5500AC697A /* ATSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATSystem.swift; sourceTree = "<group>"; };
+		51D1A2C2244CBF5500AC697A /* ATSystemParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATSystemParams.swift; sourceTree = "<group>"; };
+		51D1A2C3244CBF5500AC697A /* ATSystemRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATSystemRenderer.swift; sourceTree = "<group>"; };
+		51D1A2C4244CBF5500AC697A /* ATSystemState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATSystemState.swift; sourceTree = "<group>"; };
+		51D1A2DA244CBF9C00AC697A /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		51D1A2DD244CBFDD00AC697A /* ArborView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArborView.swift; sourceTree = "<group>"; };
+		51D1A2E1244CC01D00AC697A /* Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
+		51D1A2E2244CC01D00AC697A /* CountryEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryEdge.swift; sourceTree = "<group>"; };
+		51D1A2E3244CC01D00AC697A /* CountryNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryNode.swift; sourceTree = "<group>"; };
+		51D1A2E4244CC01D00AC697A /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
+		51D1A2EA244CC03600AC697A /* process.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = process.json; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +113,7 @@
 		51D1A27C244CBED800AC697A = {
 			isa = PBXGroup;
 			children = (
+				51D1A2AA244CBF5400AC697A /* PSArborTouchSwift */,
 				51D1A287244CBED800AC697A /* OFFTaxonomy */,
 				51D1A29E244CBEE400AC697A /* OFFTaxonomyTests */,
 				51D1A286244CBED800AC697A /* Products */,
@@ -79,9 +132,12 @@
 		51D1A287244CBED800AC697A /* OFFTaxonomy */ = {
 			isa = PBXGroup;
 			children = (
+				51D1A2E9244CC02600AC697A /* Data */,
+				51D1A2DF244CBFF900AC697A /* Models */,
+				51D1A2DC244CBFB800AC697A /* Views */,
+				51D1A2D9244CBF7800AC697A /* Controllers */,
 				51D1A288244CBED800AC697A /* AppDelegate.swift */,
 				51D1A28A244CBED800AC697A /* SceneDelegate.swift */,
-				51D1A28C244CBED800AC697A /* ViewController.swift */,
 				51D1A28E244CBED800AC697A /* Main.storyboard */,
 				51D1A291244CBEE300AC697A /* Assets.xcassets */,
 				51D1A293244CBEE300AC697A /* LaunchScreen.storyboard */,
@@ -97,6 +153,126 @@
 				51D1A2A1244CBEE400AC697A /* Info.plist */,
 			);
 			path = OFFTaxonomyTests;
+			sourceTree = "<group>";
+		};
+		51D1A2AA244CBF5400AC697A /* PSArborTouchSwift */ = {
+			isa = PBXGroup;
+			children = (
+				51D1A2AB244CBF5400AC697A /* ATKernel */,
+				51D1A2AD244CBF5500AC697A /* Atoms */,
+				51D1A2B1244CBF5500AC697A /* ATSupport */,
+				51D1A2B7244CBF5500AC697A /* Barnes-Hut */,
+				51D1A2BB244CBF5500AC697A /* Physics */,
+				51D1A2C0244CBF5500AC697A /* System */,
+			);
+			name = PSArborTouchSwift;
+			path = ../PSArborTouchSwift;
+			sourceTree = "<group>";
+		};
+		51D1A2AB244CBF5400AC697A /* ATKernel */ = {
+			isa = PBXGroup;
+			children = (
+				51D1A2AC244CBF5500AC697A /* ATKernel.swift */,
+			);
+			path = ATKernel;
+			sourceTree = "<group>";
+		};
+		51D1A2AD244CBF5500AC697A /* Atoms */ = {
+			isa = PBXGroup;
+			children = (
+				51D1A2AE244CBF5500AC697A /* ATEdge.swift */,
+				51D1A2AF244CBF5500AC697A /* ATNode.swift */,
+				51D1A2B0244CBF5500AC697A /* UniqueCount.swift */,
+			);
+			path = Atoms;
+			sourceTree = "<group>";
+		};
+		51D1A2B1244CBF5500AC697A /* ATSupport */ = {
+			isa = PBXGroup;
+			children = (
+				51D1A2B2244CBF5500AC697A /* CGPointExtension.swift */,
+				51D1A2B3244CBF5500AC697A /* CGRectExtension.swift */,
+				51D1A2B4244CBF5500AC697A /* CGSizeExtension.swift */,
+				51D1A2B5244CBF5500AC697A /* CoreGraphicsOperators.swift */,
+				51D1A2B6244CBF5500AC697A /* Line.swift */,
+			);
+			path = ATSupport;
+			sourceTree = "<group>";
+		};
+		51D1A2B7244CBF5500AC697A /* Barnes-Hut */ = {
+			isa = PBXGroup;
+			children = (
+				51D1A2B8244CBF5500AC697A /* ATBarnesHutBranch.swift */,
+				51D1A2B9244CBF5500AC697A /* ATBarnesHutNode.swift */,
+				51D1A2BA244CBF5500AC697A /* ATBarnesHutTree.swift */,
+			);
+			path = "Barnes-Hut";
+			sourceTree = "<group>";
+		};
+		51D1A2BB244CBF5500AC697A /* Physics */ = {
+			isa = PBXGroup;
+			children = (
+				51D1A2BC244CBF5500AC697A /* ATEnergy.swift */,
+				51D1A2BD244CBF5500AC697A /* ATParticle.swift */,
+				51D1A2BE244CBF5500AC697A /* ATPhysics.swift */,
+				51D1A2BF244CBF5500AC697A /* ATSpring.swift */,
+			);
+			path = Physics;
+			sourceTree = "<group>";
+		};
+		51D1A2C0244CBF5500AC697A /* System */ = {
+			isa = PBXGroup;
+			children = (
+				51D1A2C1244CBF5500AC697A /* ATSystem.swift */,
+				51D1A2C2244CBF5500AC697A /* ATSystemParams.swift */,
+				51D1A2C3244CBF5500AC697A /* ATSystemRenderer.swift */,
+				51D1A2C4244CBF5500AC697A /* ATSystemState.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		51D1A2D9244CBF7800AC697A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				51D1A2DA244CBF9C00AC697A /* ViewController.swift */,
+			);
+			name = Controllers;
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		51D1A2DC244CBFB800AC697A /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				51D1A2DD244CBFDD00AC697A /* ArborView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		51D1A2DF244CBFF900AC697A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				51D1A2E0244CC01D00AC697A /* Json */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		51D1A2E0244CC01D00AC697A /* Json */ = {
+			isa = PBXGroup;
+			children = (
+				51D1A2E1244CC01D00AC697A /* Border.swift */,
+				51D1A2E2244CC01D00AC697A /* CountryEdge.swift */,
+				51D1A2E3244CC01D00AC697A /* CountryNode.swift */,
+				51D1A2E4244CC01D00AC697A /* Map.swift */,
+			);
+			path = Json;
+			sourceTree = "<group>";
+		};
+		51D1A2E9244CC02600AC697A /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				51D1A2EA244CC03600AC697A /* process.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,6 +359,7 @@
 				51D1A295244CBEE300AC697A /* LaunchScreen.storyboard in Resources */,
 				51D1A292244CBEE300AC697A /* Assets.xcassets in Resources */,
 				51D1A290244CBED800AC697A /* Main.storyboard in Resources */,
+				51D1A2EB244CC03700AC697A /* process.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,9 +377,34 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51D1A28D244CBED800AC697A /* ViewController.swift in Sources */,
+				51D1A2C7244CBF5600AC697A /* ATNode.swift in Sources */,
+				51D1A2E5244CC01D00AC697A /* Border.swift in Sources */,
+				51D1A2CB244CBF5600AC697A /* CGSizeExtension.swift in Sources */,
+				51D1A2D5244CBF5600AC697A /* ATSystem.swift in Sources */,
+				51D1A2C9244CBF5600AC697A /* CGPointExtension.swift in Sources */,
+				51D1A2C8244CBF5600AC697A /* UniqueCount.swift in Sources */,
+				51D1A2DB244CBF9C00AC697A /* ViewController.swift in Sources */,
+				51D1A2D0244CBF5600AC697A /* ATBarnesHutTree.swift in Sources */,
+				51D1A2D3244CBF5600AC697A /* ATPhysics.swift in Sources */,
+				51D1A2D7244CBF5600AC697A /* ATSystemRenderer.swift in Sources */,
 				51D1A289244CBED800AC697A /* AppDelegate.swift in Sources */,
+				51D1A2DE244CBFDD00AC697A /* ArborView.swift in Sources */,
+				51D1A2CC244CBF5600AC697A /* CoreGraphicsOperators.swift in Sources */,
+				51D1A2D2244CBF5600AC697A /* ATParticle.swift in Sources */,
+				51D1A2E8244CC01D00AC697A /* Map.swift in Sources */,
+				51D1A2D1244CBF5600AC697A /* ATEnergy.swift in Sources */,
+				51D1A2CE244CBF5600AC697A /* ATBarnesHutBranch.swift in Sources */,
+				51D1A2D8244CBF5600AC697A /* ATSystemState.swift in Sources */,
+				51D1A2E7244CC01D00AC697A /* CountryNode.swift in Sources */,
 				51D1A28B244CBED800AC697A /* SceneDelegate.swift in Sources */,
+				51D1A2E6244CC01D00AC697A /* CountryEdge.swift in Sources */,
+				51D1A2D6244CBF5600AC697A /* ATSystemParams.swift in Sources */,
+				51D1A2D4244CBF5600AC697A /* ATSpring.swift in Sources */,
+				51D1A2CF244CBF5600AC697A /* ATBarnesHutNode.swift in Sources */,
+				51D1A2CA244CBF5600AC697A /* CGRectExtension.swift in Sources */,
+				51D1A2CD244CBF5600AC697A /* Line.swift in Sources */,
+				51D1A2C5244CBF5600AC697A /* ATKernel.swift in Sources */,
+				51D1A2C6244CBF5600AC697A /* ATEdge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
