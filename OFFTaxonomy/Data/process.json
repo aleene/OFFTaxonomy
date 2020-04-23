@@ -1,5 +1,15 @@
 {
     "nodes": {
+        "en:process": {
+            "en": ["process"],
+            "fr": ["procès"],
+            "nl": ["proces"]
+        },
+        "en:unprocessed": {
+            "en": ["unprocessed"],
+            "fr": ["sans procès"],
+            "nl": ["onbehandeld"]
+        },
         "en:raw": {
             "en": ["raw"],
             "fr": ["cru", "crue", "crus", "crues"]
@@ -12,10 +22,20 @@
             "nl": ["verse"],
             "pt": ["fresco"]
         },
+        "en:natural": {
+            "en": ["natural"],
+            "da": ["naturlig"],
+            "de": ["natürlich", "natürliches", "naturlich", "naturliches"],
+            "es": ["natural", "naturales", "natural de"],
+            "it": ["naturale"],
+            "nl": ["natuurlijk", "natuurlijke"],
+            "pl": ["naturalne"],
+            "sv": ["naturlig", "naturliga", "naturligt"],
+        }
     },
     "edges": {
         "en:process": {
-            "en:raw": {"border": 1},
+            "en:unprocessed": {"border": 1},
             "en:sized": {"border": 1},
             "en:split": {"border": 1},
             "en:humidified": {"border": 1},
@@ -23,6 +43,12 @@
             "en:added": {"border": 1},
             "en:prepared": {"border": 1}
         },
+        "en:unprocessed": {
+            "en:raw": {"border": 1},
+            "en:fresh": {"border": 1},
+            "en:natural": {"border": 1},
+        },
+
         "en:sized": {
             "en:whole": {"border": 2},
             "en:halved": {"border": 2},
