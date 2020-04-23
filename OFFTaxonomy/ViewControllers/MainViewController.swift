@@ -33,6 +33,7 @@ class MainViewController: UIViewController {
     }
     
     @IBAction func languageButtonTapped(_ sender: UIBarButtonItem) {
+        self.mainCoordinator?.selectLanguage()
     }
     
 // MARK: - public variables

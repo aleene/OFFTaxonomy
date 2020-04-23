@@ -27,7 +27,7 @@ extension UIViewController {
     static func instantiate() -> Self {
         let fullName = NSStringFromClass(self).components(separatedBy: ".")
         guard fullName.count > 1  else { fatalError() }
-        let storyboard = UIStoryboard(name: "Storyboard", bundle: Bundle.main)
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         return storyboard.instantiateViewController(withIdentifier: fullName[1]) as! Self
     }
 
