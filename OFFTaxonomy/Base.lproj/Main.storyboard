@@ -65,8 +65,16 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                                 <items>
                                     <navigationItem title="Title" id="VHz-up-fwR">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="pW2-NI-MZh"/>
-                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="eUr-4b-FhC"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="pW2-NI-MZh">
+                                            <connections>
+                                                <action selector="cancelButtonTapped:" destination="ifn-33-mh1" id="gDP-48-mx5"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="eUr-4b-FhC">
+                                            <connections>
+                                                <action selector="doneButtonTapped:" destination="ifn-33-mh1" id="hef-Be-Jdu"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
@@ -78,7 +86,7 @@
                                 <rect key="frame" x="0.0" y="144" width="414" height="718"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="X6q-qi-1LK">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="UITableViewCell.SelectPairViewController" id="X6q-qi-1LK">
                                         <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="X6q-qi-1LK" id="npy-Cg-mzD">
@@ -104,6 +112,12 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="f3v-tJ-Gyj"/>
                     </view>
+                    <connections>
+                        <outlet property="bottomLayoutConstraint" destination="d4x-00-xYh" id="z7h-l2-IgH"/>
+                        <outlet property="navItem" destination="VHz-up-fwR" id="Y9v-tA-UW8"/>
+                        <outlet property="searchBar" destination="aZr-rF-ZAQ" id="9De-Xo-Ir7"/>
+                        <outlet property="tableView" destination="uln-pX-8cZ" id="40K-2p-Ojz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLp-nV-eqy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
