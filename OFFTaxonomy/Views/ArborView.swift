@@ -56,6 +56,7 @@ class ArborView: UIView {
             self.layoutSubviews()
         }
     }
+    public var languageCode = "en"
 
 // MARK: - public functions
             
@@ -186,7 +187,13 @@ class ArborView: UIView {
     private func drawText(for particle: ATParticle, in context: CGContext) {
         // Translate the particle position to screen coordinates
         guard let validPosition = particle.position else { return }
-        guard let validName = particle.name else { return }
+        var validName = "not set"
+        if let validData = particle.userData[languageCode] as? [String],
+            let validFirst = validData.first {
+            validName = validFirst
+        } else if let valid = particle.name {
+            validName = valid
+        }
 
         let particleOrigin = pointToScreen(validPosition)
         // Create an empty rect at particle center

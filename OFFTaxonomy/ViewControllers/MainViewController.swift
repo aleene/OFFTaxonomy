@@ -45,6 +45,8 @@ class MainViewController: UIViewController {
     
     public var currentLanguageCode = "en" {
         didSet {
+            self.arborView?.languageCode = currentLanguageCode
+            self.languageButton?.title = currentLanguageCode
         }
     }
     
