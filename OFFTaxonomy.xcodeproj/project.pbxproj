@@ -13,40 +13,40 @@
 		5176C0432451A39800E84AB6 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5176C0402451A39800E84AB6 /* MainCoordinator.swift */; };
 		5176C0442451A39800E84AB6 /* SelectPairCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5176C0412451A39800E84AB6 /* SelectPairCoordinator.swift */; };
 		5176C0452451A39800E84AB6 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5176C0422451A39800E84AB6 /* Coordinator.swift */; };
-		5176C04E2451CB5000E84AB6 /* Taxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5176C0482451CB5000E84AB6 /* Taxonomy.swift */; };
-		5176C04F2451CB5000E84AB6 /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5176C0492451CB5000E84AB6 /* Node.swift */; };
-		5176C0502451CB5000E84AB6 /* Languages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5176C04A2451CB5000E84AB6 /* Languages.plist */; };
-		5176C0512451CB5000E84AB6 /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5176C04B2451CB5000E84AB6 /* Section.swift */; };
-		5176C0522451CB5000E84AB6 /* VertexNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5176C04C2451CB5000E84AB6 /* VertexNew.swift */; };
-		5176C0532451CB5000E84AB6 /* OFFFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5176C04D2451CB5000E84AB6 /* OFFFiles.swift */; };
 		5176C0552451CB7500E84AB6 /* TranslatableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5176C0542451CB7500E84AB6 /* TranslatableStrings.swift */; };
 		5176C0572451CB8900E84AB6 /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5176C0562451CB8900E84AB6 /* UIViewControllerExtension.swift */; };
+		5194C9C9245207AD006BBE5A /* Languages.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5194C9C3245207AD006BBE5A /* Languages.plist */; };
+		5194C9CA245207AD006BBE5A /* Taxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9C4245207AD006BBE5A /* Taxonomy.swift */; };
+		5194C9CB245207AD006BBE5A /* OFFFiles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9C5245207AD006BBE5A /* OFFFiles.swift */; };
+		5194C9CC245207AD006BBE5A /* Section.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9C6245207AD006BBE5A /* Section.swift */; };
+		5194C9CD245207AD006BBE5A /* VertexNew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9C7245207AD006BBE5A /* VertexNew.swift */; };
+		5194C9CE245207AD006BBE5A /* Node.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9C8245207AD006BBE5A /* Node.swift */; };
+		5194C9D0245207C3006BBE5A /* ATKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9CF245207C3006BBE5A /* ATKernel.swift */; };
+		5194C9D4245207D8006BBE5A /* ATNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9D1245207D8006BBE5A /* ATNode.swift */; };
+		5194C9D5245207D8006BBE5A /* ATEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9D2245207D8006BBE5A /* ATEdge.swift */; };
+		5194C9D6245207D8006BBE5A /* UniqueCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9D3245207D8006BBE5A /* UniqueCount.swift */; };
+		5194C9DC245207E9006BBE5A /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9D7245207E8006BBE5A /* CGRectExtension.swift */; };
+		5194C9DD245207E9006BBE5A /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9D8245207E8006BBE5A /* Line.swift */; };
+		5194C9DE245207E9006BBE5A /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9D9245207E8006BBE5A /* CGPointExtension.swift */; };
+		5194C9DF245207E9006BBE5A /* CGSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9DA245207E8006BBE5A /* CGSizeExtension.swift */; };
+		5194C9E0245207E9006BBE5A /* CoreGraphicsOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9DB245207E9006BBE5A /* CoreGraphicsOperators.swift */; };
+		5194C9E4245207FE006BBE5A /* ATBarnesHutNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9E1245207FE006BBE5A /* ATBarnesHutNode.swift */; };
+		5194C9E5245207FE006BBE5A /* ATBarnesHutTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9E2245207FE006BBE5A /* ATBarnesHutTree.swift */; };
+		5194C9E6245207FE006BBE5A /* ATBarnesHutBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9E3245207FE006BBE5A /* ATBarnesHutBranch.swift */; };
+		5194C9EB24520810006BBE5A /* ATSpring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9E724520810006BBE5A /* ATSpring.swift */; };
+		5194C9EC24520810006BBE5A /* ATPhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9E824520810006BBE5A /* ATPhysics.swift */; };
+		5194C9ED24520810006BBE5A /* ATEnergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9E924520810006BBE5A /* ATEnergy.swift */; };
+		5194C9EE24520810006BBE5A /* ATParticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9EA24520810006BBE5A /* ATParticle.swift */; };
+		5194C9F324520821006BBE5A /* ATSystemRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9EF24520821006BBE5A /* ATSystemRenderer.swift */; };
+		5194C9F424520821006BBE5A /* ATSystemParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9F024520821006BBE5A /* ATSystemParams.swift */; };
+		5194C9F524520821006BBE5A /* ATSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9F124520821006BBE5A /* ATSystem.swift */; };
+		5194C9F624520821006BBE5A /* ATSystemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9F224520821006BBE5A /* ATSystemState.swift */; };
 		51D1A289244CBED800AC697A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A288244CBED800AC697A /* AppDelegate.swift */; };
 		51D1A28B244CBED800AC697A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A28A244CBED800AC697A /* SceneDelegate.swift */; };
 		51D1A290244CBED800AC697A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51D1A28E244CBED800AC697A /* Main.storyboard */; };
 		51D1A292244CBEE300AC697A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 51D1A291244CBEE300AC697A /* Assets.xcassets */; };
 		51D1A295244CBEE300AC697A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51D1A293244CBEE300AC697A /* LaunchScreen.storyboard */; };
 		51D1A2A0244CBEE400AC697A /* OFFTaxonomyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A29F244CBEE400AC697A /* OFFTaxonomyTests.swift */; };
-		51D1A2C5244CBF5600AC697A /* ATKernel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2AC244CBF5500AC697A /* ATKernel.swift */; };
-		51D1A2C6244CBF5600AC697A /* ATEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2AE244CBF5500AC697A /* ATEdge.swift */; };
-		51D1A2C7244CBF5600AC697A /* ATNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2AF244CBF5500AC697A /* ATNode.swift */; };
-		51D1A2C8244CBF5600AC697A /* UniqueCount.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B0244CBF5500AC697A /* UniqueCount.swift */; };
-		51D1A2C9244CBF5600AC697A /* CGPointExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B2244CBF5500AC697A /* CGPointExtension.swift */; };
-		51D1A2CA244CBF5600AC697A /* CGRectExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B3244CBF5500AC697A /* CGRectExtension.swift */; };
-		51D1A2CB244CBF5600AC697A /* CGSizeExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B4244CBF5500AC697A /* CGSizeExtension.swift */; };
-		51D1A2CC244CBF5600AC697A /* CoreGraphicsOperators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B5244CBF5500AC697A /* CoreGraphicsOperators.swift */; };
-		51D1A2CD244CBF5600AC697A /* Line.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B6244CBF5500AC697A /* Line.swift */; };
-		51D1A2CE244CBF5600AC697A /* ATBarnesHutBranch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B8244CBF5500AC697A /* ATBarnesHutBranch.swift */; };
-		51D1A2CF244CBF5600AC697A /* ATBarnesHutNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2B9244CBF5500AC697A /* ATBarnesHutNode.swift */; };
-		51D1A2D0244CBF5600AC697A /* ATBarnesHutTree.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2BA244CBF5500AC697A /* ATBarnesHutTree.swift */; };
-		51D1A2D1244CBF5600AC697A /* ATEnergy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2BC244CBF5500AC697A /* ATEnergy.swift */; };
-		51D1A2D2244CBF5600AC697A /* ATParticle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2BD244CBF5500AC697A /* ATParticle.swift */; };
-		51D1A2D3244CBF5600AC697A /* ATPhysics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2BE244CBF5500AC697A /* ATPhysics.swift */; };
-		51D1A2D4244CBF5600AC697A /* ATSpring.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2BF244CBF5500AC697A /* ATSpring.swift */; };
-		51D1A2D5244CBF5600AC697A /* ATSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2C1244CBF5500AC697A /* ATSystem.swift */; };
-		51D1A2D6244CBF5600AC697A /* ATSystemParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2C2244CBF5500AC697A /* ATSystemParams.swift */; };
-		51D1A2D7244CBF5600AC697A /* ATSystemRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2C3244CBF5500AC697A /* ATSystemRenderer.swift */; };
-		51D1A2D8244CBF5600AC697A /* ATSystemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2C4244CBF5500AC697A /* ATSystemState.swift */; };
 		51D1A2DE244CBFDD00AC697A /* ArborView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2DD244CBFDD00AC697A /* ArborView.swift */; };
 		51D1A2E5244CC01D00AC697A /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2E1244CC01D00AC697A /* Border.swift */; };
 		51D1A2E6244CC01D00AC697A /* CountryEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2E2244CC01D00AC697A /* CountryEdge.swift */; };
@@ -66,56 +66,56 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5166FD64244EDE4500DE3AD0 /* UIBezierPathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIBezierPathExtensions.swift; sourceTree = "<group>"; };
+		5166FD64244EDE4500DE3AD0 /* UIBezierPathExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UIBezierPathExtensions.swift; path = OFFTaxonomy/Extensions/UIBezierPathExtensions.swift; sourceTree = SOURCE_ROOT; };
 		5176C03B2451A32200E84AB6 /* SelectPairViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectPairViewController.swift; path = OFFTaxonomy/ViewControllers/SelectPairViewController.swift; sourceTree = SOURCE_ROOT; };
 		5176C03C2451A32200E84AB6 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainViewController.swift; path = OFFTaxonomy/ViewControllers/MainViewController.swift; sourceTree = SOURCE_ROOT; };
-		5176C0402451A39800E84AB6 /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
-		5176C0412451A39800E84AB6 /* SelectPairCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectPairCoordinator.swift; sourceTree = "<group>"; };
-		5176C0422451A39800E84AB6 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
-		5176C0482451CB5000E84AB6 /* Taxonomy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Taxonomy.swift; path = ../../PlistTaxonomies/Taxonomy.swift; sourceTree = "<group>"; };
-		5176C0492451CB5000E84AB6 /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = ../../PlistTaxonomies/Node.swift; sourceTree = "<group>"; };
-		5176C04A2451CB5000E84AB6 /* Languages.plist */ = {isa = PBXFileReference; lastKnownFileType = file.bplist; name = Languages.plist; path = ../../PlistTaxonomies/Languages.plist; sourceTree = "<group>"; };
-		5176C04B2451CB5000E84AB6 /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Section.swift; path = ../../PlistTaxonomies/Section.swift; sourceTree = "<group>"; };
-		5176C04C2451CB5000E84AB6 /* VertexNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VertexNew.swift; path = ../../PlistTaxonomies/VertexNew.swift; sourceTree = "<group>"; };
-		5176C04D2451CB5000E84AB6 /* OFFFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OFFFiles.swift; path = ../../PlistTaxonomies/OFFFiles.swift; sourceTree = "<group>"; };
-		5176C0542451CB7500E84AB6 /* TranslatableStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TranslatableStrings.swift; sourceTree = "<group>"; };
-		5176C0562451CB8900E84AB6 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		5176C0402451A39800E84AB6 /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainCoordinator.swift; path = OFFTaxonomy/Coordinators/MainCoordinator.swift; sourceTree = SOURCE_ROOT; };
+		5176C0412451A39800E84AB6 /* SelectPairCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectPairCoordinator.swift; path = OFFTaxonomy/Coordinators/SelectPairCoordinator.swift; sourceTree = SOURCE_ROOT; };
+		5176C0422451A39800E84AB6 /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Coordinator.swift; path = OFFTaxonomy/Coordinators/Coordinator.swift; sourceTree = SOURCE_ROOT; };
+		5176C0542451CB7500E84AB6 /* TranslatableStrings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TranslatableStrings.swift; path = OFFTaxonomy/Support/TranslatableStrings.swift; sourceTree = SOURCE_ROOT; };
+		5176C0562451CB8900E84AB6 /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UIViewControllerExtension.swift; path = OFFTaxonomy/Extensions/UIViewControllerExtension.swift; sourceTree = SOURCE_ROOT; };
+		5194C9C3245207AD006BBE5A /* Languages.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Languages.plist; path = PlistTaxonomies/Languages.plist; sourceTree = SOURCE_ROOT; };
+		5194C9C4245207AD006BBE5A /* Taxonomy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Taxonomy.swift; path = PlistTaxonomies/Taxonomy.swift; sourceTree = SOURCE_ROOT; };
+		5194C9C5245207AD006BBE5A /* OFFFiles.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OFFFiles.swift; path = PlistTaxonomies/OFFFiles.swift; sourceTree = SOURCE_ROOT; };
+		5194C9C6245207AD006BBE5A /* Section.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Section.swift; path = PlistTaxonomies/Section.swift; sourceTree = SOURCE_ROOT; };
+		5194C9C7245207AD006BBE5A /* VertexNew.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = VertexNew.swift; path = PlistTaxonomies/VertexNew.swift; sourceTree = SOURCE_ROOT; };
+		5194C9C8245207AD006BBE5A /* Node.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Node.swift; path = PlistTaxonomies/Node.swift; sourceTree = SOURCE_ROOT; };
+		5194C9CF245207C3006BBE5A /* ATKernel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATKernel.swift; path = PSArborTouchSwift/ATKernel/ATKernel.swift; sourceTree = SOURCE_ROOT; };
+		5194C9D1245207D8006BBE5A /* ATNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATNode.swift; path = PSArborTouchSwift/Atoms/ATNode.swift; sourceTree = SOURCE_ROOT; };
+		5194C9D2245207D8006BBE5A /* ATEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATEdge.swift; path = PSArborTouchSwift/Atoms/ATEdge.swift; sourceTree = SOURCE_ROOT; };
+		5194C9D3245207D8006BBE5A /* UniqueCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UniqueCount.swift; path = PSArborTouchSwift/Atoms/UniqueCount.swift; sourceTree = SOURCE_ROOT; };
+		5194C9D7245207E8006BBE5A /* CGRectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGRectExtension.swift; path = PSArborTouchSwift/ATSupport/CGRectExtension.swift; sourceTree = SOURCE_ROOT; };
+		5194C9D8245207E8006BBE5A /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Line.swift; path = PSArborTouchSwift/ATSupport/Line.swift; sourceTree = SOURCE_ROOT; };
+		5194C9D9245207E8006BBE5A /* CGPointExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGPointExtension.swift; path = PSArborTouchSwift/ATSupport/CGPointExtension.swift; sourceTree = SOURCE_ROOT; };
+		5194C9DA245207E8006BBE5A /* CGSizeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CGSizeExtension.swift; path = PSArborTouchSwift/ATSupport/CGSizeExtension.swift; sourceTree = SOURCE_ROOT; };
+		5194C9DB245207E9006BBE5A /* CoreGraphicsOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CoreGraphicsOperators.swift; path = PSArborTouchSwift/ATSupport/CoreGraphicsOperators.swift; sourceTree = SOURCE_ROOT; };
+		5194C9E1245207FE006BBE5A /* ATBarnesHutNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATBarnesHutNode.swift; path = "PSArborTouchSwift/Barnes-Hut/ATBarnesHutNode.swift"; sourceTree = SOURCE_ROOT; };
+		5194C9E2245207FE006BBE5A /* ATBarnesHutTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATBarnesHutTree.swift; path = "PSArborTouchSwift/Barnes-Hut/ATBarnesHutTree.swift"; sourceTree = SOURCE_ROOT; };
+		5194C9E3245207FE006BBE5A /* ATBarnesHutBranch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATBarnesHutBranch.swift; path = "PSArborTouchSwift/Barnes-Hut/ATBarnesHutBranch.swift"; sourceTree = SOURCE_ROOT; };
+		5194C9E724520810006BBE5A /* ATSpring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATSpring.swift; path = PSArborTouchSwift/Physics/ATSpring.swift; sourceTree = SOURCE_ROOT; };
+		5194C9E824520810006BBE5A /* ATPhysics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATPhysics.swift; path = PSArborTouchSwift/Physics/ATPhysics.swift; sourceTree = SOURCE_ROOT; };
+		5194C9E924520810006BBE5A /* ATEnergy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATEnergy.swift; path = PSArborTouchSwift/Physics/ATEnergy.swift; sourceTree = SOURCE_ROOT; };
+		5194C9EA24520810006BBE5A /* ATParticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATParticle.swift; path = PSArborTouchSwift/Physics/ATParticle.swift; sourceTree = SOURCE_ROOT; };
+		5194C9EF24520821006BBE5A /* ATSystemRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATSystemRenderer.swift; path = PSArborTouchSwift/System/ATSystemRenderer.swift; sourceTree = SOURCE_ROOT; };
+		5194C9F024520821006BBE5A /* ATSystemParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATSystemParams.swift; path = PSArborTouchSwift/System/ATSystemParams.swift; sourceTree = SOURCE_ROOT; };
+		5194C9F124520821006BBE5A /* ATSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATSystem.swift; path = PSArborTouchSwift/System/ATSystem.swift; sourceTree = SOURCE_ROOT; };
+		5194C9F224520821006BBE5A /* ATSystemState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATSystemState.swift; path = PSArborTouchSwift/System/ATSystemState.swift; sourceTree = SOURCE_ROOT; };
 		51D1A285244CBED800AC697A /* OFFTaxonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OFFTaxonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		51D1A288244CBED800AC697A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		51D1A28A244CBED800AC697A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		51D1A288244CBED800AC697A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = OFFTaxonomy/Support/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
+		51D1A28A244CBED800AC697A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = OFFTaxonomy/Support/SceneDelegate.swift; sourceTree = SOURCE_ROOT; };
 		51D1A28F244CBED800AC697A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		51D1A291244CBEE300AC697A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		51D1A291244CBEE300AC697A /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = OFFTaxonomy/Support/Assets.xcassets; sourceTree = SOURCE_ROOT; };
 		51D1A294244CBEE300AC697A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		51D1A296244CBEE400AC697A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51D1A29B244CBEE400AC697A /* OFFTaxonomyTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OFFTaxonomyTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		51D1A29F244CBEE400AC697A /* OFFTaxonomyTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OFFTaxonomyTests.swift; sourceTree = "<group>"; };
 		51D1A2A1244CBEE400AC697A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		51D1A2AC244CBF5500AC697A /* ATKernel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATKernel.swift; sourceTree = "<group>"; };
-		51D1A2AE244CBF5500AC697A /* ATEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATEdge.swift; sourceTree = "<group>"; };
-		51D1A2AF244CBF5500AC697A /* ATNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATNode.swift; sourceTree = "<group>"; };
-		51D1A2B0244CBF5500AC697A /* UniqueCount.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UniqueCount.swift; sourceTree = "<group>"; };
-		51D1A2B2244CBF5500AC697A /* CGPointExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGPointExtension.swift; sourceTree = "<group>"; };
-		51D1A2B3244CBF5500AC697A /* CGRectExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGRectExtension.swift; sourceTree = "<group>"; };
-		51D1A2B4244CBF5500AC697A /* CGSizeExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGSizeExtension.swift; sourceTree = "<group>"; };
-		51D1A2B5244CBF5500AC697A /* CoreGraphicsOperators.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreGraphicsOperators.swift; sourceTree = "<group>"; };
-		51D1A2B6244CBF5500AC697A /* Line.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Line.swift; sourceTree = "<group>"; };
-		51D1A2B8244CBF5500AC697A /* ATBarnesHutBranch.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATBarnesHutBranch.swift; sourceTree = "<group>"; };
-		51D1A2B9244CBF5500AC697A /* ATBarnesHutNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATBarnesHutNode.swift; sourceTree = "<group>"; };
-		51D1A2BA244CBF5500AC697A /* ATBarnesHutTree.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATBarnesHutTree.swift; sourceTree = "<group>"; };
-		51D1A2BC244CBF5500AC697A /* ATEnergy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATEnergy.swift; sourceTree = "<group>"; };
-		51D1A2BD244CBF5500AC697A /* ATParticle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATParticle.swift; sourceTree = "<group>"; };
-		51D1A2BE244CBF5500AC697A /* ATPhysics.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATPhysics.swift; sourceTree = "<group>"; };
-		51D1A2BF244CBF5500AC697A /* ATSpring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATSpring.swift; sourceTree = "<group>"; };
-		51D1A2C1244CBF5500AC697A /* ATSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATSystem.swift; sourceTree = "<group>"; };
-		51D1A2C2244CBF5500AC697A /* ATSystemParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATSystemParams.swift; sourceTree = "<group>"; };
-		51D1A2C3244CBF5500AC697A /* ATSystemRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATSystemRenderer.swift; sourceTree = "<group>"; };
-		51D1A2C4244CBF5500AC697A /* ATSystemState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ATSystemState.swift; sourceTree = "<group>"; };
-		51D1A2DD244CBFDD00AC697A /* ArborView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ArborView.swift; sourceTree = "<group>"; };
-		51D1A2E1244CC01D00AC697A /* Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Border.swift; sourceTree = "<group>"; };
-		51D1A2E2244CC01D00AC697A /* CountryEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryEdge.swift; sourceTree = "<group>"; };
-		51D1A2E3244CC01D00AC697A /* CountryNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryNode.swift; sourceTree = "<group>"; };
-		51D1A2E4244CC01D00AC697A /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Map.swift; sourceTree = "<group>"; };
-		51D1A2EA244CC03600AC697A /* process.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = process.json; sourceTree = "<group>"; };
+		51D1A2DD244CBFDD00AC697A /* ArborView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArborView.swift; path = OFFTaxonomy/Views/ArborView.swift; sourceTree = SOURCE_ROOT; };
+		51D1A2E1244CC01D00AC697A /* Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Border.swift; path = OFFTaxonomy/Models/Json/Border.swift; sourceTree = SOURCE_ROOT; };
+		51D1A2E2244CC01D00AC697A /* CountryEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountryEdge.swift; path = OFFTaxonomy/Models/Json/CountryEdge.swift; sourceTree = SOURCE_ROOT; };
+		51D1A2E3244CC01D00AC697A /* CountryNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountryNode.swift; path = OFFTaxonomy/Models/Json/CountryNode.swift; sourceTree = SOURCE_ROOT; };
+		51D1A2E4244CC01D00AC697A /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Map.swift; path = OFFTaxonomy/Models/Json/Map.swift; sourceTree = SOURCE_ROOT; };
+		51D1A2EA244CC03600AC697A /* process.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = process.json; path = OFFTaxonomy/Data/process.json; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +158,9 @@
 		5176C0462451CA8B00E84AB6 /* Support */ = {
 			isa = PBXGroup;
 			children = (
+				51D1A291244CBEE300AC697A /* Assets.xcassets */,
+				51D1A28A244CBED800AC697A /* SceneDelegate.swift */,
+				51D1A288244CBED800AC697A /* AppDelegate.swift */,
 				5176C0542451CB7500E84AB6 /* TranslatableStrings.swift */,
 			);
 			path = Support;
@@ -166,15 +169,15 @@
 		5176C0472451CB3200E84AB6 /* Plist */ = {
 			isa = PBXGroup;
 			children = (
-				5176C04A2451CB5000E84AB6 /* Languages.plist */,
-				5176C0492451CB5000E84AB6 /* Node.swift */,
-				5176C04D2451CB5000E84AB6 /* OFFFiles.swift */,
-				5176C04B2451CB5000E84AB6 /* Section.swift */,
-				5176C0482451CB5000E84AB6 /* Taxonomy.swift */,
-				5176C04C2451CB5000E84AB6 /* VertexNew.swift */,
+				5194C9C3245207AD006BBE5A /* Languages.plist */,
+				5194C9C8245207AD006BBE5A /* Node.swift */,
+				5194C9C5245207AD006BBE5A /* OFFFiles.swift */,
+				5194C9C6245207AD006BBE5A /* Section.swift */,
+				5194C9C4245207AD006BBE5A /* Taxonomy.swift */,
+				5194C9C7245207AD006BBE5A /* VertexNew.swift */,
 			);
 			path = Plist;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		51D1A27C244CBED800AC697A = {
 			isa = PBXGroup;
@@ -206,11 +209,6 @@
 				51D1A2DF244CBFF900AC697A /* Models */,
 				51D1A2DC244CBFB800AC697A /* Views */,
 				51D1A2D9244CBF7800AC697A /* Controllers */,
-				51D1A288244CBED800AC697A /* AppDelegate.swift */,
-				51D1A28A244CBED800AC697A /* SceneDelegate.swift */,
-				51D1A28E244CBED800AC697A /* Main.storyboard */,
-				51D1A291244CBEE300AC697A /* Assets.xcassets */,
-				51D1A293244CBEE300AC697A /* LaunchScreen.storyboard */,
 				51D1A296244CBEE400AC697A /* Info.plist */,
 			);
 			path = OFFTaxonomy;
@@ -237,12 +235,12 @@
 			);
 			name = PSArborTouchSwift;
 			path = ../PSArborTouchSwift;
-			sourceTree = "<group>";
+			sourceTree = SOURCE_ROOT;
 		};
 		51D1A2AB244CBF5400AC697A /* ATKernel */ = {
 			isa = PBXGroup;
 			children = (
-				51D1A2AC244CBF5500AC697A /* ATKernel.swift */,
+				5194C9CF245207C3006BBE5A /* ATKernel.swift */,
 			);
 			path = ATKernel;
 			sourceTree = "<group>";
@@ -250,9 +248,9 @@
 		51D1A2AD244CBF5500AC697A /* Atoms */ = {
 			isa = PBXGroup;
 			children = (
-				51D1A2AE244CBF5500AC697A /* ATEdge.swift */,
-				51D1A2AF244CBF5500AC697A /* ATNode.swift */,
-				51D1A2B0244CBF5500AC697A /* UniqueCount.swift */,
+				5194C9D2245207D8006BBE5A /* ATEdge.swift */,
+				5194C9D1245207D8006BBE5A /* ATNode.swift */,
+				5194C9D3245207D8006BBE5A /* UniqueCount.swift */,
 			);
 			path = Atoms;
 			sourceTree = "<group>";
@@ -260,11 +258,11 @@
 		51D1A2B1244CBF5500AC697A /* ATSupport */ = {
 			isa = PBXGroup;
 			children = (
-				51D1A2B2244CBF5500AC697A /* CGPointExtension.swift */,
-				51D1A2B3244CBF5500AC697A /* CGRectExtension.swift */,
-				51D1A2B4244CBF5500AC697A /* CGSizeExtension.swift */,
-				51D1A2B5244CBF5500AC697A /* CoreGraphicsOperators.swift */,
-				51D1A2B6244CBF5500AC697A /* Line.swift */,
+				5194C9D9245207E8006BBE5A /* CGPointExtension.swift */,
+				5194C9D7245207E8006BBE5A /* CGRectExtension.swift */,
+				5194C9DA245207E8006BBE5A /* CGSizeExtension.swift */,
+				5194C9DB245207E9006BBE5A /* CoreGraphicsOperators.swift */,
+				5194C9D8245207E8006BBE5A /* Line.swift */,
 			);
 			path = ATSupport;
 			sourceTree = "<group>";
@@ -272,9 +270,9 @@
 		51D1A2B7244CBF5500AC697A /* Barnes-Hut */ = {
 			isa = PBXGroup;
 			children = (
-				51D1A2B8244CBF5500AC697A /* ATBarnesHutBranch.swift */,
-				51D1A2B9244CBF5500AC697A /* ATBarnesHutNode.swift */,
-				51D1A2BA244CBF5500AC697A /* ATBarnesHutTree.swift */,
+				5194C9E3245207FE006BBE5A /* ATBarnesHutBranch.swift */,
+				5194C9E1245207FE006BBE5A /* ATBarnesHutNode.swift */,
+				5194C9E2245207FE006BBE5A /* ATBarnesHutTree.swift */,
 			);
 			path = "Barnes-Hut";
 			sourceTree = "<group>";
@@ -282,10 +280,10 @@
 		51D1A2BB244CBF5500AC697A /* Physics */ = {
 			isa = PBXGroup;
 			children = (
-				51D1A2BC244CBF5500AC697A /* ATEnergy.swift */,
-				51D1A2BD244CBF5500AC697A /* ATParticle.swift */,
-				51D1A2BE244CBF5500AC697A /* ATPhysics.swift */,
-				51D1A2BF244CBF5500AC697A /* ATSpring.swift */,
+				5194C9E924520810006BBE5A /* ATEnergy.swift */,
+				5194C9EA24520810006BBE5A /* ATParticle.swift */,
+				5194C9E824520810006BBE5A /* ATPhysics.swift */,
+				5194C9E724520810006BBE5A /* ATSpring.swift */,
 			);
 			path = Physics;
 			sourceTree = "<group>";
@@ -293,10 +291,10 @@
 		51D1A2C0244CBF5500AC697A /* System */ = {
 			isa = PBXGroup;
 			children = (
-				51D1A2C1244CBF5500AC697A /* ATSystem.swift */,
-				51D1A2C2244CBF5500AC697A /* ATSystemParams.swift */,
-				51D1A2C3244CBF5500AC697A /* ATSystemRenderer.swift */,
-				51D1A2C4244CBF5500AC697A /* ATSystemState.swift */,
+				5194C9F124520821006BBE5A /* ATSystem.swift */,
+				5194C9F024520821006BBE5A /* ATSystemParams.swift */,
+				5194C9EF24520821006BBE5A /* ATSystemRenderer.swift */,
+				5194C9F224520821006BBE5A /* ATSystemState.swift */,
 			);
 			path = System;
 			sourceTree = "<group>";
@@ -314,6 +312,8 @@
 		51D1A2DC244CBFB800AC697A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				51D1A28E244CBED800AC697A /* Main.storyboard */,
+				51D1A293244CBEE300AC697A /* LaunchScreen.storyboard */,
 				51D1A2DD244CBFDD00AC697A /* ArborView.swift */,
 			);
 			path = Views;
@@ -431,7 +431,7 @@
 				51D1A292244CBEE300AC697A /* Assets.xcassets in Resources */,
 				51D1A290244CBED800AC697A /* Main.storyboard in Resources */,
 				51D1A2EB244CC03700AC697A /* process.json in Resources */,
-				5176C0502451CB5000E84AB6 /* Languages.plist in Resources */,
+				5194C9C9245207AD006BBE5A /* Languages.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -449,46 +449,46 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				51D1A2C7244CBF5600AC697A /* ATNode.swift in Sources */,
 				51D1A2E5244CC01D00AC697A /* Border.swift in Sources */,
-				51D1A2CB244CBF5600AC697A /* CGSizeExtension.swift in Sources */,
-				51D1A2D5244CBF5600AC697A /* ATSystem.swift in Sources */,
-				5176C04E2451CB5000E84AB6 /* Taxonomy.swift in Sources */,
-				51D1A2C9244CBF5600AC697A /* CGPointExtension.swift in Sources */,
-				5176C04F2451CB5000E84AB6 /* Node.swift in Sources */,
-				51D1A2C8244CBF5600AC697A /* UniqueCount.swift in Sources */,
+				5194C9ED24520810006BBE5A /* ATEnergy.swift in Sources */,
+				5194C9E5245207FE006BBE5A /* ATBarnesHutTree.swift in Sources */,
+				5194C9CA245207AD006BBE5A /* Taxonomy.swift in Sources */,
+				5194C9D0245207C3006BBE5A /* ATKernel.swift in Sources */,
 				5176C0442451A39800E84AB6 /* SelectPairCoordinator.swift in Sources */,
-				5176C0512451CB5000E84AB6 /* Section.swift in Sources */,
-				5176C0522451CB5000E84AB6 /* VertexNew.swift in Sources */,
-				5176C0532451CB5000E84AB6 /* OFFFiles.swift in Sources */,
+				5194C9DF245207E9006BBE5A /* CGSizeExtension.swift in Sources */,
 				5176C0572451CB8900E84AB6 /* UIViewControllerExtension.swift in Sources */,
-				51D1A2D0244CBF5600AC697A /* ATBarnesHutTree.swift in Sources */,
-				51D1A2D3244CBF5600AC697A /* ATPhysics.swift in Sources */,
-				51D1A2D7244CBF5600AC697A /* ATSystemRenderer.swift in Sources */,
+				5194C9E0245207E9006BBE5A /* CoreGraphicsOperators.swift in Sources */,
+				5194C9F624520821006BBE5A /* ATSystemState.swift in Sources */,
+				5194C9F424520821006BBE5A /* ATSystemParams.swift in Sources */,
+				5194C9D4245207D8006BBE5A /* ATNode.swift in Sources */,
+				5194C9E4245207FE006BBE5A /* ATBarnesHutNode.swift in Sources */,
+				5194C9F524520821006BBE5A /* ATSystem.swift in Sources */,
+				5194C9CE245207AD006BBE5A /* Node.swift in Sources */,
 				5176C03E2451A32200E84AB6 /* MainViewController.swift in Sources */,
 				51D1A289244CBED800AC697A /* AppDelegate.swift in Sources */,
+				5194C9EB24520810006BBE5A /* ATSpring.swift in Sources */,
 				51D1A2DE244CBFDD00AC697A /* ArborView.swift in Sources */,
-				51D1A2CC244CBF5600AC697A /* CoreGraphicsOperators.swift in Sources */,
-				51D1A2D2244CBF5600AC697A /* ATParticle.swift in Sources */,
+				5194C9CD245207AD006BBE5A /* VertexNew.swift in Sources */,
 				51D1A2E8244CC01D00AC697A /* Map.swift in Sources */,
-				51D1A2D1244CBF5600AC697A /* ATEnergy.swift in Sources */,
+				5194C9EE24520810006BBE5A /* ATParticle.swift in Sources */,
+				5194C9D6245207D8006BBE5A /* UniqueCount.swift in Sources */,
 				5176C0452451A39800E84AB6 /* Coordinator.swift in Sources */,
-				51D1A2CE244CBF5600AC697A /* ATBarnesHutBranch.swift in Sources */,
-				51D1A2D8244CBF5600AC697A /* ATSystemState.swift in Sources */,
 				51D1A2E7244CC01D00AC697A /* CountryNode.swift in Sources */,
 				5166FD65244EDE4500DE3AD0 /* UIBezierPathExtensions.swift in Sources */,
+				5194C9DE245207E9006BBE5A /* CGPointExtension.swift in Sources */,
+				5194C9CB245207AD006BBE5A /* OFFFiles.swift in Sources */,
+				5194C9CC245207AD006BBE5A /* Section.swift in Sources */,
 				5176C0432451A39800E84AB6 /* MainCoordinator.swift in Sources */,
 				51D1A28B244CBED800AC697A /* SceneDelegate.swift in Sources */,
 				51D1A2E6244CC01D00AC697A /* CountryEdge.swift in Sources */,
+				5194C9F324520821006BBE5A /* ATSystemRenderer.swift in Sources */,
+				5194C9EC24520810006BBE5A /* ATPhysics.swift in Sources */,
 				5176C03D2451A32200E84AB6 /* SelectPairViewController.swift in Sources */,
-				51D1A2D6244CBF5600AC697A /* ATSystemParams.swift in Sources */,
-				51D1A2D4244CBF5600AC697A /* ATSpring.swift in Sources */,
-				51D1A2CF244CBF5600AC697A /* ATBarnesHutNode.swift in Sources */,
-				51D1A2CA244CBF5600AC697A /* CGRectExtension.swift in Sources */,
-				51D1A2CD244CBF5600AC697A /* Line.swift in Sources */,
-				51D1A2C5244CBF5600AC697A /* ATKernel.swift in Sources */,
+				5194C9E6245207FE006BBE5A /* ATBarnesHutBranch.swift in Sources */,
+				5194C9DD245207E9006BBE5A /* Line.swift in Sources */,
+				5194C9D5245207D8006BBE5A /* ATEdge.swift in Sources */,
+				5194C9DC245207E9006BBE5A /* CGRectExtension.swift in Sources */,
 				5176C0552451CB7500E84AB6 /* TranslatableStrings.swift in Sources */,
-				51D1A2C6244CBF5600AC697A /* ATEdge.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -517,7 +517,8 @@
 				51D1A28F244CBED800AC697A /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
+			path = OFFTaxonomy/Views;
+			sourceTree = SOURCE_ROOT;
 		};
 		51D1A293244CBEE300AC697A /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -525,7 +526,8 @@
 				51D1A294244CBEE300AC697A /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
+			path = OFFTaxonomy/Views;
+			sourceTree = SOURCE_ROOT;
 		};
 /* End PBXVariantGroup section */
 
