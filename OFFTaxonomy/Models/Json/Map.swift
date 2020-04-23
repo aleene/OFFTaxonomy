@@ -10,6 +10,6 @@ import Foundation
 
 class Map: Codable {
     
-    var nodes: [String:CountryNode]?
+    var nodes: [String:[String:[String]]]?
     var edges: [String:[String:Border]]?
 }

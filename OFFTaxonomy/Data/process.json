@@ -1,6 +1,17 @@
 {
     "nodes": {
-        "en:preparing": {"borders": 2, "length": 0}
+        "en:raw": {
+            "en": ["raw"],
+            "fr": ["cru", "crue", "crus", "crues"]
+        },
+        "en:fresh": {
+            "en": ["fresh"],
+            "de": ["frische"],
+            "es": ["fresco", "fresca", "frescos", "frescas"],
+            "it": ["fresco", "fresca", "fresche", "freschi"],
+            "nl": ["verse"],
+            "pt": ["fresco"]
+        },
     },
     "edges": {
         "en:process": {

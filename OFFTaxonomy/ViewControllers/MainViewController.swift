@@ -79,13 +79,11 @@ class MainViewController: UIViewController {
         
             do {
                 let mapJson = try decoder.decode(Map.self, from:data)
-                /* It is not necessary to add the nodes, edges is enough
                 if let nodes = mapJson.nodes {
                     for node in nodes {
-                        _ = _system.addNode(with: node.key, and: [:])
+                        _ = _system.addNode(with: node.key, and: node.value)
                     }
                 }
-                */
                 if let edges = mapJson.edges {
                     for edge in edges {
                         for country in edge.value {
