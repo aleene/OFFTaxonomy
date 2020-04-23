@@ -46,16 +46,28 @@ class ArborView: UIView {
         
     public var system: ATSystem?
     public var isDebugDrawing: Bool = false
+    public var scale = Constant.ViewScaleFactor {
+        didSet {
+            self.layoutSubviews()
+        }
+    }
+    public var offset = CGPoint.zero {
+        didSet {
+            self.layoutSubviews()
+        }
+    }
 
 // MARK: - public functions
             
-    override func layoutSubviews() {
-        self.system?.viewBounds = self.bounds;
-    }
+//    override func layoutSubviews() {
+//        self.system?.viewBounds = self.bounds;
+//    }
 
     override func draw(_ rect: CGRect) {
         guard let validSystem = system else { return }
         guard let context = UIGraphicsGetCurrentContext() else { return }
+        // reset the layers (for arrows only?)
+        self.layer.sublayers = []
 
         if self.isDebugDrawing {
                     
@@ -103,16 +115,15 @@ class ArborView: UIView {
 
         
     private func sizeToScreen(_ size: CGSize) -> CGSize {
-        let scaledSize = self.bounds.size * Constant.ViewScaleFactor
+        let scaledSize = self.bounds.size * self.scale
         return size.multiply(size: scaledSize)
     }
 
     private func pointToScreen(_ p: CGPoint) -> CGPoint {
             
         let mid = self.bounds.size.halved.asCGPoint
-        let scale = self.bounds.size * Constant.ViewScaleFactor
-            
-        return scale.asCGPoint * p + mid
+        let scale = self.bounds.size * self.scale
+        return scale.asCGPoint * p + mid + self.offset
     }
 
     private func scale(_ rect: CGRect) -> CGRect {
@@ -147,7 +158,15 @@ class ArborView: UIView {
         guard let position1 = spring.point1?.position else { return }
         guard let position2 = spring.point2?.position else { return }
             
-        drawLineWith(context: context, from: pointToScreen(position1), to: pointToScreen(position2))
+        //drawLineWith(context: context, from: pointToScreen(position1), to: pointToScreen(position2))
+        let arrow = UIBezierPath.arrow(from: pointToScreen(position1),
+                           to: pointToScreen(position2),
+                           tailWidth: 1.0,
+                           headWidth: 10.0,
+            headLength: 10.0)
+        let shapeLayer = CAShapeLayer()
+        shapeLayer.path = arrow.cgPath
+        self.layer.addSublayer(shapeLayer)
     }
 
     private func drawParticle(_ particle: ATParticle, in context: CGContext) {
