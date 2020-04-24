@@ -14,8 +14,8 @@ class ArborView: UIView {
 // MARK: - constants
             
     private struct Constant {
-        /// Scales the model to the screen. Note is very sensitive
-        static let ViewScaleFactor = CGFloat(0.02)
+        /// Ratio between physics size and view size. Note is very sensitive
+        static let ViewScaleFactor = CGFloat(20.0)
         struct Tree {
             static let LineWidth = CGFloat(1.0)
             struct BarnesHutTree {
@@ -34,7 +34,7 @@ class ArborView: UIView {
         }
         struct Particle {
             // The size of the square around the particle
-            static let Inset = -CGFloat(5.0)
+            static let Inset = -CGFloat(10.0)
             static let LineWidth = CGFloat(2.0)
             static let LineColor = UIColor.red.cgColor
             static let FontSize = CGFloat(12.0)
@@ -57,6 +57,9 @@ class ArborView: UIView {
         }
     }
     public var languageCode = "en"
+    
+    // shows the location of the finger of the user
+    public var fingerPosition: CGPoint?
 
 // MARK: - public functions
             
@@ -109,27 +112,56 @@ class ArborView: UIView {
             drawText(for: particle, in: context)
             //drawParticle(particle, in:context)
         }
-                    
+             
+        if let validFinger = fingerPosition {
+            // Create an empty rect at particle center
+            var strokeRect = CGRect(origin: validFinger, size:.zero)
+            // Expand the rect around the center
+            strokeRect = strokeRect.insetBy(dx: Constant.Particle.Inset,
+                                            dy: Constant.Particle.Inset)
+            
+            // Draw the rect
+            context.stroke(strokeRect)
+            let node = validSystem.nearestNode(physics: self.convertToPhysicsCoordinates(screen: validFinger),
+                within: self.convertToPhysicsCoordinates(screen: 30.0))
+            print (node?.name)
+        }
     }
 
 // MARK: - private scaling functions
 
-        
-    private func sizeToScreen(_ size: CGSize) -> CGSize {
-        let scaledSize = self.bounds.size * self.scale
-        return size.multiply(size: scaledSize)
+    /// Convert a physics size to a screen size
+    private func convertToScreenCoordinates(physics size: CGSize) -> CGSize {
+        return size * scale
     }
 
-    private func pointToScreen(_ p: CGPoint) -> CGPoint {
-            
+    /// Convert a physics point to a screen point
+    private func convertToScreenCoordinates(physics point: CGPoint) -> CGPoint {
         let mid = self.bounds.size.halved.asCGPoint
-        let scale = self.bounds.size * self.scale
-        return scale.asCGPoint * p + mid + self.offset
+        return point * scale + mid + self.offset
     }
 
     private func scale(_ rect: CGRect) -> CGRect {
-        return CGRect(origin: pointToScreen(rect.origin),
-                      size: sizeToScreen(rect.size))
+        return CGRect(origin: convertToScreenCoordinates(physics: rect.origin),
+                      size: convertToScreenCoordinates(physics: rect.size))
+    }
+    
+    private func convertToPhysicsCoordinates(screen point: CGPoint) -> CGPoint {
+        if self.scale == .zero {
+            return .zero
+        }
+        let midPoint = self.bounds.size.halved.asCGPoint
+        let translate = point - midPoint - self.offset
+        let newPoint = translate.divide(by: scale)!
+        return newPoint
+    }
+
+    private func convertToPhysicsCoordinates(screen size: CGSize) -> CGSize {
+        return (size / scale)!
+    }
+    
+    private func convertToPhysicsCoordinates(screen value: CGFloat) -> CGFloat {
+        return (value / scale)
     }
 
 // MARK: - private drawing functions
@@ -160,9 +192,9 @@ class ArborView: UIView {
         guard let position2 = spring.point2?.position else { return }
             
         //drawLineWith(context: context, from: pointToScreen(position1), to: pointToScreen(position2))
-        let arrow = UIBezierPath.arrow(from: pointToScreen(position1),
-                           to: pointToScreen(position2),
-                           tailWidth: 1.0,
+        let arrow = UIBezierPath.arrow(from: convertToScreenCoordinates(physics:position1),
+                                       to: convertToScreenCoordinates(physics:position2),
+                           tailWidth: 2.0,
                            headWidth: 10.0,
             headLength: 10.0)
         let shapeLayer = CAShapeLayer()
@@ -174,7 +206,7 @@ class ArborView: UIView {
         // Translate the particle position to screen coordinates
         guard let position = particle.position else { return }
             
-        let pOrigin = pointToScreen(position)
+        let pOrigin = convertToScreenCoordinates(physics:position)
         // Create an empty rect at particle center
         var strokeRect = CGRect(x: pOrigin.x, y: pOrigin.y, width: .zero, height: .zero)
         // Expand the rect around the center
@@ -195,7 +227,7 @@ class ArborView: UIView {
             validName = valid
         }
 
-        let particleOrigin = pointToScreen(validPosition)
+        let particleOrigin = convertToScreenCoordinates(physics:validPosition)
         // Create an empty rect at particle center
         var fillRect = CGRect(origin: particleOrigin, size: .zero)
         // Expand the rect around the center

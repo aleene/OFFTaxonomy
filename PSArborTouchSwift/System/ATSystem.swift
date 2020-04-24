@@ -148,19 +148,23 @@ public class ATSystem: ATKernel {
         }
     }
 
-    /// Find the nearest node to a particular position
+    /// Find the nearest node to a particular screen position
     public func nearestNode(to point: CGPoint) -> ATNode? {
         // if view bounds has been specified, presume viewPoint is in screen pixel
         // units and convert it back to the physics engine coordinates
         let translatedPoint = !self.viewBounds.isEmpty ? fromView(point: point) : point
-        
+        return self.nearestNode(physics: translatedPoint)
+    }
+
+    /// Find the nearest node to a particular physics position
+    public func nearestNode(physics point: CGPoint) -> ATNode? {
         var closestNode: ATNode?
         var closestDistance = CGFloat.greatestFiniteMagnitude
         var distance = CGFloat.zero
         
         for node in self.state.nodes {
             guard let validPosition = node.position else { continue }
-            distance = validPosition.distance(to: translatedPoint)
+            distance = validPosition.distance(to: point)
             if distance < closestDistance {
                 closestNode = node;
                 closestDistance = distance;
@@ -170,10 +174,10 @@ public class ATSystem: ATKernel {
         return closestNode;
     }
 
-    public func nearestNode(to point: CGPoint, within radius: CGFloat) -> ATNode? {
+    public func nearestNode(to point: CGPoint, within screenRadius: CGFloat) -> ATNode? {
         //assert(radius > 0.0, "ATSystem.nearestNode(toPoint:withinRadius:) - radius less then zero")
         // or use nearestNodeToPoint instead.
-        guard radius > 0.0 else { return nil }
+        guard screenRadius > 0.0 else { return nil }
         
         let closestNode = nearestNode(to: point)
         if let position = closestNode?.position {
@@ -182,13 +186,24 @@ public class ATSystem: ATKernel {
             // units and convert the closest node to view space for comparison
 
             let translatedNodePoint = !self.viewBounds.isEmpty ? toView(point: position) : position
-            if translatedNodePoint.distance(to: point) > radius {
+            if translatedNodePoint.distance(to: point) > screenRadius {
                 return nil
             }
         }
         
         return closestNode
-
+    }
+    
+    public func nearestNode(physics point: CGPoint, within physicsRadius: CGFloat) -> ATNode? {
+        guard physicsRadius > 0.0 else { return nil }
+        let closestNode = nearestNode(physics: point)
+        if let position = closestNode?.position {
+            // check if the nearest node lies with radius
+            if position.distance(to: point) > physicsRadius {
+                return nil
+            }
+        }
+        return closestNode
     }
     // Graft ?
     // Merge ?

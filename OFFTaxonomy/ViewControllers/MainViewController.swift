@@ -14,9 +14,9 @@ class MainViewController: UIViewController {
 // MARK: - constants
     
     private struct Constant {
-        /// Scales the model to the screen. Note is very sensitive
-        static let ViewScaleFactor = CGFloat(0.02)
-        static let ViewCenter = CGFloat.zero
+        /// Ratio physics size to view size. Note is very sensitive
+        static let ViewScaleFactor = CGFloat(20.0)
+        static let ViewCenter = CGPoint.zero
     }
     
 // MARK: - interface
@@ -55,19 +55,18 @@ class MainViewController: UIViewController {
 // MARK: - private variables
     
     private var _system = ATSystem()
+    private var _scale = Constant.ViewScaleFactor {
+        didSet {
+            self.arborView?.scale = _scale
+        }
+    }
+    private var _offset = Constant.ViewCenter {
+        didSet {
+            self.arborView?.offset = _offset
+        }
+    }
 
 // MARK: - private functions
-    
-    private func fromScreen(_ p: CGPoint) -> CGPoint {
-        
-        let size = self.arborView.bounds.size
-        guard size != .zero else { return .zero }
-        
-        var s = p - size.halved // mid
-        s = (s / size)!
-        s = (s / Constant.ViewScaleFactor)!
-        return s
-    }
 
     private func loadMapData() {
         guard let path = Bundle.main.path(forResource: "process", ofType: "json") else {
@@ -112,6 +111,12 @@ class MainViewController: UIViewController {
         panGestureRecognizer.delegate = self
         arborView.addGestureRecognizer(panGestureRecognizer)
 
+        let singleFingerPanGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.oneFingerPan(_:)))
+        singleFingerPanGestureRecognizer.minimumNumberOfTouches = 1
+        singleFingerPanGestureRecognizer.maximumNumberOfTouches = 1
+        singleFingerPanGestureRecognizer.delegate = self
+        arborView.addGestureRecognizer(singleFingerPanGestureRecognizer)
+
         let pinchGesture = UIPinchGestureRecognizer.init(target: self, action: #selector(MainViewController.pinch(_:)))
         pinchGesture.delegate = self
         arborView.addGestureRecognizer(pinchGesture)
@@ -134,7 +139,6 @@ class MainViewController: UIViewController {
             self.becomeFirstResponder()
             menuController.menuItems = [debugMenuItem]
             menuController.showMenu(from: validView, rect: CGRect(origin: location, size: .zero))
-                
         default: break
         }
 
@@ -144,17 +148,20 @@ class MainViewController: UIViewController {
         self.arborView.isDebugDrawing = !self.arborView.isDebugDrawing
     }
     
-    @objc func oneFingerPan(for panGestureRecognizer: UIPanGestureRecognizer) {
-        // move the closest node from the touch position
-        let node: ATNode?
-        guard let view = panGestureRecognizer.view else { return }
+    private var nearestNode: ATNode?
 
-        let translation = panGestureRecognizer.location(in: view)
+    /// Allows to pickup a node and move it.
+    @objc func oneFingerPan(_ panGestureRecognizer: UIPanGestureRecognizer) {
+        guard let view = panGestureRecognizer.view else { return }
         switch panGestureRecognizer.state {
         case .began:
-            //let loc = fromScreen(translation)
-            node = _system.nearestNode(to: translation, within: 30.0)
-            node?.isFixed = true
+            let position = panGestureRecognizer.location(in: view)
+            nearestNode = _system.nearestNode(physics: self.convertTo(physicsCoordinate: position),
+                within: self.convertTo(physicsCoordinate: 30.0))
+        case .changed:
+            guard let nodePosition = nearestNode?.position else { break }
+            nearestNode?.position = nodePosition + (panGestureRecognizer.translation(in: view) / _scale)!
+            panGestureRecognizer.setTranslation(.zero, in: view)
         default: break
         }
         
@@ -163,6 +170,21 @@ class MainViewController: UIViewController {
 
     }
     
+    private func convertTo(physicsCoordinate point: CGPoint) -> CGPoint {
+        if _scale == .zero {
+            return .zero
+        }
+        let midPoint = self.arborView.bounds.size.halved.asCGPoint
+        let translate = point - midPoint - _offset
+        let newPoint = translate.divide(by: _scale)!
+        return newPoint
+    }
+    
+    private func convertTo(physicsCoordinate distance: CGFloat) -> CGFloat {
+        return distance / _scale
+    }
+
+
     /// shift the piece's center by the pan amount
     /// reset the gesture recognizer's translation to {0, 0} after applying so the next callback is a delta from the current position
     @objc func twoFingerPan(_ gestureRecognizer: UIPanGestureRecognizer) {
@@ -193,7 +215,7 @@ class MainViewController: UIViewController {
             let midPoint = view.bounds.halved.asCGPoint
             self.arborView.offset = midPoint - locationInView
 
-            self.arborView.scale *= gestureRecognizer.scale
+            _scale *= gestureRecognizer.scale
             gestureRecognizer.scale = 1
             _system.start(unpause: true)
         default: break
@@ -228,7 +250,7 @@ class MainViewController: UIViewController {
         params.useBarnesHut = false
         
         _system.parameters = params
-        // Setup the view bounds
+        // Setup the view bounds, needed to so the simulation
         _system.viewBounds = self.arborView.bounds
         // leave some space at the bottom and top for text
         _system.viewPadding = UIEdgeInsets(top: 5.0, left: 5.0, bottom: 5.0, right: 5.0)
