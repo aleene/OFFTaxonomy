@@ -46,9 +46,17 @@
         "en:unprocessed": {
             "en:raw": {"border": 1},
             "en:fresh": {"border": 1},
-            "en:natural": {"border": 1},
+            "en:unsweetened": {"border": 0},
+            "de:ungeschält": {"border": 0},
+            "en:unfrozen": {"border": 0},
+            "de:ungeschwefelt": {"border": 0},
+            "en:not smoked": {"border": 0}
         },
-
+        "en:natural": {
+            "en:raw": {"border": 1},
+            "en:fresh": {"border": 1},
+            "en:naturally smoked": {"border": 0}
+        },
         "en:sized": {
             "en:whole": {"border": 2},
             "en:halved": {"border": 2},
@@ -155,7 +163,7 @@
             "de:mit sonnenblumenöl geölt": {"border": 0}
         },
         "de:geschwefelt": {
-            "de:ungeschwefelt": {"border": 0}
+            "de:ungeschwefelt": {"border": 0},
         },
         "en:prepared": {
             "en:marinated": {"border": 0},
@@ -167,6 +175,9 @@
         },
         "de:gepökelt": {
             "de:ungepökelt": {"border": 0}
+            },
+        "de:ungepökelt": {
+            "en:unprocessed": {"border": 0}
         },
         "en:smoked": {
             "en:double smoked": {"border": 0},
