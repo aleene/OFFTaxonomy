@@ -106,7 +106,7 @@ class MainViewController: UIViewController {
     }
 
     private func addGestureRecognizers(to view: UIView) {
-        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.pan(_:)))
+        let panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(MainViewController.twoFingerPan(_:)))
         panGestureRecognizer.minimumNumberOfTouches = 2
         panGestureRecognizer.maximumNumberOfTouches = 2
         panGestureRecognizer.delegate = self
@@ -144,7 +144,7 @@ class MainViewController: UIViewController {
         self.arborView.isDebugDrawing = !self.arborView.isDebugDrawing
     }
     
-    @objc func panHandler(for panGestureRecognizer: UIPanGestureRecognizer) {
+    @objc func oneFingerPan(for panGestureRecognizer: UIPanGestureRecognizer) {
         // move the closest node from the touch position
         let node: ATNode?
         guard let view = panGestureRecognizer.view else { return }
@@ -165,8 +165,7 @@ class MainViewController: UIViewController {
     
     /// shift the piece's center by the pan amount
     /// reset the gesture recognizer's translation to {0, 0} after applying so the next callback is a delta from the current position
-    @objc func pan(_ gestureRecognizer: UIPanGestureRecognizer) {
-
+    @objc func twoFingerPan(_ gestureRecognizer: UIPanGestureRecognizer) {
         guard let view = gestureRecognizer.view else { return }
 
         switch gestureRecognizer.state {
@@ -184,13 +183,17 @@ class MainViewController: UIViewController {
     /// scale the piece by the current scale
     /// reset the gesture recognizer's scale to 0 after applying so the next callback is a delta from the current scale
     @objc func pinch(_ gestureRecognizer: UIPinchGestureRecognizer) {
-        
-        //guard let validView = gestureRecognizer.view else { return }
-        self.adjustAnchorPoint(for: gestureRecognizer)
+        guard let view = gestureRecognizer.view else { return }
+        guard view.bounds.size != .zero else { return }
+        //self.adjustAnchorPoint(for: gestureRecognizer)
         switch gestureRecognizer.state {
         case .began, .changed:
+            // where was the pinch located?
+            let locationInView = gestureRecognizer.location(in: view)
+            let midPoint = view.bounds.halved.asCGPoint
+            self.arborView.offset = midPoint - locationInView
+
             self.arborView.scale *= gestureRecognizer.scale
-            //gestureRecognizer.view?.transform = validView.transform.scaledBy(x: gestureRecognizer.scale, y: gestureRecognizer.scale)
             gestureRecognizer.scale = 1
             _system.start(unpause: true)
         default: break

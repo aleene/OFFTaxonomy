@@ -49,8 +49,6 @@
 		51D1A2A0244CBEE400AC697A /* OFFTaxonomyTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A29F244CBEE400AC697A /* OFFTaxonomyTests.swift */; };
 		51D1A2DE244CBFDD00AC697A /* ArborView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2DD244CBFDD00AC697A /* ArborView.swift */; };
 		51D1A2E5244CC01D00AC697A /* Border.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2E1244CC01D00AC697A /* Border.swift */; };
-		51D1A2E6244CC01D00AC697A /* CountryEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2E2244CC01D00AC697A /* CountryEdge.swift */; };
-		51D1A2E7244CC01D00AC697A /* CountryNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2E3244CC01D00AC697A /* CountryNode.swift */; };
 		51D1A2E8244CC01D00AC697A /* Map.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A2E4244CC01D00AC697A /* Map.swift */; };
 		51D1A2EB244CC03700AC697A /* process.json in Resources */ = {isa = PBXBuildFile; fileRef = 51D1A2EA244CC03600AC697A /* process.json */; };
 /* End PBXBuildFile section */
@@ -112,8 +110,6 @@
 		51D1A2A1244CBEE400AC697A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		51D1A2DD244CBFDD00AC697A /* ArborView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ArborView.swift; path = OFFTaxonomy/Views/ArborView.swift; sourceTree = SOURCE_ROOT; };
 		51D1A2E1244CC01D00AC697A /* Border.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Border.swift; path = OFFTaxonomy/Models/Json/Border.swift; sourceTree = SOURCE_ROOT; };
-		51D1A2E2244CC01D00AC697A /* CountryEdge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountryEdge.swift; path = OFFTaxonomy/Models/Json/CountryEdge.swift; sourceTree = SOURCE_ROOT; };
-		51D1A2E3244CC01D00AC697A /* CountryNode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CountryNode.swift; path = OFFTaxonomy/Models/Json/CountryNode.swift; sourceTree = SOURCE_ROOT; };
 		51D1A2E4244CC01D00AC697A /* Map.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Map.swift; path = OFFTaxonomy/Models/Json/Map.swift; sourceTree = SOURCE_ROOT; };
 		51D1A2EA244CC03600AC697A /* process.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = process.json; path = OFFTaxonomy/Data/process.json; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -331,8 +327,6 @@
 			isa = PBXGroup;
 			children = (
 				51D1A2E1244CC01D00AC697A /* Border.swift */,
-				51D1A2E2244CC01D00AC697A /* CountryEdge.swift */,
-				51D1A2E3244CC01D00AC697A /* CountryNode.swift */,
 				51D1A2E4244CC01D00AC697A /* Map.swift */,
 			);
 			path = Json;
@@ -473,14 +467,12 @@
 				5194C9EE24520810006BBE5A /* ATParticle.swift in Sources */,
 				5194C9D6245207D8006BBE5A /* UniqueCount.swift in Sources */,
 				5176C0452451A39800E84AB6 /* Coordinator.swift in Sources */,
-				51D1A2E7244CC01D00AC697A /* CountryNode.swift in Sources */,
 				5166FD65244EDE4500DE3AD0 /* UIBezierPathExtensions.swift in Sources */,
 				5194C9DE245207E9006BBE5A /* CGPointExtension.swift in Sources */,
 				5194C9CB245207AD006BBE5A /* OFFFiles.swift in Sources */,
 				5194C9CC245207AD006BBE5A /* Section.swift in Sources */,
 				5176C0432451A39800E84AB6 /* MainCoordinator.swift in Sources */,
 				51D1A28B244CBED800AC697A /* SceneDelegate.swift in Sources */,
-				51D1A2E6244CC01D00AC697A /* CountryEdge.swift in Sources */,
 				5194C9F324520821006BBE5A /* ATSystemRenderer.swift in Sources */,
 				5194C9EC24520810006BBE5A /* ATPhysics.swift in Sources */,
 				5176C03D2451A32200E84AB6 /* SelectPairViewController.swift in Sources */,
