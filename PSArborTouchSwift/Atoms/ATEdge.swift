@@ -31,7 +31,7 @@ public class ATEdge {
         _index
     }
 
-    public var userData: [String:String] = [:]
+    public var userData: [String:Any] = [:]
 
 // MARK: - private variables
     
@@ -52,7 +52,7 @@ public class ATEdge {
         self.length = length
     }
 
-    public convenience init(source: ATNode, target: ATNode, userData: [String:String]) {
+    public convenience init(source: ATNode, target: ATNode, userData: [String:Any]) {
         self.init()
         _source = source
         _target = target

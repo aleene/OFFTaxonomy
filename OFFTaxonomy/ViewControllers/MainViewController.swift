@@ -23,7 +23,8 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var arborView: ArborView! {
         didSet {
-            arborView.backgroundColor = .green
+            arborView?.backgroundColor = .green
+            arborView?.delegate = self
         }
     }
     @IBOutlet weak var languageButton: UIBarButtonItem! {
@@ -55,16 +56,8 @@ class MainViewController: UIViewController {
 // MARK: - private variables
     
     private var _system = ATSystem()
-    private var _scale = Constant.ViewScaleFactor {
-        didSet {
-            self.arborView?.scale = _scale
-        }
-    }
-    private var _offset = Constant.ViewCenter {
-        didSet {
-            self.arborView?.offset = _offset
-        }
-    }
+    private var _scale = Constant.ViewScaleFactor
+    private var _offset = Constant.ViewCenter
 
 // MARK: - private functions
 
@@ -153,11 +146,12 @@ class MainViewController: UIViewController {
     /// Allows to pickup a node and move it.
     @objc func oneFingerPan(_ panGestureRecognizer: UIPanGestureRecognizer) {
         guard let view = panGestureRecognizer.view else { return }
+        guard _scale != .zero else { return }
         switch panGestureRecognizer.state {
         case .began:
             let position = panGestureRecognizer.location(in: view)
-            nearestNode = _system.nearestNode(physics: self.convertTo(physicsCoordinate: position),
-                within: self.convertTo(physicsCoordinate: 30.0))
+            nearestNode = _system.nearestNode(physics: self.physicsCoordinate(for: position),
+                within: self.physicsCoordinate(for: 30.0)!)
         case .changed:
             guard let nodePosition = nearestNode?.position else { break }
             nearestNode?.position = nodePosition + (panGestureRecognizer.translation(in: view) / _scale)!
@@ -170,21 +164,6 @@ class MainViewController: UIViewController {
 
     }
     
-    private func convertTo(physicsCoordinate point: CGPoint) -> CGPoint {
-        if _scale == .zero {
-            return .zero
-        }
-        let midPoint = self.arborView.bounds.size.halved.asCGPoint
-        let translate = point - midPoint - _offset
-        let newPoint = translate.divide(by: _scale)!
-        return newPoint
-    }
-    
-    private func convertTo(physicsCoordinate distance: CGFloat) -> CGFloat {
-        return distance / _scale
-    }
-
-
     /// shift the piece's center by the pan amount
     /// reset the gesture recognizer's translation to {0, 0} after applying so the next callback is a delta from the current position
     @objc func twoFingerPan(_ gestureRecognizer: UIPanGestureRecognizer) {
@@ -194,7 +173,7 @@ class MainViewController: UIViewController {
         case .began, .changed:
             let translation = gestureRecognizer.translation(in: view)
             //view.center = view.center + translation
-            self.arborView.offset = self.arborView.offset + translation
+            _offset = _offset + translation
             gestureRecognizer.setTranslation(.zero, in: view)
         default: break
         }
@@ -213,7 +192,7 @@ class MainViewController: UIViewController {
             // where was the pinch located?
             let locationInView = gestureRecognizer.location(in: view)
             let midPoint = view.bounds.halved.asCGPoint
-            self.arborView.offset = midPoint - locationInView
+            _offset = midPoint - locationInView
 
             _scale *= gestureRecognizer.scale
             gestureRecognizer.scale = 1
@@ -313,4 +292,57 @@ extension MainViewController: UIGestureRecognizerDelegate {
         return true
 
     }
+}
+
+
+// MARK: - ArborViewDelegate protocol
+
+extension MainViewController: ArborViewProtocol {
+    
+    func physicsCoordinate(for screenDistance: CGFloat) -> CGFloat? {
+        return screenDistance / _scale
+    }
+    
+    func physicsCoordinate(for screenSize: CGSize) -> CGSize? {
+        return screenSize / _scale
+    }
+    
+    func physicsCoordinate(for screenRect: CGRect) -> CGRect? {
+        guard self.physicsCoordinate(for: screenRect.size) != .zero else { return nil }
+        return CGRect(origin: self.physicsCoordinate(for: screenRect.origin),
+                      size: self.physicsCoordinate(for: screenRect.size)!)
+    }
+    
+    
+    public func physicsCoordinate(for screenPoint: CGPoint) -> CGPoint {
+        if _scale == .zero {
+            return .zero
+        }
+        let midPoint = self.arborView.bounds.size.halved.asCGPoint
+        let translate = screenPoint - midPoint - _offset
+        let newPoint = translate.divide(by: _scale)!
+        return newPoint
+    }
+
+    /// Convert a physics distance to a screen distance
+    public func screenCoordinate(for physicsDistance: CGFloat) -> CGFloat {
+        return physicsDistance * _scale
+    }
+
+    /// Convert a physics size to a screen size
+    public func screenCoordinate(for physicsSize: CGSize) -> CGSize {
+        return physicsSize * _scale
+    }
+
+    /// Convert a physics point to a screen point
+    public func screenCoordinate(for physicsPoint: CGPoint) -> CGPoint {
+        let mid = self.arborView.bounds.size.halved.asCGPoint
+        return physicsPoint * _scale + mid + _offset
+    }
+
+    public func screenCoordinate(for physicsRect: CGRect) -> CGRect {
+        return CGRect(origin: screenCoordinate(for: physicsRect.origin),
+                      size: screenCoordinate(for: physicsRect.size))
+    }
+
 }
