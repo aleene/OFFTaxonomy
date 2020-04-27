@@ -41,6 +41,9 @@
 		5194C9F424520821006BBE5A /* ATSystemParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9F024520821006BBE5A /* ATSystemParams.swift */; };
 		5194C9F524520821006BBE5A /* ATSystem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9F124520821006BBE5A /* ATSystem.swift */; };
 		5194C9F624520821006BBE5A /* ATSystemState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9F224520821006BBE5A /* ATSystemState.swift */; };
+		5194C9F824549F5B006BBE5A /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9F724549F5B006BBE5A /* Parser.swift */; };
+		5194C9FD2454A2B2006BBE5A /* BHTaxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9FC2454A2B2006BBE5A /* BHTaxonomy.swift */; };
+		5194C9FF2455B2BD006BBE5A /* Processes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5194C9FE2455B2BD006BBE5A /* Processes.txt */; };
 		51D1A289244CBED800AC697A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A288244CBED800AC697A /* AppDelegate.swift */; };
 		51D1A28B244CBED800AC697A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A28A244CBED800AC697A /* SceneDelegate.swift */; };
 		51D1A290244CBED800AC697A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51D1A28E244CBED800AC697A /* Main.storyboard */; };
@@ -98,6 +101,9 @@
 		5194C9F024520821006BBE5A /* ATSystemParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATSystemParams.swift; path = PSArborTouchSwift/System/ATSystemParams.swift; sourceTree = SOURCE_ROOT; };
 		5194C9F124520821006BBE5A /* ATSystem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATSystem.swift; path = PSArborTouchSwift/System/ATSystem.swift; sourceTree = SOURCE_ROOT; };
 		5194C9F224520821006BBE5A /* ATSystemState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ATSystemState.swift; path = PSArborTouchSwift/System/ATSystemState.swift; sourceTree = SOURCE_ROOT; };
+		5194C9F724549F5B006BBE5A /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
+		5194C9FC2454A2B2006BBE5A /* BHTaxonomy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BHTaxonomy.swift; sourceTree = "<group>"; };
+		5194C9FE2455B2BD006BBE5A /* Processes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Processes.txt; sourceTree = "<group>"; };
 		51D1A285244CBED800AC697A /* OFFTaxonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OFFTaxonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51D1A288244CBED800AC697A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = OFFTaxonomy/Support/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		51D1A28A244CBED800AC697A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = OFFTaxonomy/Support/SceneDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -174,6 +180,15 @@
 			);
 			path = Plist;
 			sourceTree = SOURCE_ROOT;
+		};
+		5194C9FB2454A290006BBE5A /* OFFtxt */ = {
+			isa = PBXGroup;
+			children = (
+				5194C9F724549F5B006BBE5A /* Parser.swift */,
+				5194C9FC2454A2B2006BBE5A /* BHTaxonomy.swift */,
+			);
+			path = OFFtxt;
+			sourceTree = "<group>";
 		};
 		51D1A27C244CBED800AC697A = {
 			isa = PBXGroup;
@@ -319,6 +334,7 @@
 			isa = PBXGroup;
 			children = (
 				51D1A2E0244CC01D00AC697A /* Json */,
+				5194C9FB2454A290006BBE5A /* OFFtxt */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -336,6 +352,7 @@
 			isa = PBXGroup;
 			children = (
 				51D1A2EA244CC03600AC697A /* process.json */,
+				5194C9FE2455B2BD006BBE5A /* Processes.txt */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -423,6 +440,7 @@
 			files = (
 				51D1A295244CBEE300AC697A /* LaunchScreen.storyboard in Resources */,
 				51D1A292244CBEE300AC697A /* Assets.xcassets in Resources */,
+				5194C9FF2455B2BD006BBE5A /* Processes.txt in Resources */,
 				51D1A290244CBED800AC697A /* Main.storyboard in Resources */,
 				51D1A2EB244CC03700AC697A /* process.json in Resources */,
 				5194C9C9245207AD006BBE5A /* Languages.plist in Resources */,
@@ -449,6 +467,7 @@
 				5194C9CA245207AD006BBE5A /* Taxonomy.swift in Sources */,
 				5194C9D0245207C3006BBE5A /* ATKernel.swift in Sources */,
 				5176C0442451A39800E84AB6 /* SelectPairCoordinator.swift in Sources */,
+				5194C9FD2454A2B2006BBE5A /* BHTaxonomy.swift in Sources */,
 				5194C9DF245207E9006BBE5A /* CGSizeExtension.swift in Sources */,
 				5176C0572451CB8900E84AB6 /* UIViewControllerExtension.swift in Sources */,
 				5194C9E0245207E9006BBE5A /* CoreGraphicsOperators.swift in Sources */,
@@ -465,6 +484,7 @@
 				5194C9CD245207AD006BBE5A /* VertexNew.swift in Sources */,
 				51D1A2E8244CC01D00AC697A /* Map.swift in Sources */,
 				5194C9EE24520810006BBE5A /* ATParticle.swift in Sources */,
+				5194C9F824549F5B006BBE5A /* Parser.swift in Sources */,
 				5194C9D6245207D8006BBE5A /* UniqueCount.swift in Sources */,
 				5176C0452451A39800E84AB6 /* Coordinator.swift in Sources */,
 				5166FD65244EDE4500DE3AD0 /* UIBezierPathExtensions.swift in Sources */,

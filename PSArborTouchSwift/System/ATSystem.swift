@@ -203,6 +203,7 @@ public class ATSystem: ATKernel {
                 return nil
             }
         }
+        
         return closestNode
     }
     // Graft ?
@@ -315,7 +316,13 @@ Add an ATNode with name and data.
 
 // MARK: - public Edge Management functions
 
-    public func addEdge(fromNode source: String, toNode target: String, with data: [String:String]) -> ATEdge? {
+    public func addEdge(_ edge: ATEdge) -> ATEdge? {
+        guard let validSourceName = edge.source?.name else { return nil }
+        guard let validTargetName = edge.target?.name else { return nil }
+        return self.addEdge(fromNode: validSourceName, toNode: validTargetName, with:edge.userData)
+    }
+    
+    public func addEdge(fromNode source: String, toNode target: String, with data: [String:Any]) -> ATEdge? {
         //assert(!source.isEmpty, "ATSystem.addEdge(fromNode:toNode:with:) - source is empty")
         //assert(!target.isEmpty, "ATSystem.addEdge(fromNodeSource:toNodeTarget:withData:) - target is empty")
 
