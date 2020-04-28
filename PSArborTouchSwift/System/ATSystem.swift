@@ -349,34 +349,44 @@ Add an ATNode with name and data.
                 targetNode?.position = position.nearPoint(radius: 1.0)
             }
         }
-        
+
         // We cant create or search for the edge if we dont have both nodes.
         guard let validSourceNode = sourceNode,
             let validTargetNode = targetNode else { return nil }
-        
+        // Create the new edge
+        let edge = ATSpring(source: validSourceNode, target: validTargetNode, userData: data)
+
         // Search adjacency list
-        var from: [Int : Any]? = self.state.getAdjacency(for: validSourceNode.index)
+        var from: [Int : ATEdge]? = self.state.getOutboundAdjacency(for: validSourceNode.index)
         if (from == nil) {
             // Expand the adjacency graph
             from = [:]
-            self.state.setAdjacency(object: from!, for: validSourceNode.index)
+            self.state.setOutboundAdjacency(object: from!, for: validSourceNode.index)
+        }
+        // Search adjacency list
+        var toAdjacency: [Int : ATEdge]? = self.state.getInboundAdjacency(for: validTargetNode.index)
+        if (toAdjacency == nil) {
+            // Expand the adjacency graph
+            toAdjacency = [:]
+            self.state.setInboundAdjacency(object: toAdjacency!, for: validTargetNode.index)
         }
 
-        guard from![validTargetNode.index] as? ATEdge == nil else {
+        guard from![validTargetNode.index] == nil else {
             print("ATSystem.addEdge(fromNodeSource:toNodeTarget:withData:) - Overwrote user data for an edge... Be sure this is what you wanted.")
             let newTo = ATEdge()
             newTo.userData = data;
             return newTo;
         }
         
-        // Create the new edge
-        let edge = ATSpring(source: validSourceNode, target: validTargetNode, userData: data)
         // Store the edge
         self.state.setEdges(with: edge, for: edge.index)
         
         // Update the adjacency graph
-        from![validTargetNode.index] = edge
-        
+        from![edge.index] = edge
+        self.state.setOutboundAdjacency(object: from!, for:validSourceNode.index)
+        toAdjacency![edge.index] = edge
+        self.state.setInboundAdjacency(object: toAdjacency!, for:validTargetNode.index)
+
         // Add a new spring to represent the edge in the simulation
         add(spring: edge)
         return edge;
@@ -392,7 +402,7 @@ Add an ATNode with name and data.
         //assert(validEdge.target?.index != nil, "ATSystem.addEdge(fromNode:toNode:with:) - validEdge.target?.index is nil")
         guard let targetIndex = validEdge.target?.index else { return }
         
-        var from = self.state.getAdjacency(for: sourceIndex)
+        var from = self.state.getOutboundAdjacency(for: sourceIndex)
         if (from != nil) {
             from?.removeValue(forKey: targetIndex)
         }
@@ -406,8 +416,8 @@ Add an ATNode with name and data.
         //assert(from[targetNode.index] as? ATEdge != nil, "ATSystem.addEdge(fromNode:toNode:with:) - from[targetNode.index] as? ATEdge is nil")
         guard let sourceNode = getNode(with: source) else { return [] }
         guard let targetNode = getNode(with: target) else { return [] }
-        guard let from = self.state.getAdjacency(for: sourceNode.index) else { return [] }
-        guard let to = from[targetNode.index] as? ATEdge else { return [] }
+        guard let from = self.state.getOutboundAdjacency(for: sourceNode.index) else { return [] }
+        guard let to = from[targetNode.index] else { return [] }
         
         let toSet: Set<ATEdge> = Set.init([to])
         return toSet
@@ -420,7 +430,7 @@ Add an ATNode with name and data.
         guard let aNode = getNode(with: name) else { return  [] }
         
         var edges: [ATEdge] = []
-        for element in self.state.adjacency[aNode.index] {
+        for element in self.state.outboundAdjacency[aNode.index] {
             if let validElement = element.value as? ATEdge {
                 edges.append(validElement)
             }
@@ -444,6 +454,69 @@ Add an ATNode with name and data.
             }
         }
         return nodeEdges;
+    }
+    
+    public func addTaxonomy(nodes: [ATNode], edges: [ATEdge]) {
+        nodes.forEach({_ = addNode(with: $0.name!, and: $0.userData)  })
+        edges.forEach({ _ = addEdge($0) })
+    }
+/**
+Is the node with a set distance of a particle?
+    
+- parameters:
+     - particle: the ATParticle that is interrogated
+     - focus: the focus node
+     - distance: the focus distance (steps), 0 is the particle itself.
+*/
+    public func isInFocus(_ particle: ATParticle?, focus: ATNode?, within distance: Int) -> Bool? {
+        guard let validFocusIndex = focus?.index else { return nil }
+        guard let validParticleIndex = particle?.index else { return nil }
+        guard distance >= 0 else { return nil }
+        
+        if validParticleIndex == validFocusIndex { return true }
+        if checkOutboundAdjacencies(for: validParticleIndex, and: validFocusIndex, within: distance - 1) {
+            return true
+        }
+        if checkInboundAdjacencies(for: validParticleIndex, and: validFocusIndex, within: distance - 1) {
+            return true
+        }
+        return false
+    }
+    
+    // check all the targets around a node
+    private func checkOutboundAdjacencies(for checkIndex: Int, and focusIndex: Int, within distance: Int) -> Bool {
+        // Is there more to check?
+        if distance < 0 { return false }
+        guard let adjacencies = self.state.getOutboundAdjacency(for: focusIndex) else { return false }
+        // The adjacency defines the ATEdge's connected to the focus particle
+        for adjacency in adjacencies {
+            guard let targetIndex = adjacency.value.target?.index else { continue }
+            if targetIndex == checkIndex {
+                return true
+            }
+            if checkOutboundAdjacencies(for: checkIndex, and: targetIndex, within: distance - 1) {
+                return true
+            }
+        }
+        return false
+    }
+    // check all the targets around a node
+    private func checkInboundAdjacencies(for checkIndex: Int, and focusIndex: Int, within distance: Int) -> Bool {
+        // Is there more to check?
+        if distance < 0 { return false }
+        guard let inboundAdjacencies = self.state.getInboundAdjacency(for: focusIndex) else { return false }
+        // The adjacency defines the ATEdge's connected to the focus particle
+        for adjacency in inboundAdjacencies {
+            guard let sourceIndex = adjacency.value.source?.index else { continue }
+            if sourceIndex == checkIndex {
+                return true
+            }
+            if checkInboundAdjacencies(for: checkIndex, and: sourceIndex, within: distance - 1) {
+                return true
+            }
+        }
+
+        return false
     }
 
 }

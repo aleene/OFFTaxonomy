@@ -17,29 +17,6 @@ class MainViewController: UIViewController {
         /// Ratio physics size to view size. Note is very sensitive
         static let ViewScaleFactor = CGFloat(20.0)
         static let ViewCenter = CGPoint.zero
-        static let OpenFoodFactsExtension = "txt"
-        static let PlistExtension = "plist"
-        static let TaxonomyKey = "Taxonomy"
-        static let Language = "en"
-        static let LanguageDivider = ":"
-        struct FileName {
-            static let Allergens = "Allergens"
-            static let Additives = "Additives"
-            static let AminoAcids = "Amino_acids"
-            static let Brands = "Brands"
-            static let Countries = "Countries"
-            static let Categories = "Categories"
-            static let Labels = "GlobalLabels"
-            static let Languages = "Languages"
-            static let Ingredients = "Ingredients"
-            static let Minerals = "Minerals"
-            static let Nucleotides = "Nucleotides"
-            static let Nutrients = "Nutriments"
-            static let OtherNutritionalSubstances = "Other_nutritional_substances"
-            static let Processes = "Processes"
-            static let Vitamins = "Vitamins"
-            static let States = "States"
-        }
     }
     
 // MARK: - interface
@@ -81,6 +58,17 @@ class MainViewController: UIViewController {
     private var _system = ATSystem()
     private var _scale = Constant.ViewScaleFactor
     private var _offset = Constant.ViewCenter
+    private var _taxonomy = TaxonomyType.processes
+    private var _focusNode: ATNode? {
+        didSet {
+            self.arborView?.focusNode = _focusNode
+        }
+    }
+    private var _focusDistance = 3 {
+        didSet {
+            self.arborView?.focusDistance = _focusDistance
+        }
+    }
 
 // MARK: - private functions
 
@@ -150,20 +138,34 @@ class MainViewController: UIViewController {
         switch longPressGestureRecognizer.state {
         case .began:
             let menuController = UIMenuController.shared
-            let debugMenuItem = UIMenuItem(title: "Debug", action: #selector(debugHandler(for:)))
-            let location = longPressGestureRecognizer.location(in: validView)
+            let position = longPressGestureRecognizer.location(in: validView)
+            _focusNode = _system.nearestNode(physics: self.physicsCoordinate(for: position),
+                within: self.physicsCoordinate(for: 30.0)!)
+            let focus = UIMenuItem(title: "Focus", action: #selector(focusHandler(for:)))
+            let debug = UIMenuItem(title: "Debug", action: #selector(debugHandler(for:)))
+            let reset = UIMenuItem(title: "Reset", action: #selector(resetHandler(for:)))
             self.becomeFirstResponder()
-            menuController.menuItems = [debugMenuItem]
-            menuController.showMenu(from: validView, rect: CGRect(origin: location, size: .zero))
+            menuController.menuItems = [focus, debug, reset]
+            menuController.showMenu(from: validView, rect: CGRect(origin: position, size: .zero))
         default: break
         }
 
     }
 
+    @objc func focusHandler(for menuController: UIMenuController) {
+        _system.start(unpause: true)
+    }
+
     @objc func debugHandler(for menuController: UIMenuController) {
         self.arborView.isDebugDrawing = !self.arborView.isDebugDrawing
+        _system.start(unpause: true)
     }
-    
+
+    @objc func resetHandler(for menuController: UIMenuController) {
+        _focusNode = nil
+        _system.start(unpause: true)
+    }
+
     private var nearestNode: ATNode?
 
     /// Allows to pickup a node and move it.
@@ -239,118 +241,6 @@ class MainViewController: UIViewController {
         }
     }
     
-    func readOFFTaxonomy(_ taxonomyIdentifier: String) -> BHTaxonomy {
-        
-        let offTaxonomy = BHTaxonomy()
-        
-        // read file in /InputTaxonomies/Allergens.txt
-        if let path = Bundle.main.path(forResource: taxonomyIdentifier, ofType: Constant.OpenFoodFactsExtension) {
-            
-            // if there is a file, a corresponding struct can be created
-            do {
-                let file = try NSString(contentsOfFile: path, encoding: String.Encoding.utf8.rawValue)
-                var currentSection = Section()
-                
-                // transform file in Array with lines
-                let fileLines = file.components(separatedBy: NSCharacterSet.newlines)
-                
-                // analyse line by line
-                for line in fileLines {
-                    // is it a taxonomy line?
-                    guard !line.hasPrefix("== Taxonomy") else { continue }
-                    guard !line.hasPrefix("2 letters") else { continue }
-                    guard !line.hasPrefix("Taxonomy") else { continue }
-                    guard !line.hasPrefix("</pre>") else { continue }
-                    guard !line.hasPrefix("<pre>") else { continue }
-                    guard !line.hasPrefix("synonyms") else { continue }
-                    guard !line.hasPrefix("e_number") else { continue }
-                    guard !line.hasPrefix("wikidata") else { continue }
-                    guard !line.hasPrefix("colour_index") else { continue }
-                    guard !line.hasPrefix("#") else { continue }
-                    guard !line.hasPrefix("country") else { continue }
-                    guard !line.hasPrefix("official") else { continue }
-                    guard !line.hasPrefix("stopwords") else { continue }
-                    guard !line.hasPrefix("pnns_group_1") else { continue }
-                    guard !line.hasPrefix("pnns_group_2") else { continue }
-                    guard !line.hasPrefix("grapevariety") else { continue }
-                    guard !line.hasPrefix("region") else { continue }
-                    guard !line.hasPrefix("instanceof") else { continue }
-                    guard !line.hasPrefix("address") else { continue }
-                    guard !line.hasPrefix("city") else { continue }
-                    guard !line.hasPrefix("name") else { continue }
-                    guard !line.hasPrefix("postalcode") else { continue }
-                    guard !line.hasPrefix("website") else { continue }
-                    
-                    // where are we in the taxonomy?
-                    // either a new Vertex OR a new leaf
-                    //
-                    // find first empty element or newline?
-                    if (line.isEmpty) {
-                        // this will be the start of a new section and Vertex
-                        
-                        // wrap up the previous section
-                        if !currentSection.leaves.isEmpty {
-                            currentSection.key = currentSection.normalizeKey()
-                            offTaxonomy.sections.append(currentSection)
-                        }
-                        
-                        // reset Vertex section
-                        currentSection = Section()
-                        
-                    } else if (line.hasPrefix("<")) {
-                        // a section preceding with a < defines a parent.
-                        // a section might have multiple parents.
-                        let firstSplit = line.split{ $0 == "<" }.map(String.init)
-                        // what comes after the <, is the key for the parent
-                        currentSection.parentKeys.append(firstSplit[0])
-                        
-                    } else if (line.hasPrefix("§")) {
-                        // a section preceding with a < defines a parent.
-                        // a section might have multiple parents.
-                        let firstSplit = line.split{ $0 == "§" }.map(String.init)
-                        // what comes after the §, is the key
-                        currentSection.key = firstSplit[0]
-
-                    } else {
-                        // a standard line should be split in a language and values part
-                        let firstSplit = line.split{ $0 == ":" }.map(String.init)
-                        
-                        // language part (colon) is missing
-                        guard firstSplit.count > 1 else {
-                            print("Wrong markup in line \"\(firstSplit[0])\" (: missing?)")
-                            continue
-                        }
-                        
-                        let language = firstSplit[0]
-
-                        // the values part should be split in separate values
-                        if firstSplit.count > 1 {
-                            currentSection.leaves[language]  = firstSplit[1].split{ $0 == "," }.map(String.init)
-                        }
-                        // set the key for this Vertex / section as the first pass language
-                        if currentSection.key.isEmpty {
-                            currentSection.key = currentSection.alternativeKey()
-                        }
-                    }
-                    
-                } // end for
-                
-                // wrap up the last entry if needed
-                // is this actually needed? If an empty line is missing?
-                if !currentSection.leaves.isEmpty {
-                    print("Empty line missing")
-                    currentSection.key = currentSection.normalizeKey()
-
-                    offTaxonomy.sections.append(currentSection)
-                }
-            } // end do
-            catch {/* error handling here */
-                print("Error reading file")
-            }
-        } // end if
-
-        return offTaxonomy
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -379,14 +269,8 @@ class MainViewController: UIViewController {
         self.addGestureRecognizers(to: self.arborView)
    
         // load the map data
+        _system.addTaxonomy(nodes: _taxonomy.read().0, edges: _taxonomy.read().1)
         //self.loadMapData()
-        let taxonomy = readOFFTaxonomy(Constant.FileName.Processes)
-        // create ATNodes
-        let nodes = taxonomy.createNodes()
-        nodes.forEach({_ = _system.addNode(with: $0.name!, and: $0.userData)  })
-        // create edges from the off file
-        let edges = taxonomy.createEdges()
-        edges.forEach({ _ = _system.addEdge($0) })
         _system.start(unpause: true)
 
     }

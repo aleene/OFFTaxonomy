@@ -435,6 +435,8 @@ fr:toasté, toastée, toastés, toastées
 it:tostato, tostati, tostate
 nl:geroosterd, geroosterde
 
+<en:unprocessed
+<en:toasted
 en:untoasted
 nl:ongeroosterd
 
@@ -478,10 +480,40 @@ es:bromado
 en:unbromated, un-bromated
 
 <en:added
+en:salted
 de:gesalzen, gesalzene, gesalzenes, gesalzener
+es:salado, salada, salados, saladas
+fr:salé, salée, salés, salées, sales, salees
+it:salato, salata, salate, salati
+nl:gezouten
+pt:salgado, salgada, salgados, salgadas
 
-<de:gesalzen
+<en:salted
+en:sea salted
+
+<en:sea salted
+<en:lightly salted
+en:lightly sea salted
+
+<en:salted
+en:lightly salted
+nl:lichtgezouten, licht gezouten
+
+<en:salted
+en:half salted, half-salted
+
+<en:salted
+en:desalted
+fr:dessalée, dessalee
+
+<en:salted
+fr:présalée
+
+<en:salted
+en:unsalted, un-salted
 de:ungesalzen, ungesalzene
+fr:non salée, non-salée
+nl:ongezouten
 
 <en:added
 en:sweetened
@@ -500,7 +532,7 @@ de:gezuckert, gezuckerte
 fr:sucré, sucrée, sucrés, sucrées, sucree, sucrees
 nl:gesuikerd, gesuikerde
 
-<de:gezuckert
+<en:sugared
 de:leicht gezuckert
 
 <en:unsweetened
@@ -513,10 +545,11 @@ de:geölt, geölte
 de:mit sonnenblumenöl geölt
 
 <en:added
-en:unsulphured
+en:sulphured
 de:geschwefelt, geschwefelte
 
-<en:unsulphured, sulfite free
+<en:sulphured
+en:unsulphured, sulfite free
 de:ungeschwefelt, ungeschwefelte
 
 #######################################################################
@@ -525,6 +558,7 @@ de:ungeschwefelt, ungeschwefelte
 #
 #######################################################################
 # Processes that change the ingredient, but do not add something
+
 <en:processed
 en:treated
 
@@ -600,6 +634,7 @@ fr:fumé,fumés,fumée,fumées
 en:double smoked
 
 <en:smoked
+<en:natural
 en:naturally smoked, natural smoked, all natural smoked
 fr:fumé naturellement, fumés naturellement, fumée naturellement, fumées naturellement
 
@@ -614,6 +649,7 @@ en:dry smoked
 en:wood smoked
 
 <en:wood smoked
+<en:naturally smoked
 en:natural hardwood smoked, naturally wood smoked
 
 <en:smoked
@@ -633,6 +669,7 @@ en:beech smoked
 fr:fumé au bois de hêtre, fumée au bois de hêtre, fumés au bois de hêtre, fumées au bois de hêtre
 
 <en:beech smoked
+<en:naturally smoked
 en:natural beech smoked,
 
 <en:wood smoked
@@ -646,6 +683,7 @@ en:hickory smoked, hot smoked from hickory
 fr:fumé au bois de caryer
 
 <en:hickory smoked
+<en:naturally smoked
 en:natural hickory smoked
 
 <en:hickory smoked

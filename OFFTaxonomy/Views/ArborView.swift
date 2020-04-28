@@ -60,6 +60,8 @@ final class ArborView: UIView {
     public var isDebugDrawing: Bool = false
     public var languageCode = "en"
     public var delegate: ArborViewProtocol?
+    public var focusNode: ATNode?
+    public var focusDistance = 2
 
 // MARK: - public functions
             
@@ -101,7 +103,15 @@ final class ArborView: UIView {
         context.setStrokeColor(Constant.Spring.LineColor)
         context.setLineWidth(Constant.Spring.LineWidth)
         for spring in validSystem.physics.springs {
-            drawSpring(spring, in: context)
+            // should the focus be applied?
+            if _applyFocusDrawing {
+                if let shouldDrawSource = validSystem.isInFocus(spring.source as? ATParticle, focus: self.focusNode, within: focusDistance), shouldDrawSource,
+                    let shouldDrawTarget = validSystem.isInFocus(spring.target as? ATParticle, focus: self.focusNode, within: focusDistance), shouldDrawTarget {
+                    drawSpring(spring, in: context)
+                }
+            } else {
+                drawSpring(spring, in: context)
+            }
         }
 
         // Drawing code for particle centers
@@ -110,10 +120,24 @@ final class ArborView: UIView {
         context.setStrokeColor(Constant.Particle.LineColor)
         context.setLineWidth(Constant.Particle.LineWidth)
         for particle in validSystem.physics.particles {
-            drawText(for: particle, in: context)
+            // should the focus be applied?
+            if _applyFocusDrawing {
+                if let shouldDraw = validSystem.isInFocus(particle, focus: self.focusNode, within: focusDistance), shouldDraw {
+                    drawText(for: particle, in: context)
+                }
+            } else {
+                drawText(for: particle, in: context)
+            }
             //drawParticle(particle, in:context)
         }
     }
+
+// MARK: - private variables
+    
+    private var _applyFocusDrawing: Bool {
+        self.focusNode != nil
+    }
+            
 
 // MARK: - private drawing functions
         

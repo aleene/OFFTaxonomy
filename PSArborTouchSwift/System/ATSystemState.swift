@@ -18,9 +18,11 @@ public struct ATSystemState {
     public var edges: [ATEdge] {
         _edges.map( { $0.value })
     }
-    public var adjacency: [[Int:Any]] {
-        _adjacency.map( { $0.value })
-
+    public var outboundAdjacency: [[Int:Any]] {
+        _outboundAdjacency.map( { $0.value })
+    }
+    public var inboundAdjacency: [[Int:Any]] {
+        _inboundAdjacency.map( { $0.value })
     }
     public var names: [ATNode] {
         _names.map( { $0.value })
@@ -31,7 +33,8 @@ public struct ATSystemState {
     
     private var _nodes: [Int:ATNode] = [:]
     private var _edges: [Int:ATEdge] = [:]
-    private var _adjacency: [Int:[Int:Any]] = [:]
+    private var _outboundAdjacency: [Int:[Int:ATEdge]] = [:]
+    private var _inboundAdjacency: [Int:[Int:ATEdge]] = [:]
     private var _names: [String:ATNode] = [:]
     
 // MARK: - initialisers
@@ -118,27 +121,48 @@ This might override an existing entry. If key or node are nil, nothing happens.
 
 // MARK: - public Adjacency functions
 
-    public mutating func setAdjacency(object: [Int:Any], for key: Int?) {
-        //assert(key != nil, "ATSystemState.setAdjacency(object:forKey:) - key is nil")
+/**
+Adjacency describes the connected edges to a node
+
+- parameters:
+     - object: an array of edge indices and corresponding edges connected to this adjacency
+     - key: the index of the node corresponding to the adjacency
+*/
+    public mutating func setOutboundAdjacency(object: [Int:ATEdge], for key: Int?) {
         guard let validKey = key else { return }
 
-        _adjacency[validKey] = object
+        _outboundAdjacency[validKey] = object
     }
 
-    public mutating func removeObjectFromAdjacency(for key: Int?) {
-        //assert(key != nil, "ATSystemState.removeObjectFromAdjacency(forKey:) - key is nil")
+    public mutating func removeObjectFromOutboundAdjacency(for key: Int?) {
         guard let validKey = key else { return }
 
-        _adjacency.removeValue(forKey: validKey)
+        _outboundAdjacency.removeValue(forKey: validKey)
     }
 
-    public func getAdjacency(for key: Int?) -> [Int:Any]? {
-        //assert(key != nil, "ATSystemState.getAdjacency(forKey:) - key is nil")
+    public func getOutboundAdjacency(for key: Int?) -> [Int:ATEdge]? {
         guard let validKey = key else { return nil }
 
-        return _adjacency[validKey]
+        return _outboundAdjacency[validKey]
     }
 
+    public mutating func setInboundAdjacency(object: [Int:ATEdge], for key: Int?) {
+        guard let validKey = key else { return }
+
+        _inboundAdjacency[validKey] = object
+    }
+
+    public mutating func removeObjectFromInboundAdjacency(for key: Int?) {
+        guard let validKey = key else { return }
+
+        _inboundAdjacency.removeValue(forKey: validKey)
+    }
+
+    public func getInboundAdjacency(for key: Int?) -> [Int:ATEdge]? {
+        guard let validKey = key else { return nil }
+
+        return _inboundAdjacency[validKey]
+    }
 
 //MARK: - public Names functions
 //TODO: why is a separate store for this needed?

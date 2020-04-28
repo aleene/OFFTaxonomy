@@ -44,6 +44,7 @@
 		5194C9F824549F5B006BBE5A /* Parser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9F724549F5B006BBE5A /* Parser.swift */; };
 		5194C9FD2454A2B2006BBE5A /* BHTaxonomy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5194C9FC2454A2B2006BBE5A /* BHTaxonomy.swift */; };
 		5194C9FF2455B2BD006BBE5A /* Processes.txt in Resources */ = {isa = PBXBuildFile; fileRef = 5194C9FE2455B2BD006BBE5A /* Processes.txt */; };
+		51B41EA524573F09008FADD5 /* TaxonomyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51B41EA424573F09008FADD5 /* TaxonomyType.swift */; };
 		51D1A289244CBED800AC697A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A288244CBED800AC697A /* AppDelegate.swift */; };
 		51D1A28B244CBED800AC697A /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 51D1A28A244CBED800AC697A /* SceneDelegate.swift */; };
 		51D1A290244CBED800AC697A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 51D1A28E244CBED800AC697A /* Main.storyboard */; };
@@ -104,6 +105,7 @@
 		5194C9F724549F5B006BBE5A /* Parser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parser.swift; sourceTree = "<group>"; };
 		5194C9FC2454A2B2006BBE5A /* BHTaxonomy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BHTaxonomy.swift; sourceTree = "<group>"; };
 		5194C9FE2455B2BD006BBE5A /* Processes.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = Processes.txt; sourceTree = "<group>"; };
+		51B41EA424573F09008FADD5 /* TaxonomyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaxonomyType.swift; sourceTree = "<group>"; };
 		51D1A285244CBED800AC697A /* OFFTaxonomy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OFFTaxonomy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		51D1A288244CBED800AC697A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = OFFTaxonomy/Support/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		51D1A28A244CBED800AC697A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SceneDelegate.swift; path = OFFTaxonomy/Support/SceneDelegate.swift; sourceTree = SOURCE_ROOT; };
@@ -184,6 +186,7 @@
 		5194C9FB2454A290006BBE5A /* OFFtxt */ = {
 			isa = PBXGroup;
 			children = (
+				51B41EA424573F09008FADD5 /* TaxonomyType.swift */,
 				5194C9F724549F5B006BBE5A /* Parser.swift */,
 				5194C9FC2454A2B2006BBE5A /* BHTaxonomy.swift */,
 			);
@@ -497,6 +500,7 @@
 				5194C9EC24520810006BBE5A /* ATPhysics.swift in Sources */,
 				5176C03D2451A32200E84AB6 /* SelectPairViewController.swift in Sources */,
 				5194C9E6245207FE006BBE5A /* ATBarnesHutBranch.swift in Sources */,
+				51B41EA524573F09008FADD5 /* TaxonomyType.swift in Sources */,
 				5194C9DD245207E9006BBE5A /* Line.swift in Sources */,
 				5194C9D5245207D8006BBE5A /* ATEdge.swift in Sources */,
 				5194C9DC245207E9006BBE5A /* CGRectExtension.swift in Sources */,

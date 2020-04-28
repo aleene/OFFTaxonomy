@@ -8,7 +8,7 @@
 
 import Foundation
 
-class BHTaxonomy {
+public class BHTaxonomy {
     
     var sections: [Section] = []
     
