@@ -131,7 +131,7 @@ public struct ATPhysics {
         for particle in _activeParticles {
             guard let validPosition = particle.position else { continue }
             // decay down any of the temporary mass increases that were passed along
-            // by using an {_m:} instead of an {m:} (which is to say via a Node having
+            // by using an {_m:} instead of an {m:} (which is to say via a Particle having
             // its .tempMass attr set)
             
             if particle.tempMass != 0.0 {
@@ -319,7 +319,7 @@ public struct ATPhysics {
         var topLeft = CGPoint.zero
         
         for (index, particle) in _activeParticles.enumerated() {
-            // move the node to its new position
+            // move the particle to its new position
             particle.position = particle.position! + (particle.velocity * timestep)
             
             guard let position = particle.position else { continue }

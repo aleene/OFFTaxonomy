@@ -12,11 +12,11 @@ public struct ATSystemState {
 
 // MARK: - public variables
 
-    public var nodes: [ATParticle] {
-        _nodes.map({ $0.value })
+    public var particles: [ATParticle] {
+        _particles.map({ $0.value })
     }
-    public var edges: [ATSpring] {
-        _edges.map( { $0.value })
+    public var springs: [ATSpring] {
+        _springs.map( { $0.value })
     }
     public var outboundAdjacency: [[Int:ATSpring]] {
         _outboundAdjacency.map( { $0.value })
@@ -31,8 +31,8 @@ public struct ATSystemState {
 
 // MARK: - private variables
     
-    private var _nodes: [Int:ATParticle] = [:]
-    private var _edges: [Int:ATSpring] = [:]
+    private var _particles: [Int:ATParticle] = [:]
+    private var _springs: [Int:ATSpring] = [:]
     private var _outboundAdjacency: [Int:[Int:ATSpring]] = [:]
     private var _inboundAdjacency: [Int:[Int:ATSpring]] = [:]
     private var _names: [String:ATParticle] = [:]
@@ -52,8 +52,8 @@ The unique key of the node will be used to identify the node in the nodes  array
  - warning
 The content of the name is NOT used, so do not rely on the name for uniqueness. Use instead Name-functions.
 **/
-    public mutating func addToNodes(_ node:ATParticle?) {
-        setNodes(with: node, for: node?.index)
+    public mutating func addToParticles(_ particle:ATParticle?) {
+        setParticles(with: particle, for: particle?.index)
     }
     
 /** Add an ATParticle to the nodes array with a unique key.
@@ -64,58 +64,54 @@ The content of the name is NOT used, so do not rely on the name for uniqueness. 
 This might override an existing entry. If key or node are nil, nothing happens.
 */
     
-    public mutating func setNodes(with node: ATParticle?, for key:Int?) {
+    public mutating func setParticles(with particle: ATParticle?, for key:Int?) {
 
-        guard node != nil else { return }
+        guard particle != nil else { return }
         guard let validKey = key else { return }
 
-        _nodes[validKey] = node
+        _particles[validKey] = particle
     }
 
 /** Remove an ATParticle to the nodes array based on the key in the nodes array.
  - parameters :
      - key:  unique for the node
 */
-    public mutating func removeNodeFromNodes(for key: Int?) {
+    public mutating func removeParticleFromParticles(for key: Int?) {
         guard let validKey = key else { return }
 
-        _nodes.removeValue(forKey: validKey)
+        _particles.removeValue(forKey: validKey)
     }
 
 /** Get the ATParticle from the nodes array based on the key in the nodes array.
  - parameters :
      - key:  unique for the node
 */
-    public func getNodeFromNodes(for key: Int?) -> ATParticle? {
+    public func getParticleFromParticles(for key: Int?) -> ATParticle? {
 
         guard let validKey = key else { return nil }
 
-        return _nodes[validKey]
+        return _particles[validKey]
     }
 
 // MARK: - public Edge functions
 
-    public mutating func setEdges(with edge: ATSpring?, for key: Int?) {
-        //assert(key != nil, "ATSystemState.set(edge:for:) - key is nil")
-        //assert(edge != nil, "ATSystemState.set(edge:for:) - edge is nil")
-        guard edge != nil else { return }
+    public mutating func setSprings(with spring: ATSpring?, for key: Int?) {
+        guard spring != nil else { return }
         guard let validKey = key else { return }
 
-        _edges[validKey] = edge
+        _springs[validKey] = spring
     }
 
-    public mutating func removeEdgeFromEdges(for key: Int?) {
-        //assert(key != nil, "ATSystemState.removeEdge(for:) - key is nil")
+    public mutating func removeSpringFromSprings(for key: Int?) {
         guard let validKey = key else { return }
 
-        _edges.removeValue(forKey: validKey)
+        _springs.removeValue(forKey: validKey)
     }
 
-    public func getEdgeFromEdges(for key: Int?) -> ATSpring? {
-        //assert(key != nil, "ATSystemState.getEdge(forKey:) - key is nil")
+    public func getSpringFromSprings(for key: Int?) -> ATSpring? {
         guard let validKey = key else { return nil }
 
-        return _edges[validKey]
+        return _springs[validKey]
     }
 
 
@@ -173,10 +169,12 @@ Add an ATParticle to the nodes array based on its own name.
 
 This might override an existing entry. If key or node are nil, nothing happens. If the name is already in the names array, it will be overwritten
 **/
-    public mutating func addToNames(_ node: ATParticle?) {
-        guard node != nil && node!.name != nil && !node!.name!.isEmpty else { return }
+    public mutating func addToNames(_ particle: ATParticle?) {
+        guard particle != nil
+            && particle!.name != nil
+            && !particle!.name!.isEmpty else { return }
 
-            _names[node!.name!] = node
+            _names[particle!.name!] = particle
         }
 
 /**
@@ -187,10 +185,10 @@ Add an ATParticle to the nodes array based on a unique name.
 
 This might override an existing entry. If key or node are nil, nothing happens. If the name is already in the names array, it will be overwritten
 */
-    public mutating func setNames(with node: ATParticle?, for name: String?) {
-        guard node != nil && name != nil && !name!.isEmpty else { return }
+    public mutating func setNames(with particle: ATParticle?, for name: String?) {
+        guard particle != nil && particle != nil && !name!.isEmpty else { return }
 
-        _names[name!] = node
+        _names[name!] = particle
     }
 
 /**
@@ -199,12 +197,12 @@ Remove an ATParticle to the nodes array based on a unique name.
     - key:  unique String to identify the node (must not be empty)
 
 */
-    public mutating func removeNodeFromNames(for key: String?) {
+    public mutating func removeParticleFromNames(for key: String?) {
         guard key != nil && !key!.isEmpty else { return }
         _names.removeValue(forKey: key!)
     }
 
-    public func getNodeFromNames(for key: String?) -> ATParticle? {
+    public func getParticleFromNames(for key: String?) -> ATParticle? {
         guard key != nil && !key!.isEmpty else { return nil }
 
         return _names[key!]

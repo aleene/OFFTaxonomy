@@ -73,8 +73,8 @@ public class ATKernel {
                 //      - Update the debug barnes-hut display
                 //      - Update the debug bounds display
                 //      - Update the debug viewport display
-                //      - Update the edge display
-                //      - Update the node display
+                //      - Update the sprint display
+                //      - Update the particle display
                         
             self.delegate?.redraw()
         });

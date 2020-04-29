@@ -148,63 +148,63 @@ public class ATSystem: ATKernel {
         }
     }
 
-    /// Find the nearest node to a particular screen position
-    public func nearestNode(to point: CGPoint) -> ATParticle? {
+    /// Find the nearest particle to a particular screen position
+    public func nearestParticle(to point: CGPoint) -> ATParticle? {
         // if view bounds has been specified, presume viewPoint is in screen pixel
         // units and convert it back to the physics engine coordinates
         let translatedPoint = !self.viewBounds.isEmpty ? fromView(point: point) : point
-        return self.nearestNode(physics: translatedPoint)
+        return self.nearestParticle(physics: translatedPoint)
     }
 
     /// Find the nearest node to a particular physics position
-    public func nearestNode(physics point: CGPoint) -> ATParticle? {
-        var closestNode: ATParticle?
+    public func nearestParticle(physics point: CGPoint) -> ATParticle? {
+        var closestParticle: ATParticle?
         var closestDistance = CGFloat.greatestFiniteMagnitude
         var distance = CGFloat.zero
         
-        for node in self.state.nodes {
-            guard let validPosition = node.position else { continue }
+        for particle in self.state.particles {
+            guard let validPosition = particle.position else { continue }
             distance = validPosition.distance(to: point)
             if distance < closestDistance {
-                closestNode = node;
+                closestParticle = particle;
                 closestDistance = distance;
             }
         }
         
-        return closestNode;
+        return closestParticle;
     }
 
-    public func nearestNode(to point: CGPoint, within screenRadius: CGFloat) -> ATParticle? {
+    public func nearestParticle(to point: CGPoint, within screenRadius: CGFloat) -> ATParticle? {
         //assert(radius > 0.0, "ATSystem.nearestNode(toPoint:withinRadius:) - radius less then zero")
         // or use nearestNodeToPoint instead.
         guard screenRadius > 0.0 else { return nil }
         
-        let closestNode = nearestNode(to: point)
-        if let position = closestNode?.position {
-            // Find the nearest node to a particular position
+        let closestParticle = nearestParticle(to: point)
+        if let position = closestParticle?.position {
+            // Find the nearest particle to a particular position
             // if view bounds has been specified, presume viewPoint is in screen pixel
             // units and convert the closest node to view space for comparison
 
-            let translatedNodePoint = !self.viewBounds.isEmpty ? toView(point: position) : position
-            if translatedNodePoint.distance(to: point) > screenRadius {
+            let translatedParticlePoint = !self.viewBounds.isEmpty ? toView(point: position) : position
+            if translatedParticlePoint.distance(to: point) > screenRadius {
                 return nil
             }
         }
         
-        return closestNode
+        return closestParticle
     }
     
-    public func nearestNode(physics point: CGPoint, within physicsRadius: CGFloat) -> ATParticle? {
+    public func nearestParticle(physics point: CGPoint, within physicsRadius: CGFloat) -> ATParticle? {
         guard physicsRadius > 0.0 else { return nil }
-        let closestNode = nearestNode(physics: point)
-        if let position = closestNode?.position {
+        let closestParticle = nearestParticle(physics: point)
+        if let position = closestParticle?.position {
             // check if the nearest node lies with radius
             if position.distance(to: point) > physicsRadius {
                 return nil
             }
         }
         
-        return closestNode
+        return closestParticle
     }
     // Graft ?
     // Merge ?
@@ -259,8 +259,8 @@ Retrieve a node based on its name.
 - parameters :
      - name: the String for the name. Note that names are not unique.
 */
-    public func getNode(with name: String) -> ATParticle? {
-        return self.state.getNodeFromNames(for: name)
+    public func getParticle(with name: String) -> ATParticle? {
+        return self.state.getParticleFromNames(for: name)
 
     }
 
@@ -271,107 +271,107 @@ Add an ATParticle with name and data.
      - name: the String for the name. Note that names are not unique.
      - data: the data corresponding to the node
 */
-    public func addNode(with name: String, and data: [String:Any]) -> ATParticle? {
+    public func addParticle(with name: String, and data: [String:Any]) -> ATParticle? {
 
-        assert(!name.isEmpty, "ATSystem.addNode(withName:andData:) - name is empty")
+        assert(!name.isEmpty, "ATSystem.addParticle(withName:andData:) - name is empty")
         guard !name.isEmpty else { return nil }
 
-        if let priorNode = self.state.getNodeFromNames(for: name) {
-            print("ATSystem.addNode(withName:andData:) - Overwrote user data for a node... Be sure this is what you wanted.")
-            priorNode.userData = data;
-            return priorNode;
+        if let priorParticle = self.state.getParticleFromNames(for: name) {
+            print("ATSystem.addParticle(withName:andData:) - Overwrote user data for a node... Be sure this is what you wanted.")
+            priorParticle.userData = data;
+            return priorParticle;
             
         } else {
-            let node = ATParticle(name: name, userData: data)
-            node.position = CGPoint.random(radius: 1.0)
-            self.state.setNames(with: node, for: name)
-            self.state.setNodes(with: node, for: node.index)
-            add(particle: node)
-            return node;
+            let particle = ATParticle(name: name, userData: data)
+            particle.position = CGPoint.random(radius: 1.0)
+            self.state.setNames(with: particle, for: name)
+            self.state.setParticles(with: particle, for: particle.index)
+            add(particle: particle)
+            return particle;
         }
 
     }
 
-    public func removeNode(with name: String) {
+    public func removeParticle(with name: String) {
         assert(!name.isEmpty, "ATSystem.removeNode(withName:) - name is empty")
 
         // remove a node and its associated edges from the graph
-        if let node = getNode(with: name) {
-            self.state.removeNodeFromNodes(for: node.index)
-            self.state.removeNodeFromNames(for: name)
+        if let particle = getParticle(with: name) {
+            self.state.removeParticleFromParticles(for: particle.index)
+            self.state.removeParticleFromNames(for: name)
             
-            for edge in self.state.edges {
-                if let validSourceNode = edge.source,
-                    let validTargetNode = edge.target,
-                    validSourceNode.index == node.index
-                    || validTargetNode.index == node.index {
-                    self.remove(edge: edge)
+            for spring in self.state.springs {
+                if let validSourceParticle = spring.source,
+                    let validTargetParticle = spring.target,
+                    validSourceParticle.index == particle.index
+                    || validTargetParticle.index == particle.index {
+                    self.remove(spring: spring)
                 }
             }
             
-            remove(particle: node)
+            remove(particle: particle)
         }
 
     }
 
 // MARK: - public Edge Management functions
 
-    public func addEdge(_ edge: ATSpring) -> ATSpring? {
-        guard let validSourceName = edge.source?.name else { return nil }
-        guard let validTargetName = edge.target?.name else { return nil }
-        return self.addEdge(fromNode: validSourceName, toNode: validTargetName, with:edge.userData)
+    public func addSpring(_ spring: ATSpring) -> ATSpring? {
+        guard let validSourceName = spring.source?.name else { return nil }
+        guard let validTargetName = spring.target?.name else { return nil }
+        return self.addSpring(fromParticle: validSourceName, toParticle: validTargetName, with:spring.userData)
     }
     
-    public func addEdge(fromNode source: String, toNode target: String, with data: [String:Any]) -> ATSpring? {
+    public func addSpring(fromParticle source: String, toParticle target: String, with data: [String:Any]) -> ATSpring? {
         //assert(!source.isEmpty, "ATSystem.addEdge(fromNode:toNode:with:) - source is empty")
         //assert(!target.isEmpty, "ATSystem.addEdge(fromNodeSource:toNodeTarget:withData:) - target is empty")
 
         // source and target should not be nil, data can be nil
         guard !source.isEmpty && !target.isEmpty else { return nil }
         
-        var sourceNode = getNode(with: source)
-        var targetNode = getNode(with: target)
+        var sourceParticle = getParticle(with: source)
+        var targetParticle = getParticle(with: target)
         
-        if (sourceNode == nil) {
+        if (sourceParticle == nil) {
             // Build the source node.
-            sourceNode = addNode(with: source, and: [:])
+            sourceParticle = addParticle(with: source, and: [:])
             // If the target already exists, put the new source near it.
-            if let position = targetNode?.position {
-                sourceNode?.position = position.nearPoint(radius: 1.0)
+            if let position = targetParticle?.position {
+                sourceParticle?.position = position.nearPoint(radius: 1.0)
             }
         }
         
-        if (targetNode == nil) {
+        if (targetParticle == nil) {
             // Build the target node
-            targetNode = addNode(with: target, and: [:])
-            if let position = sourceNode?.position {
+            targetParticle = addParticle(with: target, and: [:])
+            if let position = sourceParticle?.position {
                 // If we have to build the target node, create it close to the source node.
-                targetNode?.position = position.nearPoint(radius: 1.0)
+                targetParticle?.position = position.nearPoint(radius: 1.0)
             }
         }
 
         // We cant create or search for the edge if we dont have both nodes.
-        guard let validSourceNode = sourceNode,
-            let validTargetNode = targetNode else { return nil }
+        guard let validSourceParticle = sourceParticle,
+            let validTargetParticle = targetParticle else { return nil }
         // Create the new edge
-        let edge = ATSpring(source: validSourceNode, target: validTargetNode, userData: data)
+        let spring = ATSpring(source: validSourceParticle, target: validTargetParticle, userData: data)
 
         // Search adjacency list
-        var from: [Int : ATSpring]? = self.state.getOutboundAdjacency(for: validSourceNode.index)
+        var from: [Int : ATSpring]? = self.state.getOutboundAdjacency(for: validSourceParticle.index)
         if (from == nil) {
             // Expand the adjacency graph
             from = [:]
-            self.state.setOutboundAdjacency(object: from!, for: validSourceNode.index)
+            self.state.setOutboundAdjacency(object: from!, for: validSourceParticle.index)
         }
         // Search adjacency list
-        var toAdjacency: [Int : ATSpring]? = self.state.getInboundAdjacency(for: validTargetNode.index)
+        var toAdjacency: [Int : ATSpring]? = self.state.getInboundAdjacency(for: validTargetParticle.index)
         if (toAdjacency == nil) {
             // Expand the adjacency graph
             toAdjacency = [:]
-            self.state.setInboundAdjacency(object: toAdjacency!, for: validTargetNode.index)
+            self.state.setInboundAdjacency(object: toAdjacency!, for: validTargetParticle.index)
         }
 
-        guard from![validTargetNode.index] == nil else {
+        guard from![validTargetParticle.index] == nil else {
             print("ATSystem.addEdge(fromNodeSource:toNodeTarget:withData:) - Overwrote user data for an edge... Be sure this is what you wanted.")
             let newTo = ATSpring()
             newTo.userData = data;
@@ -379,84 +379,84 @@ Add an ATParticle with name and data.
         }
         
         // Store the edge
-        self.state.setEdges(with: edge, for: edge.index)
+        self.state.setSprings(with: spring, for: spring.index)
         
         // Update the adjacency graph
-        from![edge.index] = edge
-        self.state.setOutboundAdjacency(object: from!, for:validSourceNode.index)
-        toAdjacency![edge.index] = edge
-        self.state.setInboundAdjacency(object: toAdjacency!, for:validTargetNode.index)
+        from![spring.index] = spring
+        self.state.setOutboundAdjacency(object: from!, for:validSourceParticle.index)
+        toAdjacency![spring.index] = spring
+        self.state.setInboundAdjacency(object: toAdjacency!, for:validTargetParticle.index)
 
         // Add a new spring to represent the edge in the simulation
-        add(spring: edge)
-        return edge;
+        add(spring: spring)
+        return spring;
 
     }
     
-    public func remove(edge: ATSpring?) {
+    public override func remove(spring: ATSpring?) {
         //assert(edge != nil, "ATSystem.remove(edge:) - edge is nil")
         //assert(validEdge.source?.index != nil, "ATSystem.addEdge(fromNode:toNode:with:) - validEdge.source?.index is nil")
-        guard let validEdge = edge else { return }
-        self.state.removeEdgeFromEdges(for: validEdge.index)
-        guard let sourceIndex = validEdge.source?.index else { return }
+        guard let validSpring = spring else { return }
+        self.state.removeSpringFromSprings(for: validSpring.index)
+        guard let sourceIndex = validSpring.source?.index else { return }
         //assert(validEdge.target?.index != nil, "ATSystem.addEdge(fromNode:toNode:with:) - validEdge.target?.index is nil")
-        guard let targetIndex = validEdge.target?.index else { return }
+        guard let targetIndex = validSpring.target?.index else { return }
         
         var from = self.state.getOutboundAdjacency(for: sourceIndex)
         if (from != nil) {
             from?.removeValue(forKey: targetIndex)
         }
-        remove(spring: validEdge)
+        remove(spring: validSpring)
     }
 
-    public func getEdges(fromNode source: String, toNode target: String) -> Set<ATSpring> {
+    public func getSpring(fromParticle source: String, toParticle target: String) -> Set<ATSpring> {
         //assert(!source.isEmpty, "ATSystem.getEdges(fromNodeSource:toNodeTarget:) - source is empty")
         //assert(!target.isEmpty, "ATSystem.getEdges(fromNodeSource:toNodeTarget:) - target is empty")
         //assert(self.state.getAdjacency(for: sourceNode.index) != nil, "ATSystem.addEdge(fromNode:toNode:with:) - self.state.getAdjacency(for: sourceNode.index) is nil")
         //assert(from[targetNode.index] as? ATSpring != nil, "ATSystem.addEdge(fromNode:toNode:with:) - from[targetNode.index] as? ATSpring is nil")
-        guard let sourceNode = getNode(with: source) else { return [] }
-        guard let targetNode = getNode(with: target) else { return [] }
-        guard let from = self.state.getOutboundAdjacency(for: sourceNode.index) else { return [] }
-        guard let to = from[targetNode.index] else { return [] }
+        guard let sourceParticle = getParticle(with: source) else { return [] }
+        guard let targetParticle = getParticle(with: target) else { return [] }
+        guard let from = self.state.getOutboundAdjacency(for: sourceParticle.index) else { return [] }
+        guard let to = from[targetParticle.index] else { return [] }
         
         let toSet: Set<ATSpring> = Set.init([to])
         return toSet
     }
 
-    public func getEdges(fromNodeWith name: String) -> Set<ATSpring> {
+    public func getSprings(fromParticleWith name: String) -> Set<ATSpring> {
         //assert(!name.isEmpty, "ATSystem.getEdges(fromNodeWith:) - node is nil")
         //assert(getNode(with: name) != nil, "ATSystem.getEdges(fromNodeWith:) - getNode(for: name) is nil")
         guard !name.isEmpty else { return [] }
-        guard let aNode = getNode(with: name) else { return  [] }
+        guard let aParticle = getParticle(with: name) else { return  [] }
         
-        var edges: [ATSpring] = []
-        for element in self.state.outboundAdjacency[aNode.index] {
-            edges.append(element.value)
+        var springs: [ATSpring] = []
+        for element in self.state.outboundAdjacency[aParticle.index] {
+            springs.append(element.value)
         }
-        let newSet: Set<ATSpring> = Set.init(edges)
+        let newSet: Set<ATSpring> = Set.init(springs)
         return newSet
 
     }
 
-    public func getEdges(toNodeWith name: String) -> Set<ATSpring> {
+    public func getSprings(toParticleWith name: String) -> Set<ATSpring> {
         //assert(!name.isEmpty, "ATSystem.getEdges(toNodeWith:) - node is nil")
         //assert(getNode(with: name) != nil, "ATSystem.getEdges(toNodeWith:) - getNode(for: name) is nil")
         guard !name.isEmpty else { return [] }
-        guard let aNode = getNode(with: name) else { return [] }
+        guard let aParticle = getParticle(with: name) else { return [] }
 
-        var nodeEdges: Set<ATSpring> = []
-        for edge in self.state.edges {
-            if edge.target != nil,
-                edge.target! === aNode {
-                nodeEdges.insert(edge)
+        var particleSprings: Set<ATSpring> = []
+        for spring in self.state.springs {
+            if spring.target != nil,
+                spring.target! === aParticle {
+                particleSprings.insert(spring)
             }
         }
-        return nodeEdges;
+        return particleSprings;
     }
     
-    public func addTaxonomy(nodes: [ATParticle], edges: [ATSpring]) {
-        nodes.forEach({_ = addNode(with: $0.name!, and: $0.userData)  })
-        edges.forEach({ _ = addEdge($0) })
+    public func addTaxonomy(particles: [ATParticle], springs: [ATSpring]) {
+        particles.forEach({_ = addParticle(with: $0.name!, and: $0.userData)  })
+        springs.forEach({ _ = addSpring($0) })
     }
 /**
 Is the node with a set distance of a particle?

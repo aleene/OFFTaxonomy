@@ -52,7 +52,7 @@ public class ATBarnesHutTree {
     /// add a particle to the tree, starting at the current _root and working down
     public func insert(_ newParticle: ATParticle) {
         
-        var node = root
+        var bhNode = root
         var queue: [ATParticle] = []
         
         // Add particle to the end of the queue
@@ -64,17 +64,17 @@ public class ATBarnesHutTree {
             queue.remove(at: 0)
             
             let currentParticleMass = currentParticle.mass
-            guard let currentParticleQuadrant = node.quadrant(containing: currentParticle) else { continue }
-            switch node.quadrantObject[currentParticleQuadrant] {
+            guard let currentParticleQuadrant = bhNode.quadrant(containing: currentParticle) else { continue }
+            switch bhNode.quadrantObject[currentParticleQuadrant] {
                 
             case .tree(let quadrantTree):
                 // slot contains a branch node, keep iterating with the branch
                 // as our new root
                 
-                node.mass += currentParticleMass
+                bhNode.mass += currentParticleMass
                 if let position = currentParticle.position?.multiply(by: currentParticleMass) {
-                    node.position = node.position + position
-                    node = quadrantTree
+                    bhNode.position = bhNode.position + position
+                    bhNode = quadrantTree
                 }
                 // add the particle to the front of the queue
                 queue.insert(currentParticle, at: 0)
@@ -83,7 +83,7 @@ public class ATBarnesHutTree {
                 // slot contains a particle, create a new branch and recurse with
                 // both points in the queue now
                 
-                if node.bounds ~= CGRect.zero {
+                if bhNode.bounds ~= CGRect.zero {
                     print("ATBarnesHutTree:insert(_:) - Bounds width or height should not be zero?")
                 }
 
@@ -93,19 +93,19 @@ public class ATBarnesHutTree {
                 // replace the previously particle-occupied quad with a new internal branch node
                 let oldParticle = quadrantParticle
                 let newBranch = self.dequeueBranch()
-                node.quadrantObject[currentParticleQuadrant] = .tree(newBranch)
+                bhNode.quadrantObject[currentParticleQuadrant] = .tree(newBranch)
                 
-                let branch_size =  node.bounds.halved
-                var branch_origin = node.bounds.origin
+                let branch_size =  bhNode.bounds.halved
+                var branch_origin = bhNode.bounds.origin
                 
                 branch_origin.x += currentParticleQuadrant.isLeft ? branch_size.width : .zero
                 branch_origin.y += currentParticleQuadrant.isBottom ? branch_size.height : .zero
                 newBranch.bounds = CGRect(origin: branch_origin, size: branch_size)
 
-                node.mass = currentParticleMass
-                node.position = currentParticle.position?.multiply(by: currentParticleMass) ?? .zero
+                bhNode.mass = currentParticleMass
+                bhNode.position = currentParticle.position?.multiply(by: currentParticleMass) ?? .zero
 
-                node = newBranch
+                bhNode = newBranch
                 
                 if let oldPosition = oldParticle.position,
                     let validPosition = currentParticle.position,
@@ -137,14 +137,14 @@ public class ATBarnesHutTree {
 
             default:
                 // slot is empty, just drop this node in and update the mass/c.o.m.
-                node.mass += currentParticleMass
+                bhNode.mass += currentParticleMass
 
                 if let position = currentParticle.position?.multiply(by: currentParticleMass) {
-                    node.position = node.position + position
+                    bhNode.position = bhNode.position + position
                 } else {
-                    node.position = .zero
+                    bhNode.position = .zero
                 }
-                node.quadrantObject[currentParticleQuadrant] = .particle(currentParticle)
+                bhNode.quadrantObject[currentParticleQuadrant] = .particle(currentParticle)
             }
         }
 
@@ -160,10 +160,10 @@ public class ATBarnesHutTree {
         
         while queue.count != 0 {
             // dequeue
-            let node = queue[0]
+            let bhNode = queue[0]
             queue.remove(at: 0)
 
-            switch node {
+            switch bhNode {
             case .particle(let objectParticle):
                 if objectParticle == particle { break }
                 if let nodePosition = objectParticle.position {

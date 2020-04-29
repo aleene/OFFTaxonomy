@@ -89,13 +89,13 @@ class MainViewController: UIViewController {
                 let mapJson = try decoder.decode(Map.self, from:data)
                 if let nodes = mapJson.nodes {
                     for node in nodes {
-                        _ = _system.addNode(with: node.key, and: node.value)
+                        _ = _system.addParticle(with: node.key, and: node.value)
                     }
                 }
                 if let edges = mapJson.edges {
                     for edge in edges {
                         for country in edge.value {
-                            _ = _system.addEdge(fromNode: edge.key, toNode: country.key, with: [:])
+                            _ = _system.addSpring(fromParticle: edge.key, toParticle: country.key, with: [:])
                         }
                     }
                 }
@@ -142,7 +142,7 @@ class MainViewController: UIViewController {
         case .began:
             let menuController = UIMenuController.shared
             let position = longPressGestureRecognizer.location(in: validView)
-            _focusNode = _system.nearestNode(physics: self.physicsCoordinate(for: position),
+            _focusNode = _system.nearestParticle(physics: self.physicsCoordinate(for: position),
                 within: self.physicsCoordinate(for: 30.0)!)
             let focus = UIMenuItem(title: "Focus", action: #selector(focusHandler(for:)))
             let debug = UIMenuItem(title: "Debug", action: #selector(debugHandler(for:)))
@@ -179,7 +179,7 @@ class MainViewController: UIViewController {
         switch panGestureRecognizer.state {
         case .began:
             let position = panGestureRecognizer.location(in: view)
-            nearestNode = _system.nearestNode(physics: self.physicsCoordinate(for: position),
+            nearestNode = _system.nearestParticle(physics: self.physicsCoordinate(for: position),
                 within: self.physicsCoordinate(for: 30.0)!)
         case .changed:
             guard let nodePosition = nearestNode?.position else { break }
@@ -273,7 +273,7 @@ class MainViewController: UIViewController {
         self.addGestureRecognizers(to: self.arborView)
    
         // load the map data
-        _system.addTaxonomy(nodes: _taxonomy.read().0, edges: _taxonomy.read().1)
+        _system.addTaxonomy(particles: _taxonomy.read().0, springs: _taxonomy.read().1)
         //self.loadMapData()
         _system.start(unpause: true)
 
