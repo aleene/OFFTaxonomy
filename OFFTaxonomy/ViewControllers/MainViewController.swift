@@ -61,12 +61,15 @@ class MainViewController: UIViewController {
     private var _taxonomy = TaxonomyType.processes
     private var _focusNode: ATNode? {
         didSet {
-            self.arborView?.focusNode = _focusNode
+            if _focusNode == nil {
+                self.arborView?.focusParticleIndices = nil
+            }
         }
     }
-    private var _focusDistance = 3 {
+    private var _focusDistance = 2
+    private var _focusParticleIndices: Set<Int> = [] {
         didSet {
-            self.arborView?.focusDistance = _focusDistance
+            self.arborView?.focusParticleIndices = _focusParticleIndices
         }
     }
 
@@ -153,6 +156,7 @@ class MainViewController: UIViewController {
     }
 
     @objc func focusHandler(for menuController: UIMenuController) {
+        _focusParticleIndices = _system.determineFocusParticleIndices(around:_focusNode, within:_focusDistance)
         _system.start(unpause: true)
     }
 

@@ -60,8 +60,7 @@ final class ArborView: UIView {
     public var isDebugDrawing: Bool = false
     public var languageCode = "en"
     public var delegate: ArborViewProtocol?
-    public var focusNode: ATNode?
-    public var focusDistance = 2
+    public var focusParticleIndices: Set<Int>?
 
 // MARK: - public functions
             
@@ -105,10 +104,12 @@ final class ArborView: UIView {
         for spring in validSystem.physics.springs {
             // should the focus be applied?
             if _applyFocusDrawing {
-                if let shouldDrawSource = validSystem.isInFocus(spring.source as? ATParticle, focus: self.focusNode, within: focusDistance), shouldDrawSource,
-                    let shouldDrawTarget = validSystem.isInFocus(spring.target as? ATParticle, focus: self.focusNode, within: focusDistance), shouldDrawTarget {
+                if let validSourceParticleIndex = spring.source?.index,
+                let validTargetParticleIndex = spring.target?.index,
+                focusParticleIndices!.contains(validSourceParticleIndex),
+                focusParticleIndices!.contains(validTargetParticleIndex) {
                     drawSpring(spring, in: context)
-                }
+                } // otherwise nothing is drawn
             } else {
                 drawSpring(spring, in: context)
             }
@@ -121,10 +122,10 @@ final class ArborView: UIView {
         context.setLineWidth(Constant.Particle.LineWidth)
         for particle in validSystem.physics.particles {
             // should the focus be applied?
-            if _applyFocusDrawing {
-                if let shouldDraw = validSystem.isInFocus(particle, focus: self.focusNode, within: focusDistance), shouldDraw {
-                    drawText(for: particle, in: context)
-                }
+            if  _applyFocusDrawing {
+                if focusParticleIndices!.contains(particle.index) {
+                drawText(for: particle, in: context)
+                } // otherwise nothing is drawn
             } else {
                 drawText(for: particle, in: context)
             }
@@ -135,9 +136,8 @@ final class ArborView: UIView {
 // MARK: - private variables
     
     private var _applyFocusDrawing: Bool {
-        self.focusNode != nil
+        self.focusParticleIndices != nil
     }
-            
 
 // MARK: - private drawing functions
         

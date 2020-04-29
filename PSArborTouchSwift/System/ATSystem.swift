@@ -468,55 +468,46 @@ Is the node with a set distance of a particle?
      - focus: the focus node
      - distance: the focus distance (steps), 0 is the particle itself.
 */
-    public func isInFocus(_ particle: ATParticle?, focus: ATNode?, within distance: Int) -> Bool? {
-        guard let validFocusIndex = focus?.index else { return nil }
-        guard let validParticleIndex = particle?.index else { return nil }
-        guard distance >= 0 else { return nil }
-        
-        if validParticleIndex == validFocusIndex { return true }
-        if checkOutboundAdjacencies(for: validParticleIndex, and: validFocusIndex, within: distance - 1) {
-            return true
-        }
-        if checkInboundAdjacencies(for: validParticleIndex, and: validFocusIndex, within: distance - 1) {
-            return true
-        }
-        return false
+    public func determineFocusParticleIndices(around focus: ATNode?, within distance: Int) -> Set<Int> {
+        guard let validFocusIndex = focus?.index else { return [] }
+        let newDistance = abs(distance)
+        var indices: Set<Int> = [validFocusIndex]
+        indices = indices.union(checkOutboundAdjacencies(for: validFocusIndex, within: newDistance - 1))
+        indices = indices.union(checkInboundAdjacencies(for: validFocusIndex, within: newDistance - 1))
+        return indices
     }
     
     // check all the targets around a node
-    private func checkOutboundAdjacencies(for checkIndex: Int, and focusIndex: Int, within distance: Int) -> Bool {
+    private func checkOutboundAdjacencies(for focusIndex: Int, within distance: Int) -> Set<Int> {
         // Is there more to check?
-        if distance < 0 { return false }
-        guard let adjacencies = self.state.getOutboundAdjacency(for: focusIndex) else { return false }
+        if distance < 0 { return [] }
+        var indices: Set<Int> = []
+        guard let outBoundAdjacencies = self.state.getOutboundAdjacency(for: focusIndex) else { return [] }
         // The adjacency defines the ATEdge's connected to the focus particle
-        for adjacency in adjacencies {
-            guard let targetIndex = adjacency.value.target?.index else { continue }
-            if targetIndex == checkIndex {
-                return true
-            }
-            if checkOutboundAdjacencies(for: checkIndex, and: targetIndex, within: distance - 1) {
-                return true
+        for adjacency in outBoundAdjacencies {
+            if let targetIndex = adjacency.value.target?.index {
+                indices.insert(targetIndex)
+                let newIndices = checkOutboundAdjacencies(for: targetIndex, within: distance - 1)
+                indices = indices.union(newIndices)
             }
         }
-        return false
+        return indices
     }
-    // check all the targets around a node
-    private func checkInboundAdjacencies(for checkIndex: Int, and focusIndex: Int, within distance: Int) -> Bool {
+    // check all the sources around a node
+    private func checkInboundAdjacencies(for focusIndex: Int, within distance: Int) -> Set<Int> {
         // Is there more to check?
-        if distance < 0 { return false }
-        guard let inboundAdjacencies = self.state.getInboundAdjacency(for: focusIndex) else { return false }
+        if distance < 0 { return [] }
+        var indices: Set<Int> = []
+        guard let inboundAdjacencies = self.state.getInboundAdjacency(for: focusIndex) else { return [] }
         // The adjacency defines the ATEdge's connected to the focus particle
         for adjacency in inboundAdjacencies {
-            guard let sourceIndex = adjacency.value.source?.index else { continue }
-            if sourceIndex == checkIndex {
-                return true
-            }
-            if checkInboundAdjacencies(for: checkIndex, and: sourceIndex, within: distance - 1) {
-                return true
+            if let sourceIndex = adjacency.value.source?.index {
+                indices.insert(sourceIndex)
+                let newIndices = checkInboundAdjacencies(for: sourceIndex, within: distance - 1)
+                indices = indices.union(newIndices)
             }
         }
-
-        return false
+        return indices
     }
 
 }
