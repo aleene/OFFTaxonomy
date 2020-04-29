@@ -25,7 +25,7 @@ enum TaxonomyType {
         }
     }
     
-    public func read() -> ([ATNode], [ATEdge]) {
+    public func read() -> ([ATParticle], [ATSpring]) {
         
         let offTaxonomy = BHTaxonomy()
         
@@ -134,7 +134,7 @@ enum TaxonomyType {
                 print("Error reading file")
             }
         } // end if
-        // create ATNodes
+        // create ATParticle's
         let nodes = Array(offTaxonomy.createNodes())
         // create edges from the off file
         let edges = Array(offTaxonomy.createEdges())

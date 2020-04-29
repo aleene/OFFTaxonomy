@@ -59,7 +59,7 @@ class MainViewController: UIViewController {
     private var _scale = Constant.ViewScaleFactor
     private var _offset = Constant.ViewCenter
     private var _taxonomy = TaxonomyType.processes
-    private var _focusNode: ATNode? {
+    private var _focusNode: ATParticle? {
         didSet {
             if _focusNode == nil {
                 self.arborView?.focusParticleIndices = nil
@@ -170,7 +170,7 @@ class MainViewController: UIViewController {
         _system.start(unpause: true)
     }
 
-    private var nearestNode: ATNode?
+    private var nearestNode: ATParticle?
 
     /// Allows to pickup a node and move it.
     @objc func oneFingerPan(_ panGestureRecognizer: UIPanGestureRecognizer) {

@@ -12,11 +12,11 @@ public class BHTaxonomy {
     
     var sections: [Section] = []
     
-    public func createNodes() -> Set <ATNode> {
-        var nodes = Set <ATNode>()
+    public func createNodes() -> Set <ATParticle> {
+        var nodes = Set <ATParticle>()
         // loop over all off entries
         for index in 0 ..< sections.count {
-            let node = ATNode(name: sections[index].key, userData: sections[index].leaves)
+            let node = ATParticle(name: sections[index].key, userData: sections[index].leaves)
             //let node = Node(key: sections[index].key)
             //node.leaves = sections[index].leaves
             nodes.insert(node)
@@ -30,9 +30,9 @@ public class BHTaxonomy {
     // and ONLY the links to the parentVerteces
     // Thus a vertex is a copy of the off entries, but then as a set
     
-    func createEdges() -> Set <ATEdge> {
+    func createEdges() -> Set <ATSpring> {
         
-        var edges = Set<ATEdge>()
+        var edges = Set<ATSpring>()
 
         // first read all off entries to have a set of nodes
         // this step MUST be done before finding any relations
@@ -53,7 +53,7 @@ public class BHTaxonomy {
                 for parentKey in baseVertexParents {
                     // locate the node equivalent of the parent off entry
                     if let parentNode = locateNode(searchKey: parentKey, inSet: nodes) {
-                        edges.insert(ATEdge(source:parentNode, target:node, userData:[:]))
+                        edges.insert(ATSpring(source:parentNode, target:node, userData:[:]))
                     }
                 }
             }
@@ -62,7 +62,7 @@ public class BHTaxonomy {
     }
 
     
-    func locateNode(searchKey: String, inSet: Set<ATNode>) -> ATNode? {
+    func locateNode(searchKey: String, inSet: Set<ATParticle>) -> ATParticle? {
         for node in inSet {
             if node.name == searchKey {
                 return node
