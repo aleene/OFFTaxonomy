@@ -94,8 +94,8 @@
             filePath = "PSArborTouchSwift/System/ATSystem.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "358"
-            endingLineNumber = "358"
+            startingLineNumber = "351"
+            endingLineNumber = "351"
             landmarkName = "addSpring(fromParticle:toParticle:with:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -142,8 +142,8 @@
             filePath = "PSArborTouchSwift/System/ATSystem.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "475"
-            endingLineNumber = "475"
+            startingLineNumber = "457"
+            endingLineNumber = "457"
             landmarkName = "determineFocusParticleIndices(around:within:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -158,8 +158,8 @@
             filePath = "PSArborTouchSwift/System/ATSystem.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "486"
-            endingLineNumber = "486"
+            startingLineNumber = "468"
+            endingLineNumber = "468"
             landmarkName = "checkOutboundAdjacencies(for:within:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -174,8 +174,8 @@
             filePath = "PSArborTouchSwift/System/ATSystem.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "492"
-            endingLineNumber = "492"
+            startingLineNumber = "474"
+            endingLineNumber = "474"
             landmarkName = "checkOutboundAdjacencies(for:within:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -190,8 +190,8 @@
             filePath = "PSArborTouchSwift/System/ATSystem.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "502"
-            endingLineNumber = "502"
+            startingLineNumber = "484"
+            endingLineNumber = "484"
             landmarkName = "checkInboundAdjacencies(for:within:)"
             landmarkType = "7">
          </BreakpointContent>

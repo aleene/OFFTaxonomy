@@ -18,7 +18,7 @@ public class ATKernel {
 
     public var delegate: ATDebugRendering?
     
-// MARK: - - Rendering (override in subclass)
+// MARK: - Rendering (override in subclass)
 
     public func updateViewPort() -> Bool {
         return false

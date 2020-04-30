@@ -142,8 +142,8 @@ class MainViewController: UIViewController {
         case .began:
             let menuController = UIMenuController.shared
             let position = longPressGestureRecognizer.location(in: validView)
-            _focusNode = _system.nearestParticle(physics: self.physicsCoordinate(for: position),
-                within: self.physicsCoordinate(for: 30.0)!)
+            _focusNode = _system.nearestParticle(physics: self.convertToPhysics(view: position),
+                within: self.convertToPhysics(view: 30.0)!)
             let focus = UIMenuItem(title: "Focus", action: #selector(focusHandler(for:)))
             let debug = UIMenuItem(title: "Debug", action: #selector(debugHandler(for:)))
             let reset = UIMenuItem(title: "Reset", action: #selector(resetHandler(for:)))
@@ -179,8 +179,8 @@ class MainViewController: UIViewController {
         switch panGestureRecognizer.state {
         case .began:
             let position = panGestureRecognizer.location(in: view)
-            nearestNode = _system.nearestParticle(physics: self.physicsCoordinate(for: position),
-                within: self.physicsCoordinate(for: 30.0)!)
+            nearestNode = _system.nearestParticle(physics: self.convertToPhysics(view: position),
+                within: self.convertToPhysics(view: 30.0)!)
         case .changed:
             guard let nodePosition = nearestNode?.position else { break }
             nearestNode?.position = nodePosition + (panGestureRecognizer.translation(in: view) / _scale)!
@@ -329,50 +329,50 @@ extension MainViewController: UIGestureRecognizerDelegate {
 
 extension MainViewController: ArborViewProtocol {
     
-    func physicsCoordinate(for screenDistance: CGFloat) -> CGFloat? {
-        return screenDistance / _scale
+    public func convertToPhysics(view distance: CGFloat) -> CGFloat? {
+        return distance / _scale
     }
     
-    func physicsCoordinate(for screenSize: CGSize) -> CGSize? {
-        return screenSize / _scale
+    public func convertToPhysics(view size: CGSize) -> CGSize? {
+        return size / _scale
     }
     
-    func physicsCoordinate(for screenRect: CGRect) -> CGRect? {
-        guard self.physicsCoordinate(for: screenRect.size) != .zero else { return nil }
-        return CGRect(origin: self.physicsCoordinate(for: screenRect.origin),
-                      size: self.physicsCoordinate(for: screenRect.size)!)
+    public func convertToPhysics(view rect: CGRect) -> CGRect? {
+        guard self.convertToPhysics(view: rect.size) != .zero else { return nil }
+        return CGRect(origin: self.convertToPhysics(view: rect.origin),
+                      size: self.convertToPhysics(view: rect.size)!)
     }
     
     
-    public func physicsCoordinate(for screenPoint: CGPoint) -> CGPoint {
+    public func convertToPhysics(view point: CGPoint) -> CGPoint {
         if _scale == .zero {
             return .zero
         }
         let midPoint = self.arborView.bounds.size.halved.asCGPoint
-        let translate = screenPoint - midPoint - _offset
+        let translate = point - midPoint - _offset
         let newPoint = translate.divide(by: _scale)!
         return newPoint
     }
 
     /// Convert a physics distance to a screen distance
-    public func screenCoordinate(for physicsDistance: CGFloat) -> CGFloat {
-        return physicsDistance * _scale
+    public func convertToView(physics distance: CGFloat) -> CGFloat {
+        return distance * _scale
     }
 
     /// Convert a physics size to a screen size
-    public func screenCoordinate(for physicsSize: CGSize) -> CGSize {
-        return physicsSize * _scale
+    public func convertToView(physics size: CGSize) -> CGSize {
+        return size * _scale
     }
 
     /// Convert a physics point to a screen point
-    public func screenCoordinate(for physicsPoint: CGPoint) -> CGPoint {
+    public func convertToView(physics point: CGPoint) -> CGPoint {
         let mid = self.arborView.bounds.size.halved.asCGPoint
-        return physicsPoint * _scale + mid + _offset
+        return point * _scale + mid + _offset
     }
 
-    public func screenCoordinate(for physicsRect: CGRect) -> CGRect {
-        return CGRect(origin: screenCoordinate(for: physicsRect.origin),
-                      size: screenCoordinate(for: physicsRect.size))
+    public func convertToView(physics rect: CGRect) -> CGRect {
+        return CGRect(origin: convertToView(physics: rect.origin),
+                      size: convertToView(physics: rect.size))
     }
 
 }

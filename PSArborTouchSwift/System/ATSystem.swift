@@ -175,8 +175,6 @@ public class ATSystem: ATKernel {
     }
 
     public func nearestParticle(to point: CGPoint, within screenRadius: CGFloat) -> ATParticle? {
-        //assert(radius > 0.0, "ATSystem.nearestNode(toPoint:withinRadius:) - radius less then zero")
-        // or use nearestNodeToPoint instead.
         guard screenRadius > 0.0 else { return nil }
         
         let closestParticle = nearestParticle(to: point)
@@ -215,8 +213,6 @@ public class ATSystem: ATKernel {
             // set to 0 the bounding box will remain stationary after being initially set
             
             // Return NO if we dont have a screen size.
-            //assert(self.viewBounds.size.width > 0, "ATSystem.updateViewPort() - viewBounds.width is zero")
-            //assert(self.viewBounds.size.height > 0, "ATSystem.updateViewPort() - viewBounds.height is zero")
             guard self.viewBounds.size.width > 0
                 && self.viewBounds.size.height > 0 else { return false }
             // Ensure the view bounds rect has a minimum size
@@ -323,9 +319,6 @@ Add an ATParticle with name and data.
     }
     
     public func addSpring(fromParticle source: String, toParticle target: String, with data: [String:Any]) -> ATSpring? {
-        //assert(!source.isEmpty, "ATSystem.addEdge(fromNode:toNode:with:) - source is empty")
-        //assert(!target.isEmpty, "ATSystem.addEdge(fromNodeSource:toNodeTarget:withData:) - target is empty")
-
         // source and target should not be nil, data can be nil
         guard !source.isEmpty && !target.isEmpty else { return nil }
         
@@ -394,12 +387,9 @@ Add an ATParticle with name and data.
     }
     
     public override func remove(spring: ATSpring?) {
-        //assert(edge != nil, "ATSystem.remove(edge:) - edge is nil")
-        //assert(validEdge.source?.index != nil, "ATSystem.addEdge(fromNode:toNode:with:) - validEdge.source?.index is nil")
         guard let validSpring = spring else { return }
         self.state.removeSpringFromSprings(for: validSpring.index)
         guard let sourceIndex = validSpring.source?.index else { return }
-        //assert(validEdge.target?.index != nil, "ATSystem.addEdge(fromNode:toNode:with:) - validEdge.target?.index is nil")
         guard let targetIndex = validSpring.target?.index else { return }
         
         var from = self.state.getOutboundAdjacency(for: sourceIndex)
@@ -409,11 +399,7 @@ Add an ATParticle with name and data.
         remove(spring: validSpring)
     }
 
-    public func getSpring(fromParticle source: String, toParticle target: String) -> Set<ATSpring> {
-        //assert(!source.isEmpty, "ATSystem.getEdges(fromNodeSource:toNodeTarget:) - source is empty")
-        //assert(!target.isEmpty, "ATSystem.getEdges(fromNodeSource:toNodeTarget:) - target is empty")
-        //assert(self.state.getAdjacency(for: sourceNode.index) != nil, "ATSystem.addEdge(fromNode:toNode:with:) - self.state.getAdjacency(for: sourceNode.index) is nil")
-        //assert(from[targetNode.index] as? ATSpring != nil, "ATSystem.addEdge(fromNode:toNode:with:) - from[targetNode.index] as? ATSpring is nil")
+    public func getSprings(fromParticle source: String, toParticle target: String) -> Set<ATSpring> {
         guard let sourceParticle = getParticle(with: source) else { return [] }
         guard let targetParticle = getParticle(with: target) else { return [] }
         guard let from = self.state.getOutboundAdjacency(for: sourceParticle.index) else { return [] }
@@ -424,8 +410,6 @@ Add an ATParticle with name and data.
     }
 
     public func getSprings(fromParticleWith name: String) -> Set<ATSpring> {
-        //assert(!name.isEmpty, "ATSystem.getEdges(fromNodeWith:) - node is nil")
-        //assert(getNode(with: name) != nil, "ATSystem.getEdges(fromNodeWith:) - getNode(for: name) is nil")
         guard !name.isEmpty else { return [] }
         guard let aParticle = getParticle(with: name) else { return  [] }
         
@@ -439,8 +423,6 @@ Add an ATParticle with name and data.
     }
 
     public func getSprings(toParticleWith name: String) -> Set<ATSpring> {
-        //assert(!name.isEmpty, "ATSystem.getEdges(toNodeWith:) - node is nil")
-        //assert(getNode(with: name) != nil, "ATSystem.getEdges(toNodeWith:) - getNode(for: name) is nil")
         guard !name.isEmpty else { return [] }
         guard let aParticle = getParticle(with: name) else { return [] }
 

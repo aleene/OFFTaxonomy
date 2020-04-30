@@ -11,16 +11,16 @@ import CoreGraphics
 
 protocol ArborViewProtocol {
     // Convert viewPort coordinates into physics coordinates
-    func physicsCoordinate(for screenPoint: CGPoint) -> CGPoint
-    func physicsCoordinate(for screenDistance: CGFloat) -> CGFloat?
-    func physicsCoordinate(for screenSize: CGSize) -> CGSize?
-    func physicsCoordinate(for screenRect: CGRect) -> CGRect?
+    func convertToPhysics(view point: CGPoint) -> CGPoint
+    func convertToPhysics(view distance: CGFloat) -> CGFloat?
+    func convertToPhysics(view size: CGSize) -> CGSize?
+    func convertToPhysics(view rect: CGRect) -> CGRect?
     
     // Convert physics coordinates into viewPort coordinates
-    func screenCoordinate(for physicsPoint: CGPoint) -> CGPoint
-    func screenCoordinate(for physicsDistance: CGFloat) -> CGFloat
-    func screenCoordinate(for physicsSize: CGSize) -> CGSize
-    func screenCoordinate(for physicsRect: CGRect) -> CGRect
+    func convertToView(physics point: CGPoint) -> CGPoint
+    func convertToView(physics distance: CGFloat) -> CGFloat
+    func convertToView(physics size: CGSize) -> CGSize
+    func convertToView(physics rect: CGRect) -> CGRect
 }
 
 final class ArborView: UIView {
@@ -88,12 +88,12 @@ final class ArborView: UIView {
             // green line
             context.setStrokeColor(Constant.Tree.TweensTarget.LineColor)
             context.setLineWidth(Constant.Tree.LineWidth)
-            drawOutline(with: context, and: validDelegate.screenCoordinate(for: validSystem.tweenBoundsTarget))
+            drawOutline(with: context, and: validDelegate.convertToView(physics: validSystem.tweenBoundsTarget))
                     
             // blue line
             context.setStrokeColor(Constant.Tree.TweensCurrent.LineColor)
             context.setLineWidth(Constant.Tree.LineWidth)
-            drawOutline(with: context, and: validDelegate.screenCoordinate(for: validSystem.tweenBoundsCurrent))
+            drawOutline(with: context, and: validDelegate.convertToView(physics: validSystem.tweenBoundsCurrent))
         }
                     
         // Drawing code for springs
@@ -156,7 +156,7 @@ final class ArborView: UIView {
         
     private func recursiveDrawBranches(branch: ATBarnesHutBranch?, in context: CGContext) {
         guard let validBranch = branch else { return }
-        guard let validRect = self.delegate?.screenCoordinate(for:  validBranch.bounds) else { return }
+        guard let validRect = self.delegate?.convertToView(physics: validBranch.bounds) else { return }
         drawOutline(with: context, and: validRect)
 
         validBranch.allQuadrantBranches.forEach({ self.recursiveDrawBranches(branch: $0, in:context) })
@@ -165,8 +165,8 @@ final class ArborView: UIView {
     private func drawSpring(_ spring: ATSpring, in context: CGContext) {
         guard let position1 = spring.point1?.position else { return }
         guard let position2 = spring.point2?.position else { return }
-        guard let source = self.delegate?.screenCoordinate(for: position1) else { return }
-        guard let target = self.delegate?.screenCoordinate(for: position2) else { return }
+        guard let source = self.delegate?.convertToView(physics: position1) else { return }
+        guard let target = self.delegate?.convertToView(physics: position2) else { return }
         //drawLineWith(context: context, from: pointToScreen(position1), to: pointToScreen(position2))
         let arrow = UIBezierPath.arrow(from: source, to: target,
                            tailWidth: 2.0,
@@ -181,7 +181,7 @@ final class ArborView: UIView {
         // Translate the particle position to screen coordinates
         guard let position = particle.position else { return }
             
-        guard let pOrigin = self.delegate?.screenCoordinate(for: position) else { return }
+        guard let pOrigin = self.delegate?.convertToView(physics: position) else { return }
         // Create an empty rect at particle center
         var strokeRect = CGRect(origin: pOrigin, size: .zero)
         // Expand the rect around the center
@@ -202,7 +202,7 @@ final class ArborView: UIView {
             validName = valid
         }
 
-        guard let particleOrigin = self.delegate?.screenCoordinate(for: validPosition) else { return }
+        guard let particleOrigin = self.delegate?.convertToView(physics: validPosition) else { return }
         // Create an empty rect at particle center
         var fillRect = CGRect(origin: particleOrigin, size: .zero)
         // Expand the rect around the center
