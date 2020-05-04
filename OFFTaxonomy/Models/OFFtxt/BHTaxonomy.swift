@@ -19,7 +19,13 @@ public class BHTaxonomy {
             let node = ATParticle(name: sections[index].key, userData: sections[index].leaves)
             //let node = Node(key: sections[index].key)
             //node.leaves = sections[index].leaves
-            nodes.insert(node)
+            // Does the node with this name already exist?
+            let existingNodes = nodes.filter({ $0.name! == node.name! })
+            if existingNodes.isEmpty {
+                nodes.insert(node)
+            } else {
+                print("Trying to insert a node whose nam already exists")
+            }
         }
         return nodes
     }
@@ -53,7 +59,15 @@ public class BHTaxonomy {
                 for parentKey in baseVertexParents {
                     // locate the node equivalent of the parent off entry
                     if let parentNode = locateNode(searchKey: parentKey, inSet: nodes) {
-                        edges.insert(ATSpring(source:parentNode, target:node, userData:[:]))
+                        let newSpring = ATSpring(source:parentNode, target:node, userData:[:])
+                        let existingSprings = edges.filter({ ($0.source!.name! == node.name! && $0.target!.name! == parentNode.name! )
+                            || ($0.source!.name! == parentNode.name! && $0.target!.name! == node.name! )
+                        })
+                        if existingSprings.isEmpty {
+                            edges.insert(newSpring)
+                        } else {
+                            print("Issue")
+                        }
                     }
                 }
             }

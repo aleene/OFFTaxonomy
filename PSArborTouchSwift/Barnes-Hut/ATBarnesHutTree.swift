@@ -98,7 +98,7 @@ public class ATBarnesHutTree {
                 let branch_size =  bhNode.bounds.halved
                 var branch_origin = bhNode.bounds.origin
                 
-                branch_origin.x += currentParticleQuadrant.isLeft ? branch_size.width : .zero
+                branch_origin.x += currentParticleQuadrant.isRight ? branch_size.width : .zero
                 branch_origin.y += currentParticleQuadrant.isBottom ? branch_size.height : .zero
                 newBranch.bounds = CGRect(origin: branch_origin, size: branch_size)
 

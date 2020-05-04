@@ -57,7 +57,20 @@ The selected language will used to set the primary (main) language of the produc
         childCoordinators.append(coordinator)
         coordinator.show()
     }
-    
+
+/**
+Shows a modal viewController with a tableView that allows the user to select ONE taxonomy.
+
+The selected taxonomy will determine what is shown in the interface.
+*/
+    func selectTaxonomy() {
+        guard let taxonomy = _coordinatorViewController?.currentTaxonomy else { return }
+        let coordinator = SelectTaxonomyCoordinator.init(with:self,
+                                                         current: taxonomy)
+        childCoordinators.append(coordinator)
+        coordinator.show()
+    }
+
     /// The viewController informs its owner that it has disappeared
     func viewControllerDidDisappear(_ sender: UIViewController) {
         if self.childCoordinators.isEmpty {
@@ -100,3 +113,14 @@ extension MainCoordinator: SelectPairCoordinatorProtocol {
     }
     
 }
+
+extension MainCoordinator: SelectTaxonomyCoordinatorProtocol {
+
+    func selectTaxonomyViewControllerDidCancel(_ sender:SelectTaxonomyViewController) { }
+
+    func selectTaxonomyViewController(_ sender:SelectTaxonomyViewController, selected taxonomy: TaxonomyType) {
+        _coordinatorViewController?.currentTaxonomy = taxonomy
+        sender.dismiss(animated: true, completion: nil)
+    }
+}
+

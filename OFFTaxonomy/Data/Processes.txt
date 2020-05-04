@@ -8,18 +8,22 @@ fr:cru, crue, crus, crues
 en:fresh
 de:frische
 es:fresco, fresca, frescos, frescas
+fr:fraiche
 it:fresco, fresca, fresche, freschi
 nl:verse
 pt:fresco
+occurences:977
 
 en:natural
 da:naturlig
 de:natürlich, natürliches, naturlich, naturliches, naturbelassen
 es:natural, natural de, naturales
+fr:naturel, naturelle, naturels, naturels
 it:naturale
 nl:natuurlijk, natuurlijke
 pl:naturalne
 sv:naturlig, naturliga, naturligt
+occurences:5848
 
 en:processed
 <en:unprocessed
@@ -41,6 +45,7 @@ de:geschnitten
 fr:coupé, coupée, coupés, coupées, émincé, émincée, émincés, émincées, émincé de, en éclats, éclats de, éclats d', en copeaux, copeaux de, copeaux d'
 it:tagliato, tagliata, tagliati, tagliate
 nl:gesneden
+occurences:325
 
 <en:cut
 en:thick cut
@@ -81,18 +86,21 @@ en:sliced
 de:gehobelt, gehobelte, in scheiben geschnitten
 fr:tranché, tranchée, tranchés, tranchées, en lamelles, en tranches, en lanières, en rondelles, tranches de, lamelles de, lanières de, rondelle de, rondelles de, tranches d', lamelles d', lanières d', rondelles d'
 nl:schijfjes
+occurences:403
 
 <en:sized
 en:chopped
 de:gehackt, gehackte, gehackter, gehacktes
 fr:hâché, hâchée, hâchés, hâchées
 nl:gehakt
+occurences:500
 
 <en:sized
 en:diced
 de:würfel, gewürfelt, gewürfelte, in würfel geschnitten, in würfel
 fr:en dés, en cubes, en julienne, cubes de, dés de, cubes d', dès d'
 nl:blokjes, in blokjes, blokje
+occurences:375
 
 <en:sized
 de:in Sticks geschnitten
@@ -106,6 +114,9 @@ en:grated
 de:gerieben, geriebener, geriebene
 fr:râpé, râpée, râpés, râpées
 nl:geraspt, geraspte
+
+<en:grated
+de:raspel, raspeln
 
 <en:sized
 en:granulated
@@ -147,6 +158,11 @@ en:halved, halves
 de:halbiert, halbierte, halbe
 
 <en:sized
+en:peeling
+fr:brisures
+nl:schilfers
+
+<en:sized
 en:pieces
 af:stukkies
 de:stücke, stücken, stückchen, gestückelt
@@ -160,6 +176,7 @@ es:en polvo, polvo de
 fr:en poudre, poudre de, poudre d'
 it:in polvere, polvere di, polvere d'
 nl:poeder, poeders, in poedervorm
+
 
 #######################################################################
 #
@@ -186,6 +203,26 @@ es:sin piel
 fr:pelé, pelée, pelés, pelées
 nl:gepeld, gepelde
 # en:wiktionary:peeled
+
+<en:peeled
+en:peel, peels, peel of
+de:schale, schalen
+el:φλούδα
+es:piel de, corteza de
+fi:kuoret
+fr:écorce de, écorces de, écorces d'
+it:scorza di, scorze di
+nl:schil, schillen
+pt:raspas
+ro:piele de
+sv:skal
+
+<en:peel
+it:scorzette
+nl:schilletjes
+
+<en:peel
+en:zest
 
 <en:split
 en:entspeltzt
@@ -219,13 +256,27 @@ es:tamizado, tamizados
 fr:tamisé, tamisée, tamisés, tamisées, finement tamisé
 nl:gezeefd, gezeefde
 
-
 <en:split
 de:extrahiert, extrahierte, extrahierter, extrahiertes
 sv:extraherad, extraherade
 
 <de:extrahiert
 de:kaltextrahiert, kaltextrahierter
+
+<en:split
+en:defatted
+de:entfettet, entfettete, entfettetes
+es:desengrasado, desengrasada
+fr:dégraissé, dégraissée, dégraissés, dégraissées
+it:sgrassato, sgrassata
+nl:ontvet, ontvette
+pt:desengordurado, desengordurada
+ro:degresat
+
+<en:defatted
+en:partially defatted
+de:teilentfettet, teilentfettetes
+ro:demidegresat
 
 
 #######################################################################
@@ -244,7 +295,6 @@ fr:concentré, concentrée, concentrés, concentrées, concentré de
 
 <en:concentrated
 de:einfach konzentriert
-
 
 <en:concentrated
 de:zweifach konzentriert, 2 fach konzentriert, doppelt konzentriertes, zweifach konzentriertes, 2-fach konzentriert

@@ -142,10 +142,10 @@
             filePath = "PSArborTouchSwift/System/ATSystem.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "457"
-            endingLineNumber = "457"
-            landmarkName = "determineFocusParticleIndices(around:within:)"
-            landmarkType = "7">
+            startingLineNumber = "454"
+            endingLineNumber = "454"
+            landmarkName = "ATSystem"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -158,9 +158,9 @@
             filePath = "PSArborTouchSwift/System/ATSystem.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "468"
-            endingLineNumber = "468"
-            landmarkName = "checkOutboundAdjacencies(for:within:)"
+            startingLineNumber = "465"
+            endingLineNumber = "465"
+            landmarkName = "determineFocusParticleIndices(around:within:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
@@ -174,8 +174,8 @@
             filePath = "PSArborTouchSwift/System/ATSystem.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "474"
-            endingLineNumber = "474"
+            startingLineNumber = "471"
+            endingLineNumber = "471"
             landmarkName = "checkOutboundAdjacencies(for:within:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -190,10 +190,154 @@
             filePath = "PSArborTouchSwift/System/ATSystem.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "484"
-            endingLineNumber = "484"
-            landmarkName = "checkInboundAdjacencies(for:within:)"
+            startingLineNumber = "481"
+            endingLineNumber = "481"
+            landmarkName = "checkOutboundAdjacencies(for:within:)"
             landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "1471A7A9-8DC8-4F03-8F96-4AB6C83A5875"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OFFTaxonomy/Views/ArborView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "197"
+            endingLineNumber = "197"
+            landmarkName = "drawText(for:in:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "EB1203FC-527A-438F-A79B-BA672F757866"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OFFTaxonomy/Views/ArborView.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "208"
+            endingLineNumber = "208"
+            landmarkName = "drawText(for:in:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "3269AA28-87FC-4F36-9079-40D73EA14DEE"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OFFTaxonomy/ViewControllers/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "213"
+            endingLineNumber = "213"
+            landmarkName = "oneFingerPan(_:)"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "5B84C1C8-48BF-4EE1-B677-433C823D73C4"
+            shouldBeEnabled = "No"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OFFTaxonomy/Models/OFFtxt/TaxonomyType.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "read()"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "5B84C1C8-48BF-4EE1-B677-433C823D73C4 - 84853878ed37b14c"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "OFFTaxonomy.TaxonomyType.read() -&gt; (Swift.Array&lt;OFFTaxonomy.ATParticle&gt;, Swift.Array&lt;OFFTaxonomy.ATSpring&gt;)"
+                  moduleName = "OFFTaxonomy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/arnaud/Programming/OFFTaxonomy/OFFTaxonomy/Models/OFFtxt/TaxonomyType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "4916">
+               </Location>
+               <Location
+                  uuid = "5B84C1C8-48BF-4EE1-B677-433C823D73C4 - 623ef393e6e069a3"
+                  shouldBeEnabled = "No"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #3 (Swift.Character) -&gt; Swift.Bool in OFFTaxonomy.TaxonomyType.read() -&gt; (Swift.Array&lt;OFFTaxonomy.ATParticle&gt;, Swift.Array&lt;OFFTaxonomy.ATSpring&gt;)"
+                  moduleName = "OFFTaxonomy"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/arnaud/Programming/OFFTaxonomy/OFFTaxonomy/Models/OFFtxt/TaxonomyType.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "104"
+                  endingLineNumber = "104"
+                  offsetFromSymbolStart = "32">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "0D63FAA1-0B6C-4142-B29A-77F3493A10AD"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OFFTaxonomy/Models/OFFtxt/BHTaxonomy.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "27"
+            endingLineNumber = "27"
+            landmarkName = "createNodes()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "98A57688-2F70-4E90-B0CF-06420AA72DFB"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OFFTaxonomy/Coordinators/MainCoordinator.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "47"
+            endingLineNumber = "47"
+            landmarkName = "selectLanguage()"
+            landmarkType = "7">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "17CB035D-A16B-4560-BB4D-6701C696BA77"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "OFFTaxonomy/ViewControllers/MainViewController.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "70"
+            endingLineNumber = "70"
+            landmarkName = "currentTaxonomy"
+            landmarkType = "24">
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

@@ -1,15 +1,14 @@
 //
-//  SelectPairCoordinator.swift
-//  FoodViewer
+//  File.swift
+//  OFFTaxonomy
 //
-//  Created by arnaud on 19/02/2020.
+//  Created by arnaud on 04/05/2020.
 //  Copyright © 2020 Hovering Above. All rights reserved.
 //
 
 import UIKit
-
 /**
-This class coordinates the viewControllers initiated by `SelectPairCoordinator` and their corresponding interaction flow.
+This class coordinates the viewControllers initiated by `SelectTaxonomyCoordinator` and their corresponding interaction flow.
  
  The interaction flow between the parent coordinator and this coordinator is handled by the parent coordinator through a extension. This interaction flow is defined as a protocol in the viewController coordinated by THIS class.
  
@@ -31,21 +30,14 @@ Functions:
  
  - parameters:
     - with: the parent coordinator;
-    - original: the pairs that have already been selected;
-    - allPairs: the pairs from which one can select;
-    - multipleSelectionIsAllowed: the user can select multiple pairs;
-    - showOriginalsAsSelected: the already selected pairs will be shown as selected;
-    - tag: an identifier
-    - assignedHeader: the header for the section with assigned pairs;
-    - unAssignedHeader: the header for the section with UNassigned pairs;
-    - undefinedText: the text to show when a pair is undefined;
+    - current: the currently selected taxonomy;
 
  - `show()` - show the managed viewController from the parent viewController view stack. The viewController is push on a navigation controller.
 
  Managed viewControllers:
  - none
 */
-final class SelectPairCoordinator: Coordinator {
+final class SelectTaxonomyCoordinator: Coordinator {
         
     weak var parentCoordinator: Coordinator? = nil
     /// The child coordinators currently managed by this coordinator. If the child viewcontroller dispaaears this coordinator is no longer needed.
@@ -53,39 +45,25 @@ final class SelectPairCoordinator: Coordinator {
 
     var viewController: UIViewController? = nil
         
-    var coordinatorViewController: SelectPairViewController? {
-        self.viewController as? SelectPairViewController
+    var coordinatorViewController: SelectTaxonomyViewController? {
+        self.viewController as? SelectTaxonomyViewController
     }
 
     init(with coordinator: Coordinator?) {
         self.parentCoordinator = coordinator
-        self.viewController = SelectPairViewController.instantiate()
-        if let protocolCoordinator = coordinator as? SelectPairCoordinatorProtocol {
+        self.viewController = SelectTaxonomyViewController.instantiate()
+        if let protocolCoordinator = coordinator as? SelectTaxonomyCoordinatorProtocol {
             self.coordinatorViewController?.protocolCoordinator = protocolCoordinator
         } else {
-            print("SelectPairCoordinator: coordinator does not conform to protocol")
+            print("SelectTaxonomyCoordinator: coordinator does not conform to protocol")
         }
     }
     
     // pass on the data
-    convenience init(with coordinator: Coordinator?, original: [String]?,
-                   allPairs: [Language],
-                   multipleSelectionIsAllowed: Bool,
-                   showOriginalsAsSelected: Bool,
-                   tag: Int,
-                   assignedHeader: String,
-                   unAssignedHeader: String,
-                   undefinedText: String) {
+    convenience init(with coordinator: Coordinator?, current: TaxonomyType) {
         self.init(with: coordinator)
         self.coordinatorViewController?.configure(
-            original: original,
-            allPairs: allPairs,
-            multipleSelectionIsAllowed: multipleSelectionIsAllowed,
-            showOriginalsAsSelected: showOriginalsAsSelected,
-            tag: tag,
-            assignedHeader: assignedHeader,
-            unAssignedHeader: unAssignedHeader,
-            undefinedText: undefinedText)
+            current: current)
     }
 
     func show() {
@@ -96,7 +74,7 @@ final class SelectPairCoordinator: Coordinator {
     func viewControllerDidDisappear(_ sender: UIViewController) {
         if self.childCoordinators.isEmpty {
             self.viewController = nil
-
+            informParent()
         }
     }
     

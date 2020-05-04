@@ -208,4 +208,12 @@ Remove an ATParticle to the nodes array based on a unique name.
         return _names[key!]
     }
 
+    public mutating func deleteAll() {
+        _particles = [:]
+        _springs = [:]
+        _outboundAdjacency = [:]
+        _inboundAdjacency = [:]
+        _names = [:]
+
+    }
 }

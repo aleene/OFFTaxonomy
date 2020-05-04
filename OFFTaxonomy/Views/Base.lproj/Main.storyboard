@@ -22,9 +22,14 @@
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1WA-Bm-5vK">
                                 <rect key="frame" x="0.0" y="813" width="414" height="49"/>
                                 <items>
-                                    <barButtonItem title="Item" id="cW3-OW-uU4">
+                                    <barButtonItem title="Language" id="cW3-OW-uU4">
                                         <connections>
                                             <action selector="languageButtonTapped:" destination="BYZ-38-t0r" id="0sT-qO-KoN"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem title="Taxonomy" id="u3u-GW-0GK">
+                                        <connections>
+                                            <action selector="selectTaxonomyButtonTapped:" destination="BYZ-38-t0r" id="pWP-0n-tTr"/>
                                         </connections>
                                     </barButtonItem>
                                 </items>
@@ -46,12 +51,14 @@
                     <connections>
                         <outlet property="arborView" destination="Dtt-Z9-RSB" id="ad9-60-oyi"/>
                         <outlet property="languageButton" destination="cW3-OW-uU4" id="UEO-e9-aWu"/>
+                        <outlet property="selectTaxonomyButton" destination="u3u-GW-0GK" id="BIC-5q-L6z"/>
                         <segue destination="ifn-33-mh1" kind="custom" id="sEC-uU-iZl"/>
+                        <segue destination="SEt-ha-2Tb" kind="custom" id="rBT-6u-Rb7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="138.61607142857142"/>
+            <point key="canvasLocation" x="-126" y="137"/>
         </scene>
         <!--Select Pair View Controller-->
         <scene sceneID="IgF-lV-cG4">
@@ -122,6 +129,35 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XLp-nV-eqy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="898.55072463768124" y="136.60714285714286"/>
+        </scene>
+        <!--Select Taxonomy View Controller-->
+        <scene sceneID="feE-NY-5Qc">
+            <objects>
+                <viewController storyboardIdentifier="SelectTaxonomyViewController" id="SEt-ha-2Tb" customClass="SelectTaxonomyViewController" customModule="OFFTaxonomy" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="pn4-NS-KUs">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dFo-m6-NYs">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dFo-m6-NYs" firstAttribute="trailing" secondItem="qzR-D9-SOs" secondAttribute="trailing" id="Mdj-LP-G7P"/>
+                            <constraint firstItem="dFo-m6-NYs" firstAttribute="bottom" secondItem="qzR-D9-SOs" secondAttribute="bottom" id="cmb-Y5-qRu"/>
+                            <constraint firstItem="dFo-m6-NYs" firstAttribute="leading" secondItem="qzR-D9-SOs" secondAttribute="leading" id="eNe-bg-g5l"/>
+                            <constraint firstItem="dFo-m6-NYs" firstAttribute="top" secondItem="qzR-D9-SOs" secondAttribute="top" id="gxD-jG-B4b"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="qzR-D9-SOs"/>
+                    </view>
+                    <connections>
+                        <outlet property="pickerView" destination="dFo-m6-NYs" id="dz5-Df-Rwh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AOB-fd-qkb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="899" y="832"/>
         </scene>
     </scenes>
 </document>

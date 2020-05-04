@@ -126,8 +126,8 @@ public class ATSystem: ATKernel {
         return newPoint
     }
     
-    /// Return the point in the screen coordinate system if we dont have a screen size.
     public func fromView(point: CGPoint) -> CGPoint {
+        // Return the point in the screen coordinate system if we dont have a screen size.
         if self.viewBounds.isEmpty
             || self.tweenBoundsCurrent.isEmpty {
             return point
@@ -273,7 +273,7 @@ Add an ATParticle with name and data.
         guard !name.isEmpty else { return nil }
 
         if let priorParticle = self.state.getParticleFromNames(for: name) {
-            print("ATSystem.addParticle(withName:andData:) - Overwrote user data for a node... Be sure this is what you wanted.")
+            print("ATSystem.addParticle(withName:andData:) - Overwrote user data for a node ", "\(name)","; Be sure this is what you wanted.")
             priorParticle.userData = data;
             return priorParticle;
             
@@ -439,6 +439,15 @@ Add an ATParticle with name and data.
     public func addTaxonomy(particles: [ATParticle], springs: [ATSpring]) {
         particles.forEach({_ = addParticle(with: $0.name!, and: $0.userData)  })
         springs.forEach({ _ = addSpring($0) })
+    }
+/**
+Delete all the particles and springs,
+        
+- parameters none
+*/
+    public override func deleteAll() {
+        self.state.deleteAll()
+        super.deleteAll()
     }
 /**
 Is the node with a set distance of a particle?

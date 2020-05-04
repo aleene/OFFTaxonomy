@@ -120,6 +120,17 @@ public struct ATPhysics {
         
         return motion < Constant.MotionLimit ? false : true
     }
+    
+    public mutating func deleteAll() {
+        _activeParticles = []
+        _activeSprings = []
+        _freeParticles = []
+        _bhTree = ATBarnesHutTree()
+        _particles = []
+        _energy = ATEnergy()
+        _springs = []
+
+    }
 
 // MARK: - private functions
     

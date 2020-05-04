@@ -201,7 +201,10 @@ public class ATKernel {
             self._physics.useBarnesHut = validParams.useBarnesHut
             self._physics.speedLimit = validParams.speedLimit
         });
-
+    }
+    
+    public func deleteAll() {
+        self._physics.deleteAll()
     }
 
     public func add(particle: ATParticle?) {

@@ -201,6 +201,30 @@ final class ArborView: UIView {
         } else if let valid = particle.name {
             validName = valid
         }
+        var fontSize = CGFloat(6)
+        if let validData = particle.userData["occurences"] as? [String],
+            let first = validData.first,
+            let occurences = Int(first){
+            if occurences > 1000000 {
+                fontSize = CGFloat(30)
+            } else if occurences > 100000 {
+                fontSize = CGFloat(25)
+            } else if occurences > 100000 {
+                fontSize = CGFloat(20)
+            } else if occurences > 10000 {
+                fontSize = CGFloat(18)
+            } else if occurences > 1000 {
+                fontSize = CGFloat(16)
+            } else if occurences > 100 {
+                fontSize = CGFloat(14)
+            } else if occurences > 10 {
+                fontSize = CGFloat(12)
+            } else if occurences > 1 {
+                fontSize = CGFloat(10)
+            } else {
+                fontSize = CGFloat(6)
+            }
+        }
 
         guard let particleOrigin = self.delegate?.convertToView(physics: validPosition) else { return }
         // Create an empty rect at particle center
@@ -222,7 +246,7 @@ final class ArborView: UIView {
         //                alignment:NSTextAlignmentCenter];
         let string = validName as NSString
         let textColor = UIColor.black
-        let textFont = UIFont(name: Constant.Particle.FontName, size: Constant.Particle.FontSize)!
+        let textFont = UIFont(name: Constant.Particle.FontName, size: fontSize)!
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.alignment = NSTextAlignment.center
 

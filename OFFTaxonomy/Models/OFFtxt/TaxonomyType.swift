@@ -8,7 +8,7 @@
 
 import Foundation
 
-enum TaxonomyType {
+enum TaxonomyType: CaseIterable {
     private struct Constant {
         static let OpenFoodFactsExtension = "txt"
         static let PlistExtension = "plist"
@@ -18,10 +18,12 @@ enum TaxonomyType {
     }
     
     case processes
+    case languages
 
     public var filename: String {
         switch self {
         case .processes: return "Processes"
+        case .languages: return "Languages"
         }
     }
     

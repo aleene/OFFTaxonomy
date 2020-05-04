@@ -23,7 +23,7 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var arborView: ArborView! {
         didSet {
-            arborView?.backgroundColor = .green
+            //arborView?.backgroundColor = .green
             arborView?.delegate = self
         }
     }
@@ -37,7 +37,17 @@ class MainViewController: UIViewController {
         self.mainCoordinator?.selectLanguage()
     }
     
-// MARK: - public variables
+    @IBOutlet weak var selectTaxonomyButton: UIBarButtonItem! {
+        didSet {
+            selectTaxonomyButton?.title = self.currentTaxonomy?.filename ?? "Select Taxonomy"
+        }
+    }
+    
+    @IBAction func selectTaxonomyButtonTapped(_ sender: UIBarButtonItem) {
+        self.mainCoordinator?.selectTaxonomy()
+    }
+    
+    // MARK: - public variables
 
     /// Needed in order to show UIMenuController
     override var canBecomeFirstResponder: Bool {
@@ -50,7 +60,20 @@ class MainViewController: UIViewController {
             self.languageButton?.title = currentLanguageCode
         }
     }
-    
+    public var currentTaxonomy: TaxonomyType? {
+        didSet {
+            if  currentTaxonomy != nil,
+                currentTaxonomy != oldValue {
+            
+//TODO: TODO - load the map data (could be done in a background thread
+                _system.deleteAll()
+                let read = currentTaxonomy!.read()
+                _system.addTaxonomy(particles: read.0, springs: read.1)
+                _system.start(unpause: true)
+            }
+        }
+    }
+
     public var mainCoordinator: MainCoordinator?
 
 // MARK: - private variables
@@ -58,7 +81,6 @@ class MainViewController: UIViewController {
     private var _system = ATSystem()
     private var _scale = Constant.ViewScaleFactor
     private var _offset = Constant.ViewCenter
-    private var _taxonomy = TaxonomyType.processes
     private var _focusNode: ATParticle? {
         didSet {
             if _focusNode == nil {
@@ -256,7 +278,7 @@ class MainViewController: UIViewController {
         params.stiffness = 600.0;
         params.friction  = 0.5;
         params.precision = 0.4;
-        params.useBarnesHut = false
+        params.useBarnesHut = true
         
         _system.parameters = params
         // Setup the view bounds, needed to so the simulation
@@ -269,14 +291,9 @@ class MainViewController: UIViewController {
         _system.delegate = self
         // DEBUG
         self.arborView.system = _system
-        self.arborView.isDebugDrawing = true
+        self.arborView.isDebugDrawing = false
         self.addGestureRecognizers(to: self.arborView)
-   
-        // load the map data
-        _system.addTaxonomy(particles: _taxonomy.read().0, springs: _taxonomy.read().1)
-        //self.loadMapData()
-        _system.start(unpause: true)
-
+        self.currentTaxonomy = .languages
     }
     
     override func viewDidAppear(_ animated: Bool) {
